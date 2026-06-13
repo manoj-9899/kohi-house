@@ -1,0 +1,8 @@
+# Netlify — static site + Supabase config at build time
+
+[build]
+  command = "npm run build"
+  publish = "."
+
+[build.environment]
+  NODE_VERSION = "20"

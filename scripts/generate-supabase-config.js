@@ -1,4 +1,4 @@
-// Generates assets/js/supabase-config.js from environment variables (Vercel build).
+// Generates assets/js/supabase-config.js from environment variables (Netlify / Vercel build).
 
 const fs = require('fs')
 const path = require('path')
@@ -8,7 +8,7 @@ const anonKey = process.env.SUPABASE_ANON_KEY || ''
 
 const outPath = path.join(__dirname, '..', 'assets', 'js', 'supabase-config.js')
 
-const content = `// Auto-generated — do not edit. Set SUPABASE_URL and SUPABASE_ANON_KEY in Vercel.
+const content = `// Auto-generated — do not edit. Set SUPABASE_URL and SUPABASE_ANON_KEY in Netlify or Vercel.
 window.KOHI_SUPABASE_CONFIG = {
   url: ${JSON.stringify(url)},
   anonKey: ${JSON.stringify(anonKey)},
