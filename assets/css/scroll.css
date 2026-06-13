@@ -1,0 +1,84 @@
+/* scroll.css — Scroll progress indicator and horizontal journey */
+
+html.lenis,
+html.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+#scroll-progress {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 2px;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 99;
+  background: var(--caramel-10);
+  pointer-events: none;
+}
+
+#scroll-bar {
+  width: 100%;
+  height: 100%;
+  background: var(--caramel);
+  transform-origin: top center;
+  transform: scaleY(0);
+  will-change: transform;
+}
+
+.nav-links a {
+  position: relative;
+}
+
+.nav-links a.active,
+.nav-links a.is-active {
+  color: var(--caramel);
+}
+
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--caramel);
+}
+
+@media (max-width: 900px) {
+  #scroll-progress {
+    display: none;
+  }
+}
+
+@media (min-width: 901px) {
+  .journey-pin-wrap {
+    margin-top: 5rem;
+    overflow: visible;
+  }
+
+  .journey-pin-wrap .journey-row {
+    margin-top: 0;
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+
+  .journey-pin-wrap .journey-step {
+    flex: 1 1 0;
+    min-width: 0;
+    border-right: 1px solid var(--caramel-15);
+    border-bottom: none;
+  }
+
+  .journey-pin-wrap .journey-step:last-child {
+    border-right: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .journey-pin-wrap .journey-row {
+    margin-top: 5rem;
+  }
+}

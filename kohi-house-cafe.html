@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kōhī House — Where Time Slows Down</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500&family=Parisienne&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --obsidian:#0D0906;
+  --dark-roast:#1A1108;
+  --espresso:#5C3D20;
+  --caramel:#C8894A;
+  --cream:#F5E6C8;
+  --forest:#3D5A4A;
+  --warm-white:#FAF6EE;
+  --silk:cubic-bezier(0.25,0.46,0.45,0.94);
+  --snap:cubic-bezier(0.34,1.56,0.64,1);
+  --lush:cubic-bezier(0.16,1,0.3,1);
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--obsidian);color:var(--cream);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.65;overflow-x:hidden}
+::selection{background:var(--caramel);color:var(--obsidian)}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--obsidian)}
+::-webkit-scrollbar-thumb{background:var(--espresso);border-radius:2px}
+
+/* ─── NAV ─────────────────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 3rem;display:flex;align-items:center;justify-content:space-between;mix-blend-mode:normal;transition:background 0.4s var(--silk),backdrop-filter 0.4s var(--silk)}
+nav.scrolled{background:rgba(13,9,6,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:1rem 3rem}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--cream);letter-spacing:0.04em;text-decoration:none}
+.nav-logo span{color:var(--caramel)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:rgba(245,230,200,0.7);text-decoration:none;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;transition:color 0.2s;font-weight:400}
+.nav-links a:hover{color:var(--cream)}
+.nav-cta{background:var(--caramel);color:var(--obsidian);padding:0.55rem 1.5rem;border-radius:2rem;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;text-decoration:none;transition:transform 0.3s var(--snap),box-shadow 0.3s var(--silk)}
+.nav-cta:hover{transform:scale(1.06);box-shadow:0 8px 32px rgba(200,137,74,0.35)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{width:22px;height:1.5px;background:var(--cream);display:block;transition:0.3s}
+
+/* ─── HERO ─────────────────────────────────────────── */
+#hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 60% 40%,#2A1A0A 0%,#0D0906 60%)}
+.hero-grain{position:absolute;inset:0;opacity:0.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");pointer-events:none}
+.hero-vignette{position:absolute;inset:0;background:radial-gradient(ellipse 100% 100% at 50% 50%,transparent 40%,rgba(13,9,6,0.7) 100%);pointer-events:none}
+
+#bean-canvas{position:absolute;inset:0;pointer-events:none}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:900px;padding:0 2rem}
+.hero-eyebrow{font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--caramel);opacity:0;animation:fadeUp 0.8s 0.4s var(--lush) forwards}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,8vw,7rem);font-weight:700;line-height:1.0;margin:0.5rem 0;color:var(--cream)}
+.hero-title .line{display:block;overflow:hidden}
+.hero-title .line span{display:block;opacity:0;transform:translateY(110%);animation:slideUp 0.9s var(--lush) forwards}
+.hero-title .line:nth-child(1) span{animation-delay:0.6s}
+.hero-title .line:nth-child(2) span{animation-delay:0.8s;font-style:italic;color:var(--caramel)}
+.hero-title .line:nth-child(3) span{animation-delay:1.0s}
+.hero-sub{font-size:1rem;color:rgba(245,230,200,0.6);max-width:420px;margin:1.5rem auto;opacity:0;animation:fadeUp 0.8s 1.3s var(--lush) forwards}
+.hero-ctas{display:flex;gap:1rem;justify-content:center;margin-top:2.5rem;opacity:0;animation:fadeUp 0.8s 1.5s var(--lush) forwards;flex-wrap:wrap}
+.btn-primary{background:var(--caramel);color:var(--obsidian);padding:0.85rem 2.2rem;border-radius:3rem;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;text-decoration:none;transition:transform 0.3s var(--snap),box-shadow 0.3s;display:inline-flex;align-items:center;gap:0.5rem;cursor:pointer;border:none}
+.btn-primary:hover{transform:scale(1.05) translateY(-2px);box-shadow:0 12px 40px rgba(200,137,74,0.4)}
+.btn-outline{border:1px solid rgba(245,230,200,0.3);color:var(--cream);padding:0.85rem 2.2rem;border-radius:3rem;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:400;text-decoration:none;transition:all 0.3s var(--silk);display:inline-flex;align-items:center;gap:0.5rem;background:transparent}
+.btn-outline:hover{border-color:var(--cream);background:rgba(245,230,200,0.08)}
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;opacity:0;animation:fadeUp 0.8s 2s var(--lush) forwards;cursor:pointer;text-decoration:none}
+.hero-scroll span{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(245,230,200,0.4)}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(200,137,74,0.6),transparent);animation:scrollPulse 2s ease-in-out infinite}
+
+/* 3D Cup Canvas */
+#cup-canvas{position:absolute;right:8%;top:50%;transform:translateY(-50%);width:min(360px,40vw);height:min(360px,40vw);pointer-events:none;opacity:0;animation:fadeIn 1s 1.2s forwards}
+
+/* ─── STORY ────────────────────────────────────────── */
+#story{padding:8rem 0;background:linear-gradient(180deg,var(--obsidian) 0%,var(--dark-roast) 50%,var(--obsidian) 100%);position:relative;overflow:hidden}
+.story-container{max-width:1200px;margin:0 auto;padding:0 3rem}
+.story-eyebrow{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--caramel);margin-bottom:1rem}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:4rem}
+.story-visual{position:relative}
+.story-img-wrap{border-radius:2px;overflow:hidden;aspect-ratio:3/4;background:linear-gradient(135deg,#2A1A0A 0%,#4A2E14 50%,#1A1108 100%);display:flex;align-items:center;justify-content:center}
+.story-img-placeholder{font-family:'Parisienne',cursive;font-size:4rem;color:var(--caramel);opacity:0.4}
+.story-year{position:absolute;bottom:-1.5rem;right:-1.5rem;background:var(--caramel);color:var(--obsidian);width:80px;height:80px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:700}
+.story-year span:first-child{font-size:1.5rem;line-height:1}
+.story-year span:last-child{font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase}
+.story-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,4vw,3.5rem);font-weight:700;line-height:1.15;margin-bottom:1.5rem;color:var(--cream)}
+.story-text h2 em{font-style:italic;color:var(--caramel)}
+.story-text p{color:rgba(245,230,200,0.65);line-height:1.8;margin-bottom:1.2rem;font-size:0.95rem}
+.story-stats{display:flex;gap:2.5rem;margin-top:2.5rem;padding-top:2.5rem;border-top:1px solid rgba(200,137,74,0.2)}
+.stat-item{text-align:center}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;color:var(--caramel);line-height:1}
+.stat-label{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(245,230,200,0.45);margin-top:0.25rem}
+.journey-row{display:flex;gap:0;margin-top:5rem;overflow:hidden}
+.journey-step{flex:1;padding:2rem;border-right:1px solid rgba(200,137,74,0.15);text-align:center;transition:background 0.3s var(--silk);cursor:default}
+.journey-step:last-child{border-right:none}
+.journey-step:hover{background:rgba(200,137,74,0.06)}
+.journey-icon{width:48px;height:48px;margin:0 auto 1rem;border:1px solid rgba(200,137,74,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.journey-step h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--cream);margin-bottom:0.5rem}
+.journey-step p{font-size:0.78rem;color:rgba(245,230,200,0.45);line-height:1.6}
+
+/* ─── SIGNATURE DRINKS ─────────────────────────────── */
+#drinks{padding:8rem 0;background:var(--obsidian);position:relative;overflow:hidden}
+.section-header{text-align:center;max-width:600px;margin:0 auto 5rem;padding:0 2rem}
+.section-eyebrow{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--caramel);margin-bottom:0.75rem}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,4vw,3.5rem);font-weight:700;color:var(--cream);line-height:1.15}
+.section-title em{font-style:italic;color:var(--caramel)}
+.drinks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1200px;margin:0 auto;padding:0 3rem}
+.drink-card{background:rgba(26,17,8,0.6);border:1px solid rgba(200,137,74,0.12);border-radius:4px;overflow:hidden;position:relative;cursor:pointer;transition:transform 0.4s var(--silk),box-shadow 0.4s var(--silk),border-color 0.3s}
+.drink-card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(0,0,0,0.5),0 0 0 1px rgba(200,137,74,0.25);border-color:rgba(200,137,74,0.3)}
+.drink-visual{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.drink-canvas{width:100%;height:100%;display:block}
+.drink-info{padding:1.5rem}
+.drink-tag{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--caramel);margin-bottom:0.5rem}
+.drink-name{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--cream);margin-bottom:0.5rem;line-height:1.1}
+.drink-desc{font-size:0.82rem;color:rgba(245,230,200,0.5);line-height:1.65;margin-bottom:1rem}
+.drink-footer{display:flex;align-items:center;justify-content:space-between}
+.drink-price{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--caramel)}
+.flavor-tags{display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.75rem}
+.flavor-tag{background:rgba(200,137,74,0.1);border:1px solid rgba(200,137,74,0.2);color:rgba(245,230,200,0.6);font-size:0.65rem;letter-spacing:0.1em;padding:0.2rem 0.6rem;border-radius:1rem}
+
+/* ─── MENU ─────────────────────────────────────────── */
+#menu{padding:8rem 0;background:linear-gradient(180deg,var(--obsidian),var(--dark-roast))}
+.menu-wrapper{max-width:1100px;margin:0 auto;padding:0 3rem}
+.menu-tabs{display:flex;gap:0;border-bottom:1px solid rgba(200,137,74,0.15);margin-bottom:3rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.menu-tab{padding:0.85rem 1.75rem;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,230,200,0.45);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.3s var(--silk);white-space:nowrap;background:transparent;border-top:none;border-left:none;border-right:none;font-family:'DM Sans',sans-serif;font-weight:400}
+.menu-tab:hover{color:var(--cream)}
+.menu-tab.active{color:var(--caramel);border-bottom-color:var(--caramel)}
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid rgba(200,137,74,0.1)}
+.menu-item{padding:1.5rem;border-bottom:1px solid rgba(200,137,74,0.08);border-right:1px solid rgba(200,137,74,0.08);transition:background 0.25s var(--silk);cursor:pointer;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
+.menu-item:hover{background:rgba(200,137,74,0.05)}
+.menu-item:nth-child(even){border-right:none}
+.menu-item-left{flex:1}
+.menu-item-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--cream);margin-bottom:0.25rem}
+.menu-item-desc{font-size:0.78rem;color:rgba(245,230,200,0.45);line-height:1.55}
+.menu-item-price{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--caramel);white-space:nowrap;flex-shrink:0}
+
+/* ─── ATMOSPHERE ───────────────────────────────────── */
+#atmosphere{padding:8rem 0;background:var(--obsidian);overflow:hidden}
+.atmosphere-inner{max-width:1200px;margin:0 auto;padding:0 3rem}
+.gallery-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:auto auto;gap:1rem;margin-top:3rem}
+.gallery-cell{border-radius:2px;overflow:hidden;position:relative;cursor:pointer}
+.gallery-cell:first-child{grid-row:1/3}
+.gallery-cell .fill{width:100%;height:100%;min-height:200px;display:flex;align-items:center;justify-content:center;font-family:'Parisienne',cursive;font-size:2rem;opacity:0.3;transition:transform 0.6s var(--silk)}
+.gallery-cell:hover .fill{transform:scale(1.04)}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,9,6,0.7) 0%,transparent 50%);opacity:0;transition:opacity 0.3s var(--silk)}
+.gallery-cell:hover .gallery-overlay{opacity:1}
+.gallery-caption{position:absolute;bottom:1rem;left:1rem;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--cream);opacity:0;transition:opacity 0.3s var(--silk) 0.05s}
+.gallery-cell:hover .gallery-caption{opacity:1}
+.g1{background:linear-gradient(135deg,#2A1A0A,#1A0E05,#3A2010);color:var(--caramel)}
+.g2{background:linear-gradient(135deg,#1E2A1E,#0A1A0A,#2A3A1E);color:#8CAE8C}
+.g3{background:linear-gradient(135deg,#2A2010,#1A140A,#3A2A0A);color:#B8A87A}
+.g4{background:linear-gradient(135deg,#1A1010,#0A0808,#2A1818);color:#B08080}
+.g5{background:linear-gradient(135deg,#102020,#081818,#1A3030);color:#7AACAC}
+
+/* ─── TESTIMONIALS ─────────────────────────────────── */
+#testimonials{padding:8rem 0;background:linear-gradient(180deg,var(--obsidian),#1A1A0A)}
+.testimonials-inner{max-width:1200px;margin:0 auto;padding:0 3rem}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:4rem}
+.testi-card{background:rgba(26,17,8,0.7);border:1px solid rgba(200,137,74,0.1);border-radius:4px;padding:2rem;transition:transform 0.3s var(--silk),box-shadow 0.3s,border-color 0.3s;cursor:default}
+.testi-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.4);border-color:rgba(200,137,74,0.25)}
+.testi-stars{display:flex;gap:3px;margin-bottom:1rem}
+.star{color:var(--caramel);font-size:0.85rem}
+.testi-quote{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:rgba(245,230,200,0.85);line-height:1.7;margin-bottom:1.5rem;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:0.75rem}
+.testi-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:500;color:var(--obsidian);flex-shrink:0}
+.testi-name{font-size:0.82rem;font-weight:500;color:var(--cream)}
+.testi-meta{font-size:0.7rem;color:rgba(245,230,200,0.4);margin-top:1px}
+
+/* ─── EVENTS ───────────────────────────────────────── */
+#events{padding:8rem 0;background:var(--dark-roast);overflow:hidden}
+.events-inner{max-width:1100px;margin:0 auto;padding:0 3rem}
+.events-list{margin-top:4rem;display:flex;flex-direction:column;gap:0}
+.event-row{display:grid;grid-template-columns:90px 1fr auto;gap:2rem;align-items:center;padding:1.75rem 0;border-bottom:1px solid rgba(200,137,74,0.1);transition:background 0.25s var(--silk);cursor:pointer;border-radius:4px}
+.event-row:first-child{border-top:1px solid rgba(200,137,74,0.1)}
+.event-row:hover{background:rgba(200,137,74,0.05);padding-left:0.75rem;padding-right:0.75rem}
+.event-date{text-align:center}
+.event-day{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--caramel);line-height:1}
+.event-month{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(245,230,200,0.4)}
+.event-info h4{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--cream);margin-bottom:0.3rem}
+.event-info p{font-size:0.8rem;color:rgba(245,230,200,0.5)}
+.event-tag{display:inline-flex;align-items:center;gap:0.4rem;background:rgba(200,137,74,0.12);border:1px solid rgba(200,137,74,0.2);color:var(--caramel);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.35rem 0.9rem;border-radius:2rem}
+.event-dot{width:6px;height:6px;border-radius:50%;background:var(--caramel);animation:pulse 2s ease-in-out infinite}
+
+/* ─── RESERVATION ──────────────────────────────────── */
+#reservation{padding:8rem 0;background:linear-gradient(135deg,#0D0906 0%,#1A1108 50%,#0D0906 100%);position:relative}
+.reservation-inner{max-width:700px;margin:0 auto;padding:0 3rem;text-align:center}
+.reservation-form{background:rgba(26,17,8,0.8);border:1px solid rgba(200,137,74,0.15);border-radius:4px;padding:3rem;margin-top:3rem;text-align:left;backdrop-filter:blur(10px)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.25rem}
+.form-group{display:flex;flex-direction:column;gap:0.4rem}
+.form-group label{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(245,230,200,0.5)}
+.form-group input,.form-group select,.form-group textarea{background:rgba(255,255,255,0.04);border:1px solid rgba(200,137,74,0.15);color:var(--cream);padding:0.75rem 1rem;font-family:'DM Sans',sans-serif;font-size:0.88rem;border-radius:2px;transition:border-color 0.25s var(--silk),background 0.25s;outline:none;-webkit-appearance:none;appearance:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:rgba(200,137,74,0.5);background:rgba(200,137,74,0.04)}
+.form-group select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C8894A' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem}
+.form-group select option{background:#1A1108;color:var(--cream)}
+.form-submit{width:100%;padding:1rem;background:var(--caramel);color:var(--obsidian);border:none;font-family:'DM Sans',sans-serif;font-size:0.82rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:500;cursor:pointer;border-radius:2px;transition:all 0.3s var(--snap);margin-top:0.5rem}
+.form-submit:hover{transform:translateY(-2px);box-shadow:0 12px 35px rgba(200,137,74,0.35);background:#D4975A}
+.form-note{font-size:0.72rem;color:rgba(245,230,200,0.35);text-align:center;margin-top:1rem;line-height:1.6}
+
+/* ─── LOCATION ─────────────────────────────────────── */
+#location{padding:8rem 0;background:var(--obsidian)}
+.location-inner{max-width:1100px;margin:0 auto;padding:0 3rem}
+.location-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:4rem}
+.location-info h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--cream);margin-bottom:1.5rem}
+.location-detail{display:flex;gap:1rem;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(200,137,74,0.1)}
+.location-icon{width:40px;height:40px;border:1px solid rgba(200,137,74,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;color:var(--caramel)}
+.location-detail-text strong{display:block;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(245,230,200,0.4);margin-bottom:0.25rem;font-weight:400}
+.location-detail-text span{font-size:0.9rem;color:rgba(245,230,200,0.75);line-height:1.6}
+.hours-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;margin-top:0.5rem}
+.hours-row{display:flex;justify-content:space-between;font-size:0.82rem;color:rgba(245,230,200,0.6);padding:0.25rem 0;border-bottom:1px solid rgba(200,137,74,0.06)}
+.hours-today{color:var(--caramel);font-weight:500}
+.map-frame{border-radius:4px;overflow:hidden;aspect-ratio:4/3;background:linear-gradient(135deg,#0A0F0A,#101A10,#0A1A0A);display:flex;align-items:center;justify-content:center;border:1px solid rgba(200,137,74,0.1);position:relative}
+.map-pin{width:20px;height:20px;background:var(--caramel);border-radius:50% 50% 50% 0;transform:rotate(-45deg);position:relative;animation:pinBounce 2s ease-in-out infinite}
+.map-pin::after{content:'';width:10px;height:10px;background:var(--obsidian);border-radius:50%;position:absolute;top:5px;left:5px}
+.map-label{position:absolute;bottom:1.5rem;left:1.5rem;background:rgba(13,9,6,0.9);border:1px solid rgba(200,137,74,0.2);border-radius:2px;padding:0.75rem 1rem;backdrop-filter:blur(10px)}
+.map-label strong{font-size:0.82rem;color:var(--cream);display:block;margin-bottom:2px}
+.map-label span{font-size:0.72rem;color:rgba(245,230,200,0.5)}
+.live-badge{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#5AAA7A;background:rgba(90,170,122,0.1);border:1px solid rgba(90,170,122,0.25);padding:0.3rem 0.7rem;border-radius:1rem;margin-bottom:1rem}
+.live-dot{width:5px;height:5px;border-radius:50%;background:#5AAA7A;animation:pulse 2s ease-in-out infinite}
+
+/* ─── FOOTER ───────────────────────────────────────── */
+footer{background:#0A0705;border-top:1px solid rgba(200,137,74,0.1);padding:4rem 3rem 2rem}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-brand .logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--cream);display:block;margin-bottom:0.75rem}
+.footer-brand .logo span{color:var(--caramel)}
+.footer-brand p{font-size:0.82rem;color:rgba(245,230,200,0.4);line-height:1.7;max-width:220px}
+.footer-col h5{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(245,230,200,0.35);margin-bottom:1rem;font-weight:400}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:0.6rem}
+.footer-col a{font-size:0.85rem;color:rgba(245,230,200,0.55);text-decoration:none;transition:color 0.2s}
+.footer-col a:hover{color:var(--caramel)}
+.social-links{display:flex;gap:0.75rem;margin-top:1.25rem}
+.social-link{width:36px;height:36px;border:1px solid rgba(200,137,74,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.85rem;color:rgba(245,230,200,0.4);text-decoration:none;transition:all 0.3s var(--snap)}
+.social-link:hover{border-color:var(--caramel);color:var(--caramel);transform:translateY(-2px)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:2rem;border-top:1px solid rgba(200,137,74,0.08)}
+.footer-bottom p{font-size:0.75rem;color:rgba(245,230,200,0.25)}
+.footer-bottom a{color:rgba(245,230,200,0.35);text-decoration:none;transition:color 0.2s}
+.footer-bottom a:hover{color:var(--caramel)}
+.newsletter-wrap{margin-top:1.5rem;display:flex;gap:0}
+.newsletter-input{flex:1;background:rgba(255,255,255,0.05);border:1px solid rgba(200,137,74,0.15);border-right:none;color:var(--cream);padding:0.65rem 1rem;font-family:'DM Sans',sans-serif;font-size:0.82rem;border-radius:2px 0 0 2px;outline:none;transition:border-color 0.25s}
+.newsletter-input:focus{border-color:rgba(200,137,74,0.4)}
+.newsletter-input::placeholder{color:rgba(245,230,200,0.25)}
+.newsletter-btn{background:var(--caramel);color:var(--obsidian);border:none;padding:0.65rem 1.1rem;font-family:'DM Sans',sans-serif;font-size:0.75rem;cursor:pointer;border-radius:0 2px 2px 0;transition:background 0.2s;white-space:nowrap;font-weight:500}
+.newsletter-btn:hover{background:#D4975A}
+
+/* ─── SCROLL ANIMATIONS ────────────────────────────── */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s var(--lush),transform 0.8s var(--lush)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity 0.8s var(--lush),transform 0.8s var(--lush)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity 0.8s var(--lush),transform 0.8s var(--lush)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+
+/* ─── KEYFRAMES ────────────────────────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:0.85}}
+@keyframes slideUp{from{opacity:0;transform:translateY(110%)}to{opacity:1;transform:translateY(0)}}
+@keyframes scrollPulse{0%,100%{opacity:0.6;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.15)}}
+@keyframes pulse{0%,100%{opacity:0.6;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
+@keyframes pinBounce{0%,100%{transform:rotate(-45deg) translateY(0)}50%{transform:rotate(-45deg) translateY(-6px)}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}33%{transform:translateY(-12px) rotate(5deg)}66%{transform:translateY(8px) rotate(-3deg)}}
+@keyframes rotateCup{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes steamRise{0%{opacity:0;transform:translateY(0) scaleX(1)}20%{opacity:0.6}80%{opacity:0.2;transform:translateY(-60px) scaleX(1.8)}100%{opacity:0;transform:translateY(-80px) scaleX(2)}}
+
+/* ─── MOBILE NAV OVERLAY ───────────────────────────── */
+.mobile-nav{position:fixed;inset:0;background:rgba(13,9,6,0.97);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;pointer-events:none;transition:opacity 0.4s var(--silk)}
+.mobile-nav.open{opacity:1;pointer-events:all}
+.mobile-nav a{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;color:var(--cream);text-decoration:none;letter-spacing:0.02em;transition:color 0.2s}
+.mobile-nav a:hover{color:var(--caramel)}
+.mobile-close{position:absolute;top:1.5rem;right:1.5rem;background:transparent;border:none;color:var(--cream);font-size:1.5rem;cursor:pointer;padding:0.5rem}
+
+/* ─── RESPONSIVE ───────────────────────────────────── */
+@media(max-width:900px){
+  nav{padding:1.2rem 1.5rem}
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .hero-content{padding:0 1.5rem}
+  .story-grid{grid-template-columns:1fr;gap:3rem}
+  .drinks-grid{grid-template-columns:1fr;max-width:440px}
+  .menu-grid{grid-template-columns:1fr}
+  .menu-item:nth-child(even){border-right:1px solid rgba(200,137,74,0.08)}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .gallery-cell:first-child{grid-row:1;grid-column:1/3}
+  .testi-grid{grid-template-columns:1fr}
+  .location-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr;gap:2rem}
+  .form-row{grid-template-columns:1fr}
+  #cup-canvas{display:none}
+  .story-container,.location-inner,.events-inner,.atmosphere-inner,.menu-wrapper,.drinks-grid,.testimonials-inner{padding:0 1.5rem}
+  .footer-inner{padding:0}
+  footer{padding:3rem 1.5rem 2rem}
+  .journey-row{flex-wrap:wrap}
+  .journey-step{flex:1 1 calc(50% - 1rem);border-right:none;border-bottom:1px solid rgba(200,137,74,0.15)}
+}
+@media(max-width:600px){
+  .footer-top{grid-template-columns:1fr}
+  .footer-brand{grid-column:1}
+  .hero-ctas{flex-direction:column;align-items:center}
+  .testi-grid{grid-template-columns:1fr}
+  .event-row{grid-template-columns:60px 1fr auto;gap:1rem}
+  .location-grid{gap:2rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Kō<span>hī</span></a>
+  <ul class="nav-links">
+    <li><a href="#story">Story</a></li>
+    <li><a href="#drinks">Drinks</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#atmosphere">Space</a></li>
+    <li><a href="#events">Events</a></li>
+  </ul>
+  <a href="#reservation" class="nav-cta">Reserve a Table</a>
+  <div class="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" onclick="toggleMobileNav()">✕</button>
+  <a href="#story" onclick="toggleMobileNav()">Story</a>
+  <a href="#drinks" onclick="toggleMobileNav()">Drinks</a>
+  <a href="#menu" onclick="toggleMobileNav()">Menu</a>
+  <a href="#atmosphere" onclick="toggleMobileNav()">Space</a>
+  <a href="#events" onclick="toggleMobileNav()">Events</a>
+  <a href="#reservation" onclick="toggleMobileNav()">Reserve</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-vignette"></div>
+  <canvas id="bean-canvas"></canvas>
+  <canvas id="cup-canvas"></canvas>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Est. 2019 · Specialty Coffee House</p>
+    <h1 class="hero-title">
+      <span class="line"><span>Where every</span></span>
+      <span class="line"><span>sip is a</span></span>
+      <span class="line"><span>ritual.</span></span>
+    </h1>
+    <p class="hero-sub">Sourced from single-origin farms. Crafted with intention. Served in an atmosphere that makes time feel irrelevant.</p>
+    <div class="hero-ctas">
+      <a href="#menu" class="btn-primary">Explore the Menu →</a>
+      <a href="#story" class="btn-outline">Our Story</a>
+    </div>
+  </div>
+  <a href="#story" class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </a>
+</section>
+
+<!-- STORY -->
+<section id="story">
+  <div class="story-container">
+    <p class="story-eyebrow reveal">The origin</p>
+    <div class="story-grid">
+      <div class="story-visual reveal-left">
+        <div class="story-img-wrap">
+          <div class="story-img-placeholder">Kōhī</div>
+        </div>
+        <div class="story-year"><span>2019</span><span>Founded</span></div>
+      </div>
+      <div class="story-text reveal-right">
+        <h2>Born from a <em>love letter</em> to slow mornings.</h2>
+        <p>What began as a small corner in Mumbai's Andheri neighbourhood has grown into a destination — a place where the ritual of coffee becomes an act of presence. We believe the best cup you'll ever have is the one you weren't rushing through.</p>
+        <p>Our beans are sourced directly from family farms in Coorg, Araku Valley, and Chikmagalur — relationships built over years, not transactions. Every roast is a conversation between origin and craft.</p>
+        <div class="story-stats">
+          <div class="stat-item"><div class="stat-num">12</div><div class="stat-label">Origin farms</div></div>
+          <div class="stat-item"><div class="stat-num">40+</div><div class="stat-label">Menu items</div></div>
+          <div class="stat-item"><div class="stat-num">3K+</div><div class="stat-label">Daily guests</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="journey-row reveal">
+      <div class="journey-step">
+        <div class="journey-icon">🌱</div>
+        <h4>Farm</h4>
+        <p>Hand-picked at 1,200m elevation. Single-estate, traceable.</p>
+      </div>
+      <div class="journey-step">
+        <div class="journey-icon">🔥</div>
+        <h4>Roast</h4>
+        <p>Small-batch roasted in-house. Medium to dark profiles.</p>
+      </div>
+      <div class="journey-step">
+        <div class="journey-icon">⚗️</div>
+        <h4>Brew</h4>
+        <p>Precision extraction. Dialed in daily. No shortcuts.</p>
+      </div>
+      <div class="journey-step">
+        <div class="journey-icon">☕</div>
+        <h4>Serve</h4>
+        <p>In your hands, still warm. Exactly as intended.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNATURE DRINKS -->
+<section id="drinks">
+  <div class="section-header reveal">
+    <p class="section-eyebrow">Signature collection</p>
+    <h2 class="section-title">Coffee as <em>craft.</em></h2>
+  </div>
+  <div class="drinks-grid">
+    <div class="drink-card reveal" style="transition-delay:0s">
+      <div class="drink-visual">
+        <img
+          src="https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=600&q=80"
+          alt="Araku Gold Cortado — specialty espresso at Kōhī House"
+          loading="lazy"
+          style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="drink-info">
+        <div class="drink-tag">Espresso-based</div>
+        <h3 class="drink-name">Araku Gold Cortado</h3>
+        <p class="drink-desc">A 1:1 espresso-to-steamed milk ratio. Our Araku Valley blend reveals notes of dark chocolate, red berry, and a whisper of cardamom.</p>
+        <div class="flavor-tags"><span class="flavor-tag">Dark Chocolate</span><span class="flavor-tag">Red Berry</span><span class="flavor-tag">Cardamom</span></div>
+        <div class="drink-footer" style="margin-top:1rem;display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap">
+          <span class="drink-price">₹280</span>
+          <span style="font-size:0.72rem;color:var(--cream-45)">3 min · Dark chocolate &amp; berry notes</span>
+        </div>
+      </div>
+    </div>
+    <div class="drink-card reveal" style="transition-delay:0.12s">
+      <div class="drink-visual">
+        <canvas class="drink-canvas" id="drink2" width="400" height="300"></canvas>
+      </div>
+      <div class="drink-info">
+        <div class="drink-tag">Cold Brew</div>
+        <h3 class="drink-name">Midnight Nitro</h3>
+        <p class="drink-desc">18-hour cold extraction. Nitrogen-infused. Pours like a dark velvet cascade. Naturally sweet, zero added sugar.</p>
+        <div class="flavor-tags"><span class="flavor-tag">Velvet</span><span class="flavor-tag">Molasses</span><span class="flavor-tag">Smoky</span></div>
+        <div class="drink-footer" style="margin-top:1rem;display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap">
+          <span class="drink-price">₹340</span>
+          <span style="font-size:0.72rem;color:var(--cream-45)">1 min · Velvet-smooth, naturally sweet</span>
+        </div>
+      </div>
+    </div>
+    <div class="drink-card reveal" style="transition-delay:0.24s">
+      <div class="drink-visual">
+        <canvas class="drink-canvas" id="drink3" width="400" height="300"></canvas>
+      </div>
+      <div class="drink-info">
+        <div class="drink-tag">Signature</div>
+        <h3 class="drink-name">Saffron Fog Latte</h3>
+        <p class="drink-desc">House-crafted saffron syrup, double shot, oat milk microfoam. An Indian soul in a Milanese body. Our most-loved creation.</p>
+        <div class="flavor-tags"><span class="flavor-tag">Saffron</span><span class="flavor-tag">Oat</span><span class="flavor-tag">Floral</span></div>
+        <div class="drink-footer" style="margin-top:1rem;display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap">
+          <span class="drink-price">₹320</span>
+          <span style="font-size:0.72rem;color:var(--cream-45)">4 min · Floral saffron &amp; oat microfoam</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="menu-wrapper">
+    <div class="section-header reveal" style="text-align:left;margin-left:0;padding-left:0">
+      <p class="section-eyebrow">The full menu</p>
+      <h2 class="section-title">Something for <em>every mood.</em></h2>
+    </div>
+    <div class="menu-tabs reveal">
+      <button class="menu-tab active" onclick="switchTab(this,'hot')">Hot Drinks</button>
+      <button class="menu-tab" onclick="switchTab(this,'cold')">Cold Drinks</button>
+      <button class="menu-tab" onclick="switchTab(this,'food')">Food</button>
+      <button class="menu-tab" onclick="switchTab(this,'specials')">Chef Specials</button>
+    </div>
+    <div class="menu-grid reveal" id="menu-grid"></div>
+  </div>
+</section>
+
+<!-- ATMOSPHERE / GALLERY -->
+<section id="atmosphere">
+  <div class="atmosphere-inner">
+    <div class="section-header reveal" style="text-align:left;margin-left:0;padding-left:0;margin-bottom:0">
+      <p class="section-eyebrow">The space</p>
+      <h2 class="section-title">Designed for <em>lingering.</em></h2>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-cell g1" style="aspect-ratio:auto">
+        <div class="fill" style="min-height:400px;font-size:3rem">Morning light</div>
+        <div class="gallery-overlay"></div>
+        <div class="gallery-caption">Main Hall</div>
+      </div>
+      <div class="gallery-cell g2">
+        <div class="fill">Brew bar</div>
+        <div class="gallery-overlay"></div>
+        <div class="gallery-caption">Brew Bar</div>
+      </div>
+      <div class="gallery-cell g3">
+        <div class="fill">Garden terrace</div>
+        <div class="gallery-overlay"></div>
+        <div class="gallery-caption">Garden</div>
+      </div>
+      <div class="gallery-cell g4">
+        <div class="fill">Roastery</div>
+        <div class="gallery-overlay"></div>
+        <div class="gallery-caption">Roastery</div>
+      </div>
+      <div class="gallery-cell g5">
+        <div class="fill">Evening lounge</div>
+        <div class="gallery-overlay"></div>
+        <div class="gallery-caption">Evening Lounge</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testimonials-inner">
+    <div class="section-header reveal">
+      <p class="section-eyebrow">Voices</p>
+      <h2 class="section-title">What our guests <em>say.</em></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal" style="transition-delay:0s">
+        <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testi-quote">"Kōhī House doesn't feel like a café. It feels like someone's very beautiful, very well-caffeinated living room. I've been here eleven Sundays in a row and I'm not stopping."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:#C8894A;">PR</div>
+          <div><div class="testi-name">Priya Raghavan</div><div class="testi-meta">Architect · Regular since 2021</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal" style="transition-delay:0.12s">
+        <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testi-quote">"The Saffron Fog Latte is the only coffee that has made me emotional. Ridiculous. Absolutely worth it. The space is exactly the kind of silence you need on a Monday."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:#3D5A4A;">AM</div>
+          <div><div class="testi-name">Arjun Mehta</div><div class="testi-meta">Writer · Featured in Mid-Day</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal" style="transition-delay:0.24s">
+        <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testi-quote">"I've been to specialty cafés in Tokyo, Melbourne, and Copenhagen. Kōhī House belongs on that list. The Araku Gold is extraordinary — proof that Indian coffee has arrived."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:#5C3D20;">SK</div>
+          <div><div class="testi-name">Sneha Krishnan</div><div class="testi-meta">Food & Travel Writer</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section id="events">
+  <div class="events-inner">
+    <div class="section-header reveal" style="text-align:left;margin-left:0;padding-left:0">
+      <p class="section-eyebrow">Live at Kōhī</p>
+      <h2 class="section-title">Music, mornings &amp; <em>moments.</em></h2>
+    </div>
+    <div class="events-list reveal">
+      <div class="event-row">
+        <div class="event-date"><div class="event-day">14</div><div class="event-month">Jun</div></div>
+        <div class="event-info"><h4>Jazz in the Garden — Trio Noir</h4><p>8:00 PM · Garden Terrace · Free entry with reservation</p></div>
+        <div class="event-tag"><span class="event-dot"></span>Tonight</div>
+      </div>
+      <div class="event-row">
+        <div class="event-date"><div class="event-day">18</div><div class="event-month">Jun</div></div>
+        <div class="event-info"><h4>Coffee Cupping: Araku Valley Edition</h4><p>10:00 AM · Roastery · ₹500 per person (includes 3 cups)</p></div>
+        <div class="event-tag">Workshop</div>
+      </div>
+      <div class="event-row">
+        <div class="event-date"><div class="event-day">21</div><div class="event-month">Jun</div></div>
+        <div class="event-info"><h4>Solstice Brunch — DJ Set by Meera</h4><p>11:00 AM – 3:00 PM · Main Hall · Ticketed event</p></div>
+        <div class="event-tag">Special</div>
+      </div>
+      <div class="event-row">
+        <div class="event-date"><div class="event-day">28</div><div class="event-month">Jun</div></div>
+        <div class="event-info"><h4>Latte Art Competition — Open Entry</h4><p>3:00 PM · Brew Bar · Register at the counter</p></div>
+        <div class="event-tag">Community</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVATION -->
+<section id="reservation">
+  <div class="reservation-inner">
+    <div class="reveal">
+      <p class="section-eyebrow" style="text-align:center">Book your visit</p>
+      <h2 class="section-title">Reserve a <em>moment.</em></h2>
+      <p style="font-size:0.9rem;color:rgba(245,230,200,0.5);margin-top:1rem">Tables are reserved for 90 minutes. Walk-ins always welcome, subject to availability.</p>
+    </div>
+    <div class="reservation-form reveal">
+      <div class="form-row">
+        <div class="form-group"><label for="fname">First name</label><input type="text" id="fname" placeholder="Priya"></div>
+        <div class="form-group"><label for="lname">Last name</label><input type="text" id="lname" placeholder="Sharma"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label for="email">Email</label><input type="email" id="email" placeholder="priya@email.com"></div>
+        <div class="form-group"><label for="phone">Phone</label><input type="tel" id="phone" placeholder="+91 98765 43210"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label for="date">Date</label><input type="date" id="date"></div>
+        <div class="form-group"><label for="time">Preferred time</label>
+          <select id="time">
+            <option value="">Select a time</option>
+            <option>7:30 AM – 9:00 AM (Morning calm)</option>
+            <option>9:00 AM – 11:00 AM (Brunch rush)</option>
+            <option>11:00 AM – 1:00 PM</option>
+            <option>1:00 PM – 3:00 PM (Afternoon)</option>
+            <option>3:00 PM – 5:00 PM (Golden hour)</option>
+            <option>5:00 PM – 7:00 PM (Evening)</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label for="guests">Number of guests</label>
+          <select id="guests">
+            <option>1 guest</option><option selected>2 guests</option><option>3 guests</option><option>4 guests</option><option>5+ guests</option>
+          </select>
+        </div>
+        <div class="form-group"><label for="occasion">Occasion (optional)</label>
+          <select id="occasion">
+            <option value="">None / just coffee</option>
+            <option>Birthday celebration</option>
+            <option>Work meeting</option>
+            <option>Date</option>
+            <option>Anniversary</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group" style="margin-bottom:1.5rem"><label for="notes">Special requests</label><textarea id="notes" rows="3" placeholder="Dietary needs, seating preference, anything else..."></textarea></div>
+      <button class="form-submit" onclick="submitReservation()">Confirm Reservation</button>
+      <p class="form-note">You'll receive a confirmation SMS and email within minutes. · No card required · Free cancellation up to 2 hours before.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location">
+  <div class="location-inner">
+    <div class="section-header reveal" style="text-align:left;margin-left:0;padding-left:0">
+      <p class="section-eyebrow">Find us</p>
+      <h2 class="section-title">Come <em>exactly</em> as you are.</h2>
+    </div>
+    <div class="location-grid">
+      <div class="reveal-left">
+        <div class="live-badge"><span class="live-dot"></span>Open now · Closes at 10 PM</div>
+        <div class="location-detail">
+          <div class="location-icon">📍</div>
+          <div class="location-detail-text">
+            <strong>Address</strong>
+            <span>12, Third Cross Street, Versova,<br>Andheri West, Mumbai – 400 061</span>
+          </div>
+        </div>
+        <div class="location-detail">
+          <div class="location-icon">🕐</div>
+          <div class="location-detail-text">
+            <strong>Hours</strong>
+            <div class="hours-grid">
+              <div class="hours-row"><span>Mon – Fri</span><span>7 AM – 10 PM</span></div>
+              <div class="hours-row" style="grid-column:1/-1"><span class="hours-today">Saturday</span><span class="hours-today">7 AM – 11 PM</span></div>
+              <div class="hours-row" style="grid-column:1/-1"><span>Sunday</span><span>8 AM – 9 PM</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="location-detail" style="border-bottom:none">
+          <div class="location-icon">📞</div>
+          <div class="location-detail-text">
+            <strong>Contact</strong>
+            <span>+91 88053 48821<br>hello@kohihouse.in</span>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="map-frame">
+          <div style="text-align:center">
+            <div class="map-pin"></div>
+            <p style="margin-top:1rem;font-size:0.75rem;color:rgba(245,230,200,0.3);letter-spacing:0.1em;">INTERACTIVE MAP</p>
+          </div>
+          <div class="map-label">
+            <strong>Kōhī House</strong>
+            <span>Versova, Andheri West</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:0.75rem;margin-top:1rem">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Kohi+House+Versova+Andheri+West+Mumbai" target="_blank" rel="noopener noreferrer" class="btn-outline" style="flex:1;justify-content:center;font-size:0.75rem;padding:0.65rem">Get Directions</a>
+          <a href="tel:+918805348821" class="btn-outline" style="flex:1;justify-content:center;font-size:0.75rem;padding:0.65rem">Call Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="logo">Kō<span>hī</span> House</span>
+        <p>A specialty coffee house where time slows down and every cup tells a story of origin, craft, and intention.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Instagram">ig</a>
+          <a href="#" class="social-link" aria-label="Facebook">fb</a>
+          <a href="#" class="social-link" aria-label="WhatsApp">wa</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Visit</h5>
+        <ul>
+          <li><a href="#menu">Full Menu</a></li>
+          <li><a href="#reservation">Reservations</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#location">Location</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Learn</h5>
+        <ul>
+          <li><a href="#story">Our Story</a></li>
+          <li><a href="#">Farm Partners</a></li>
+          <li><a href="#">Roastery Tours</a></li>
+          <li><a href="#">Coffee School</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Stay in touch</h5>
+        <p style="font-size:0.8rem;color:rgba(245,230,200,0.4);margin-bottom:0.75rem;line-height:1.6">New menus, events, and stories — once a month, never more.</p>
+        <div class="newsletter-wrap">
+          <input type="email" class="newsletter-input" placeholder="your@email.com" id="nl-email">
+          <button class="newsletter-btn" onclick="subscribeNewsletter()">Join</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Kōhī House. All rights reserved.</p>
+      <div style="display:flex;gap:1.5rem">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Press</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── NAV SCROLL BEHAVIOUR ─────────────────────────────
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60)
+})
+
+// ── MOBILE NAV ───────────────────────────────────────
+function toggleMobileNav(){
+  document.getElementById('mobileNav').classList.toggle('open')
+}
+
+// ── SCROLL REVEAL ────────────────────────────────────
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})
+},{threshold:0.12})
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>observer.observe(el))
+
+// ── FLOATING BEANS ───────────────────────────────────
+(function(){
+  const c=document.getElementById('bean-canvas')
+  if(!c)return
+  const ctx=c.getContext('2d')
+  let W=c.width=window.innerWidth,H=c.height=window.innerHeight
+  window.addEventListener('resize',()=>{W=c.width=window.innerWidth;H=c.height=window.innerHeight})
+  const N=18
+  const beans=Array.from({length:N},(_,i)=>({
+    x:Math.random()*W,y:Math.random()*H,
+    r:Math.random()*6+4,
+    vx:(Math.random()-.5)*0.35,
+    vy:(Math.random()-.5)*0.25+0.05,
+    rot:Math.random()*Math.PI*2,
+    rotV:(Math.random()-.5)*0.015,
+    opacity:Math.random()*0.25+0.08
+  }))
+  function drawBean(ctx,x,y,r,rot){
+    ctx.save();ctx.translate(x,y);ctx.rotate(rot)
+    ctx.beginPath()
+    ctx.ellipse(0,0,r,r*1.6,0,0,Math.PI*2)
+    ctx.fill()
+    ctx.beginPath();ctx.moveTo(0,-r*1.5);ctx.lineTo(0,r*1.5)
+    ctx.strokeStyle='rgba(13,9,6,0.5)';ctx.lineWidth=0.8;ctx.stroke()
+    ctx.restore()
+  }
+  function loop(){
+    ctx.clearRect(0,0,W,H)
+    beans.forEach(b=>{
+      b.x+=b.vx;b.y+=b.vy;b.rot+=b.rotV
+      if(b.y>H+20)b.y=-20
+      if(b.x<-20)b.x=W+20
+      if(b.x>W+20)b.x=-20
+      ctx.fillStyle=`rgba(92,61,32,${b.opacity})`
+      drawBean(ctx,b.x,b.y,b.r,b.rot)
+    })
+    requestAnimationFrame(loop)
+  }
+  loop()
+
+  // Mouse parallax
+  window.addEventListener('mousemove',e=>{
+    const mx=(e.clientX/W-.5)*2,my=(e.clientY/H-.5)*2
+    beans.forEach((b,i)=>{const depth=0.5+((i%4)*.15);b.vx+=(mx*depth*.003-b.vx)*.05;b.vy+=(my*depth*.002-b.vy)*.03})
+  })
+})()
+
+// ── HERO 3D CUP (Canvas 2D illusion) ─────────────────
+(function(){
+  const c=document.getElementById('cup-canvas')
+  if(!c)return
+  const ctx=c.getContext('2d')
+  const W=c.width=c.offsetWidth*window.devicePixelRatio||360
+  const H=c.height=c.offsetHeight*window.devicePixelRatio||360
+  c.style.width=c.offsetWidth+'px';c.style.height=c.offsetHeight+'px'
+  let t=0,steam=[]
+  for(let i=0;i<5;i++)steam.push({x:W/2+(i-2)*14,y:H*.3,vy:-(0.5+Math.random()*.5),life:Math.random(),phase:Math.random()*Math.PI*2})
+  function draw(){
+    ctx.clearRect(0,0,W,H)
+    const cx=W/2,cy=H*.62,cw=W*.42,ch=cw*.55
+    // Saucer
+    ctx.beginPath()
+    ctx.ellipse(cx,cy+ch*.7,cw*.58,cw*.1,0,0,Math.PI*2)
+    const sg=ctx.createRadialGradient(cx,cy+ch*.7,0,cx,cy+ch*.7,cw*.58)
+    sg.addColorStop(0,'rgba(92,61,32,0.7)');sg.addColorStop(1,'rgba(26,17,8,0.2)')
+    ctx.fillStyle=sg;ctx.fill()
+    // Cup body
+    ctx.beginPath();ctx.moveTo(cx-cw*.5,cy-ch*.5)
+    ctx.quadraticCurveTo(cx-cw*.52,cy+ch*.4,cx-cw*.35,cy+ch*.6)
+    ctx.lineTo(cx+cw*.35,cy+ch*.6)
+    ctx.quadraticCurveTo(cx+cw*.52,cy+ch*.4,cx+cw*.5,cy-ch*.5)
+    ctx.closePath()
+    const bg=ctx.createLinearGradient(cx-cw*.5,cy,cx+cw*.5,cy)
+    bg.addColorStop(0,'#2A1A0A');bg.addColorStop(0.35,'#5C3D20');bg.addColorStop(0.65,'#4A3018');bg.addColorStop(1,'#1A1108')
+    ctx.fillStyle=bg;ctx.fill()
+    ctx.strokeStyle='rgba(200,137,74,0.3)';ctx.lineWidth=1;ctx.stroke()
+    // Coffee surface
+    ctx.beginPath()
+    ctx.ellipse(cx,cy-ch*.48,cw*.48,cw*.1+Math.sin(t*.6)*2,0,0,Math.PI*2)
+    const cg=ctx.createRadialGradient(cx-8,cy-ch*.52,0,cx,cy-ch*.48,cw*.48)
+    cg.addColorStop(0,'#8B5E3C');cg.addColorStop(0.5,'#5C3D20');cg.addColorStop(1,'#2A1A0A')
+    ctx.fillStyle=cg;ctx.fill()
+    // Latte art swirl
+    ctx.save();ctx.clip()
+    ctx.strokeStyle='rgba(245,230,200,0.25)';ctx.lineWidth=1.5
+    for(let i=0;i<3;i++){
+      ctx.beginPath()
+      const r=cw*(0.12+i*.08)
+      ctx.arc(cx+Math.sin(t*.3+i)*5,cy-ch*.48,r,0,Math.PI*1.5)
+      ctx.stroke()
+    }
+    ctx.restore()
+    // Handle
+    ctx.beginPath()
+    ctx.arc(cx + cw * 0.52, cy, ch * 0.32, -Math.PI * 0.55, Math.PI * 0.55, false)
+    ctx.strokeStyle = 'rgba(200,137,74,0.7)'
+    ctx.lineWidth = 8
+    ctx.lineCap = 'round'
+    ctx.stroke()
+    ctx.beginPath()
+    ctx.arc(cx + cw * 0.52, cy, ch * 0.32, -Math.PI * 0.45, Math.PI * 0.45, false)
+    ctx.strokeStyle = 'rgba(245,230,200,0.15)'
+    ctx.lineWidth = 3
+    ctx.stroke()
+    // Steam
+    steam.forEach(s=>{
+      s.life+=0.012;s.y+=s.vy;s.x+=Math.sin(s.phase+s.life*2)*0.4
+      if(s.life>1){s.life=0;s.y=cy-ch*.6;s.x=W/2+(Math.random()-.5)*cw*.4}
+      const alpha=s.life<0.3?s.life/0.3:1-((s.life-.3)/.7)
+      ctx.beginPath();ctx.moveTo(s.x,s.y);ctx.lineTo(s.x+Math.sin(s.phase+s.life*3)*8,s.y-20)
+      ctx.strokeStyle=`rgba(245,230,200,${alpha*0.35})`;ctx.lineWidth=2.5;ctx.lineCap='round';ctx.stroke()
+    })
+    t+=0.016
+    requestAnimationFrame(draw)
+  }
+  draw()
+})()
+
+// ── DRINK CARDS CANVAS ────────────────────────────────
+function drawDrinkCanvas(id,palette){
+  const c=document.getElementById(id);if(!c)return
+  const ctx=c.getContext('2d'),W=c.width,H=c.height
+  const grd=ctx.createLinearGradient(0,0,W,H)
+  palette.forEach((s,i)=>grd.addColorStop(i/(palette.length-1),s))
+  ctx.fillStyle=grd;ctx.fillRect(0,0,W,H)
+  // Cup silhouette
+  const cx=W/2,cy=H*.6,cw=W*.25,ch=cw*.6
+  ctx.beginPath();ctx.moveTo(cx-cw,cy-ch);ctx.quadraticCurveTo(cx-cw*1.05,cy+ch*.6,cx-cw*.6,cy+ch*.9);ctx.lineTo(cx+cw*.6,cy+ch*.9);ctx.quadraticCurveTo(cx+cw*1.05,cy+ch*.6,cx+cw,cy-ch);ctx.closePath()
+  const cg=ctx.createLinearGradient(cx-cw,cy,cx+cw,cy);cg.addColorStop(0,palette[0]+'88');cg.addColorStop(0.5,'rgba(200,137,74,0.4)');cg.addColorStop(1,palette[palette.length-1]+'44')
+  ctx.fillStyle=cg;ctx.fill()
+  ctx.strokeStyle='rgba(200,137,74,0.35)';ctx.lineWidth=1;ctx.stroke()
+  // Glow
+  const glow=ctx.createRadialGradient(cx,cy,0,cx,cy,cw*1.2)
+  glow.addColorStop(0,'rgba(200,137,74,0.08)');glow.addColorStop(1,'rgba(200,137,74,0)')
+  ctx.fillStyle=glow;ctx.fillRect(0,0,W,H)
+}
+drawDrinkCanvas('drink2',['#050A0A','#0A1A1A','#050A0A'])
+drawDrinkCanvas('drink3',['#1A0A0A','#2A0A1A','#1A0A08'])
+
+// ── MENU DATA ─────────────────────────────────────────
+const menuData={
+  hot:[
+    {name:'Double Espresso',price:'₹180',desc:'Rich, full-bodied. Two shots of our house blend.'},
+    {name:'Araku Gold Cortado',price:'₹280',desc:'Equal parts espresso and steamed milk.'},
+    {name:'Saffron Fog Latte',price:'₹320',desc:'House saffron syrup, double shot, oat microfoam.'},
+    {name:'Masala Cappuccino',price:'₹260',desc:'Cardamom, cinnamon, ginger — our take on tradition.'},
+    {name:'Ethiopian Pour-Over',price:'₹340',desc:'Light roast, jasmine florals, bright acidity.'},
+    {name:'Ginger Honey Flat White',price:'₹290',desc:'Two ristretto shots, steamed milk, raw honey, ginger.'},
+  ],
+  cold:[
+    {name:'Midnight Nitro Cold Brew',price:'₹340',desc:'18-hour cold brew, nitrogen-infused. Velvet smooth.'},
+    {name:'Deconstructed Iced Latte',price:'₹300',desc:'Espresso on ice, oat milk on the side.'},
+    {name:'Mango Cold Brew Float',price:'₹360',desc:'House cold brew, Alphonso mango purée, ice cream.'},
+    {name:'Hibiscus Tonic Espresso',price:'₹320',desc:'Iced tonic water, hibiscus, double shot.'},
+    {name:'Charcoal Lemonade',price:'₹240',desc:'Activated charcoal, lemon, salt, sparkling water.'},
+    {name:'Rose Cold Brew Lemonade',price:'₹280',desc:'Cold brew, rose syrup, fresh lemon, ice.'},
+  ],
+  food:[
+    {name:'Shakshuka Croissant',price:'₹380',desc:'Spiced tomato eggs, baked into a buttery croissant.'},
+    {name:'Avocado Toast on Sourdough',price:'₹340',desc:'Poached egg, microgreens, chilli flakes.'},
+    {name:'Banana Walnut French Toast',price:'₹320',desc:'Thick brioche, caramelised banana, whipped cream.'},
+    {name:'Dal Makhani Bruschetta',price:'₹290',desc:'House-smoked tomatoes, slow-cooked dal on toast.'},
+    {name:'Almond Croissant',price:'₹180',desc:'Twice-baked. Frangipane filling. Perfectly flaky.'},
+    {name:'Dark Chocolate Tart',price:'₹260',desc:'70% Coorg cacao ganache, sea salt, hazelnut base.'},
+  ],
+  specials:[
+    {name:'The Kōhī Signature Board',price:'₹680',desc:'Three espresso drinks, two pastries, one story.'},
+    {name:'Origin Flight — Three Regions',price:'₹540',desc:'Araku, Coorg, and Chikmagalur. Side by side.'},
+    {name:'Monsoon Spice Latte',price:'₹350',desc:'Seasonal. Wet-processed bean, black pepper, cardamom.'},
+    {name:'Chef\'s Brunch Thali',price:'₹520',desc:'Rotating weekly. Eggs your way, sides, two drinks.'},
+  ]
+}
+function switchTab(el,key){
+  document.querySelectorAll('.menu-tab').forEach(t=>t.classList.remove('active'))
+  el.classList.add('active')
+  renderMenu(key)
+}
+function renderMenu(key){
+  const grid=document.getElementById('menu-grid')
+  grid.innerHTML=menuData[key].map(item=>`
+    <div class="menu-item">
+      <div class="menu-item-left">
+        <div class="menu-item-name">${item.name}</div>
+        <div class="menu-item-desc">${item.desc}</div>
+      </div>
+      <div class="menu-item-price">${item.price}</div>
+    </div>
+  `).join('')
+}
+renderMenu('hot')
+
+// ── RESERVATION ───────────────────────────────────────
+function submitReservation(){
+  const btn=document.querySelector('.form-submit')
+  btn.textContent='✓ Reservation confirmed!'
+  btn.style.background='#3D5A4A'
+  btn.style.color='#A8C4AE'
+  setTimeout(()=>{btn.textContent='Confirm Reservation';btn.style.background='';btn.style.color=''},4000)
+}
+
+// ── NEWSLETTER ────────────────────────────────────────
+function subscribeNewsletter(){
+  const i=document.getElementById('nl-email')
+  if(i.value){i.value='✓ You\'re in!';i.disabled=true}
+}
+
+// ── MAGNETIC BUTTONS ──────────────────────────────────
+document.querySelectorAll('.btn-primary,.btn-outline,.nav-cta').forEach(btn=>{
+  btn.addEventListener('mousemove',e=>{
+    const r=btn.getBoundingClientRect()
+    const dx=e.clientX-r.left-r.width/2
+    const dy=e.clientY-r.top-r.height/2
+    btn.style.transform=`translate(${dx*.12}px,${dy*.12}px) scale(1.04)`
+  })
+  btn.addEventListener('mouseleave',()=>{btn.style.transform=''})
+})
+</script>
+</body>
+</html>

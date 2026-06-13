@@ -1,0 +1,2 @@
+# Local Supabase credentials (optional — use if you don't commit real keys)
+assets/js/supabase-config.js

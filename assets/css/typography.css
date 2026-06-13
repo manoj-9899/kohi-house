@@ -1,0 +1,74 @@
+/* typography.css — Font families, type scale, base text styles, and fallback strategy */
+
+:root {
+  /* Font families — webfont first, system fallback if Google Fonts fails */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-script: 'Parisienne', cursive;
+  --font-mono: 'Courier New', monospace;
+
+  /* Type scale */
+  --text-xs: 0.65rem;
+  --text-sm: 0.78rem;
+  --text-base: 0.9rem;
+  --text-md: 1rem;
+  --text-lg: 1.15rem;
+  --text-xl: 1.4rem;
+  --text-2xl: 1.8rem;
+  --text-3xl: 2.5rem;
+  --text-4xl: clamp(2.5rem, 4vw, 3.5rem);
+  --text-hero: clamp(3.5rem, 8vw, 7rem);
+}
+
+body {
+  background: var(--obsidian);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  font-weight: 300;
+  line-height: 1.65;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--caramel);
+  color: var(--text-on-accent);
+}
+
+/*
+ * Font-display: swap fallback strategy
+ * — Google Fonts URL uses display=swap so system fonts render immediately
+ * — Stacks above ensure Georgia / system-ui take over if the CDN is unreachable
+ * — Display and script elements keep hierarchy via var(--font-display/script)
+ */
+.hero-title,
+.section-title,
+.story-text h2,
+.nav-logo,
+.mobile-nav a,
+.story-year,
+.stat-num,
+.journey-step h4,
+.drink-name,
+.drink-price,
+.menu-item-name,
+.menu-item-price,
+.testi-quote,
+.event-day,
+.journal-card-title,
+.journal-modal-title,
+.location-info h3,
+.footer-logo {
+  font-family: var(--font-display);
+}
+
+.menu-tab,
+.form-group input,
+.form-group select,
+.form-group textarea,
+.form-submit,
+.newsletter-input,
+.newsletter-btn {
+  font-family: var(--font-body);
+}

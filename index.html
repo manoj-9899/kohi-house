@@ -1,0 +1,979 @@
+<!-- index.html — Main entry point for the Kōhī House café website -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark light">
+
+<!-- Primary SEO -->
+<title>Kōhī House — Specialty Coffee · Andheri West, Mumbai</title>
+<meta name="description" content="Mumbai's most loved specialty café. Single-origin coffee from Araku, Coorg &amp; Chikmagalur. Craft brewing, seasonal menus &amp; live events in Andheri West.">
+<meta name="keywords" content="specialty coffee Mumbai, café Andheri, coffee house, single origin, latte, cold brew, café reservation, Andheri West, Araku coffee">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.kohihouse.in">
+
+<!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+<meta property="og:type" content="restaurant">
+<meta property="og:site_name" content="Kōhī House">
+<meta property="og:title" content="Kōhī House — Where Time Slows Down">
+<meta property="og:description" content="Mumbai's best specialty café. Single-origin beans, craft brewing, warm atmosphere. Visit us in Andheri West.">
+<meta property="og:url" content="https://www.kohihouse.in">
+<meta property="og:image" content="https://www.kohihouse.in/assets/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_IN">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@kohihouse">
+<meta name="twitter:title" content="Kōhī House — Where Time Slows Down">
+<meta name="twitter:description" content="Mumbai's most loved specialty café. Single-origin, craft-brewed, unhurried.">
+<meta name="twitter:image" content="https://www.kohihouse.in/assets/images/og-image.jpg">
+
+<!-- Geo tags -->
+<meta name="geo.region" content="IN-MH">
+<meta name="geo.placename" content="Mumbai">
+<meta name="geo.position" content="19.1347;72.8259">
+<meta name="ICBM" content="19.1347, 72.8259">
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1447933601403-0c6688de566e?fm=webp&w=1920&q=80" type="image/webp" fetchpriority="high">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CafeOrCoffeeShop",
+      "@id": "https://www.kohihouse.in/#business",
+      "name": "Kōhī House",
+      "alternateName": "Kohi House",
+      "description": "Specialty coffee house in Mumbai serving single-origin coffees from Araku Valley, Coorg, and Chikmagalur.",
+      "url": "https://www.kohihouse.in",
+      "telephone": "+918805348821",
+      "email": "hello@kohihouse.in",
+      "foundingDate": "2019",
+      "currenciesAccepted": "INR",
+      "paymentAccepted": "Cash, Credit Card, UPI",
+      "priceRange": "₹₹",
+      "servesCuisine": ["Coffee", "Café Food", "Brunch", "Pastries"],
+      "hasMenu": "https://www.kohihouse.in/#menu",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "12, Third Cross Street, Versova",
+        "addressLocality": "Andheri West",
+        "addressRegion": "Maharashtra",
+        "postalCode": "400061",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 19.1347,
+        "longitude": 72.8259
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "07:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "07:00",
+          "closes": "23:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Sunday",
+          "opens": "08:00",
+          "closes": "21:00"
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "847",
+        "bestRating": "5"
+      },
+      "sameAs": [
+        "https://www.instagram.com/kohihouse",
+        "https://www.facebook.com/kohihouse",
+        "https://g.page/kohihouse"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.kohihouse.in/#website",
+      "url": "https://www.kohihouse.in",
+      "name": "Kōhī House",
+      "publisher": { "@id": "https://www.kohihouse.in/#business" }
+    }
+  ]
+}
+</script>
+<link
+  href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500&family=Parisienne:wght@400&display=swap"
+  rel="stylesheet">
+<link rel="stylesheet" href="assets/css/variables.css">
+<script>
+(function(){try{var s=localStorage.getItem('kohi-theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();
+</script>
+<link rel="stylesheet" href="assets/css/reset.css">
+<link rel="stylesheet" href="assets/css/typography.css">
+<link rel="stylesheet" href="assets/css/layout.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/animations.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+<link rel="stylesheet" href="assets/css/reservation.css">
+<link rel="stylesheet" href="assets/css/events.css">
+<link rel="stylesheet" href="assets/css/journal.css">
+<link rel="stylesheet" href="assets/css/newsletter.css">
+<link rel="stylesheet" href="assets/css/theme.css">
+<link rel="stylesheet" href="assets/css/scroll.css">
+<link rel="stylesheet" href="assets/css/ux-redesign.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- NAV -->
+<nav id="navbar" role="navigation" aria-label="Main navigation">
+  <a href="#" class="nav-logo" aria-label="Kōhī House home">Kō<span>hī</span></a>
+  <ul class="nav-links">
+    <li><a href="#story">Story</a></li>
+    <li><a href="#drinks">Drinks</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#atmosphere">Space</a></li>
+    <li><a href="#events">Events</a></li>
+  </ul>
+  <div class="nav-end">
+    <div class="nav-actions">
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle light mode">
+        <span class="theme-icon">☽</span>
+      </button>
+      <a href="#reservation" class="nav-cta">Reserve a Table</a>
+    </div>
+    <button type="button" class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
+  <button type="button" class="mobile-close" aria-label="Close menu">✕</button>
+  <a href="#story" data-nav="story">Story</a>
+  <a href="#drinks" data-nav="drinks">Drinks</a>
+  <a href="#menu" data-nav="menu">Menu</a>
+  <a href="#atmosphere" data-nav="atmosphere">Space</a>
+  <a href="#events" data-nav="events">Events</a>
+  <a href="#reservation" class="mobile-nav-cta btn-primary" data-nav="reservation">Reserve a Table</a>
+  <button type="button" class="theme-toggle theme-toggle--mobile" id="theme-toggle-mobile" aria-label="Toggle light mode">
+    <span class="theme-icon">☽</span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div id="main-content" tabindex="-1" class="skip-target"></div>
+  <picture class="hero-bg">
+    <source type="image/webp" srcset="https://images.unsplash.com/photo-1447933601403-0c6688de566e?fm=webp&w=1920&q=80">
+    <img
+      src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1920&q=80"
+      alt=""
+      width="1920"
+      height="1280"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async">
+  </picture>
+  <div class="hero-grain"></div>
+  <div class="hero-vignette"></div>
+  <canvas id="bean-canvas"></canvas>
+  <canvas id="cup-canvas"></canvas>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Est. 2019 · Specialty Coffee House</p>
+    <h1 class="hero-title">
+      <span class="line"><span>Where every</span></span>
+      <span class="line"><span>sip is a</span></span>
+      <span class="line"><span>ritual.</span></span>
+    </h1>
+    <p class="hero-sub hero-value-prop">Specialty coffee, handcrafted pastries, and meaningful moments in a space designed for conversation, work, and relaxation — single-origin beans, in-house roasting, and unhurried hospitality in Versova.</p>
+    <div class="hero-ctas">
+      <a href="#reservation" class="btn-primary">Come visit us</a>
+      <a href="#menu" class="btn-outline">Explore Menu</a>
+    </div>
+    <button type="button" class="share-btn" onclick="shareKohi()" aria-label="Share this page">
+      Share ↗
+    </button>
+  </div>
+  <a href="#drinks" class="hero-scroll" aria-label="Scroll to explore">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </a>
+</section>
+
+<!-- SIGNATURE DRINKS -->
+<section id="drinks">
+  <div class="drinks-section-head">
+    <div class="section-header" style="text-align:left;margin:0;padding:0;max-width:none">
+      <p class="section-eyebrow">Featured drinks</p>
+      <h2 class="section-title">Coffee as <em>craft.</em></h2>
+    </div>
+    <div class="drinks-filters" role="group" aria-label="Filter drinks">
+      <button type="button" class="drinks-filter is-active" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" class="drinks-filter" data-filter="bestseller" aria-pressed="false">Best Sellers</button>
+      <button type="button" class="drinks-filter" data-filter="seasonal" aria-pressed="false">Seasonal</button>
+      <button type="button" class="drinks-filter" data-filter="signature" aria-pressed="false">Signature</button>
+    </div>
+  </div>
+  <div class="drinks-scroll-wrap">
+  <div class="drinks-grid">
+    <div class="drink-card" data-tags="bestseller,signature">
+      <div class="drink-visual">
+        <span class="drink-badge drink-badge--popular">Best Seller</span>
+        <img
+          class="drink-img"
+          src="https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=600&q=80"
+          alt="Araku Gold Cortado — espresso with steamed milk in a ceramic cup"
+          width="600"
+          height="450"
+          loading="lazy" decoding="async">
+      </div>
+      <div class="drink-info">
+        <div class="drink-tag">Espresso-based</div>
+        <h3 class="drink-name">Araku Gold Cortado</h3>
+        <p class="drink-desc">A 1:1 espresso-to-steamed milk ratio. Our Araku Valley blend reveals notes of dark chocolate, red berry, and a whisper of cardamom.</p>
+        <div class="flavor-tags"><span class="flavor-tag">Dark Chocolate</span><span class="flavor-tag">Red Berry</span><span class="flavor-tag">Cardamom</span></div>
+        <div class="drink-actions">
+          <span class="drink-price">₹280</span>
+          <span class="drink-detail">3 min · Dark chocolate &amp; berry notes</span>
+        </div>
+      </div>
+    </div>
+    <div class="drink-card" data-tags="bestseller,seasonal">
+      <div class="drink-visual">
+        <span class="drink-badge drink-badge--seasonal">Seasonal</span>
+        <img
+          class="drink-img"
+          src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=80"
+          alt="Midnight Nitro cold brew cascading into a glass over ice"
+          width="600"
+          height="450"
+          loading="lazy" decoding="async">
+      </div>
+      <div class="drink-info">
+        <div class="drink-tag">Cold Brew</div>
+        <h3 class="drink-name">Midnight Nitro</h3>
+        <p class="drink-desc">18-hour cold extraction. Nitrogen-infused. Pours like a dark velvet cascade. Naturally sweet, zero added sugar.</p>
+        <div class="flavor-tags"><span class="flavor-tag">Velvet</span><span class="flavor-tag">Molasses</span><span class="flavor-tag">Smoky</span></div>
+        <div class="drink-actions">
+          <span class="drink-price">₹340</span>
+          <span class="drink-detail">1 min · Velvet-smooth, naturally sweet</span>
+        </div>
+      </div>
+    </div>
+    <div class="drink-card" data-tags="bestseller,signature">
+      <div class="drink-visual">
+        <span class="drink-badge drink-badge--signature">Signature</span>
+        <img
+          class="drink-img"
+          src="https://images.unsplash.com/photo-1534040385115-33dcb3acba5b?w=600&q=80"
+          alt="Saffron Fog Latte with golden microfoam and latte art"
+          width="600"
+          height="450"
+          loading="lazy" decoding="async">
+      </div>
+      <div class="drink-info">
+        <div class="drink-tag">Signature</div>
+        <h3 class="drink-name">Saffron Fog Latte</h3>
+        <p class="drink-desc">House-crafted saffron syrup, double shot, oat milk microfoam. An Indian soul in a Milanese body. Our most-loved creation.</p>
+        <div class="flavor-tags"><span class="flavor-tag">Saffron</span><span class="flavor-tag">Oat</span><span class="flavor-tag">Floral</span></div>
+        <div class="drink-actions">
+          <span class="drink-price">₹320</span>
+          <span class="drink-detail">4 min · Floral saffron &amp; oat microfoam</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="drinks-dots" role="tablist" aria-label="Drink carousel"></div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="menu-wrapper">
+    <div class="section-header" style="text-align:left;margin-left:0;padding-left:0">
+      <p class="section-eyebrow">The full menu</p>
+      <h2 class="section-title">Something for <em>every mood.</em></h2>
+    </div>
+    <div class="menu-search-wrap">
+      <label for="menu-search" class="visually-hidden">Search drinks and food</label>
+      <input type="search" id="menu-search" placeholder="Search drinks & food..." class="menu-search" autocomplete="off">
+      <span class="menu-search-icon" aria-hidden="true">⌕</span>
+    </div>
+    <div class="menu-tabs" role="tablist" aria-label="Menu categories">
+      <button type="button" class="menu-tab active" data-category="coffee" role="tab" aria-selected="true">Coffee</button>
+      <button type="button" class="menu-tab" data-category="espresso" role="tab" aria-selected="false">Espresso</button>
+      <button type="button" class="menu-tab" data-category="cold" role="tab" aria-selected="false">Cold Drinks</button>
+      <button type="button" class="menu-tab" data-category="tea" role="tab" aria-selected="false">Tea</button>
+      <button type="button" class="menu-tab" data-category="pastries" role="tab" aria-selected="false">Pastries</button>
+      <button type="button" class="menu-tab" data-category="desserts" role="tab" aria-selected="false">Desserts</button>
+    </div>
+    <div class="menu-grid" id="menu-grid"></div>
+    <div class="menu-preview-cta">
+      <a href="#reservation" class="btn-outline">Plan your visit</a>
+    </div>
+  </div>
+</section>
+
+<section id="story">
+  <div class="story-container">
+    <p class="story-eyebrow">About us</p>
+    <div class="story-grid">
+      <div class="story-visual">
+        <div class="story-img-wrap">
+          <img
+            class="story-img"
+            src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80"
+            alt="Barista carefully pouring a freshly brewed cup of coffee"
+            width="800"
+            height="1067"
+            loading="lazy" decoding="async">
+        </div>
+        <div class="story-year"><span>2019</span><span>Founded</span></div>
+      </div>
+      <div class="story-text">
+        <h2>Born from a <em>love letter</em> to slow mornings.</h2>
+        <p>What began as a small corner in Mumbai's Andheri neighbourhood has grown into a destination — a place where the ritual of coffee becomes an act of presence. We believe the best cup you'll ever have is the one you weren't rushing through.</p>
+        <p>Our beans are sourced directly from family farms in Coorg, Araku Valley, and Chikmagalur — relationships built over years, not transactions. Every roast is a conversation between origin and craft.</p>
+        <div class="story-stats">
+          <div class="stat-item"><div class="stat-num">12</div><div class="stat-label">Origin farms</div></div>
+          <div class="stat-item"><div class="stat-num">40+</div><div class="stat-label">Menu items</div></div>
+          <div class="stat-item"><div class="stat-num">3K+</div><div class="stat-label">Daily guests</div></div>
+        </div>
+        <a href="#reservation" class="btn-outline" style="margin-top:1.5rem;display:inline-flex">Plan Your Visit</a>
+      </div>
+    </div>
+    <div class="journey-pin-wrap">
+    <div class="journey-row">
+      <div class="journey-step">
+        <div class="journey-icon" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20C6.5 16.5 4.5 12.5 4.5 8.5c0-3 2.5-5.5 6.5-7.5 4 2 6.5 4.5 6.5 7.5 0 4-2 8-6.5 11.5z"/><path d="M11 20V11"/><path d="M11 11S8.5 9.5 6 10.5"/></svg>
+        </div>
+        <h4>Farm</h4>
+        <p>Hand-picked at 1,200m elevation. Single-estate, traceable.</p>
+      </div>
+      <div class="journey-step">
+        <div class="journey-icon" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1.2 2 2.5 4.2 2.5 6.5 0 2.3-1.2 4-2.5 4s-2.5-1.7-2.5-4C9.5 7.2 10.8 5 12 3z"/><path d="M12 17.5V20"/></svg>
+        </div>
+        <h4>Roast</h4>
+        <p>Small-batch roasted in-house. Medium to dark profiles.</p>
+      </div>
+      <div class="journey-step">
+        <div class="journey-icon" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8l-1.5 3H9.5L8 4z"/><path d="M12 7v9"/><path d="M9.5 19h5"/><path d="M10 16h4"/></svg>
+        </div>
+        <h4>Brew</h4>
+        <p>Precision extraction. Dialed in daily. No shortcuts.</p>
+      </div>
+      <div class="journey-step">
+        <div class="journey-icon" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11h10v5.5a2.5 2.5 0 01-2.5 2.5h-5A2.5 2.5 0 017 16.5V11z"/><path d="M7 11V9a2 2 0 012-2h6a2 2 0 012 2v2"/><path d="M9.5 6.5c0-1 .5-1.5 1-2"/><path d="M12 5c0-1 .5-1.5 1-2"/><path d="M14.5 6.5c0-1 .5-1.5 1-2"/></svg>
+        </div>
+        <h4>Serve</h4>
+        <p>In your hands, still warm. Exactly as intended.</p>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ATMOSPHERE / GALLERY -->
+<section id="atmosphere">
+  <div class="atmosphere-inner">
+    <div class="section-header" style="text-align:left;margin-left:0;padding-left:0;margin-bottom:0">
+      <p class="section-eyebrow">The space</p>
+      <h2 class="section-title">Designed for <em>lingering.</em></h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-cell g1">
+        <img
+          class="gallery-img"
+          src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1200&q=80"
+          alt="Sunlit main hall with warm morning light streaming through café windows"
+          width="1200"
+          height="800"
+          loading="lazy" decoding="async">
+        <div class="gallery-overlay"></div>
+        <div class="gallery-zoom-hint">⤢</div>
+        <div class="gallery-caption">Main Hall</div>
+      </div>
+      <div class="gallery-cell g2">
+        <img
+          class="gallery-img"
+          src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800&q=80"
+          alt="Specialty brew bar with pour-over equipment and fresh beans"
+          width="800"
+          height="600"
+          loading="lazy" decoding="async">
+        <div class="gallery-overlay"></div>
+        <div class="gallery-zoom-hint">⤢</div>
+        <div class="gallery-caption">Brew Bar</div>
+      </div>
+      <div class="gallery-cell g3">
+        <img
+          class="gallery-img"
+          src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=800&q=80"
+          alt="Garden terrace seating surrounded by greenery and natural light"
+          width="800"
+          height="600"
+          loading="lazy" decoding="async">
+        <div class="gallery-overlay"></div>
+        <div class="gallery-zoom-hint">⤢</div>
+        <div class="gallery-caption">Garden</div>
+      </div>
+      <div class="gallery-cell g4">
+        <img
+          class="gallery-img"
+          src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=800&q=80"
+          alt="In-house roastery with coffee beans and roasting equipment"
+          width="800"
+          height="600"
+          loading="lazy" decoding="async">
+        <div class="gallery-overlay"></div>
+        <div class="gallery-zoom-hint">⤢</div>
+        <div class="gallery-caption">Roastery</div>
+      </div>
+      <div class="gallery-cell g5">
+        <img
+          class="gallery-img"
+          src="https://images.unsplash.com/photo-1559305616-3f99cd43e353?w=800&q=80"
+          alt="Evening lounge with ambient lighting and comfortable seating"
+          width="800"
+          height="600"
+          loading="lazy" decoding="async">
+        <div class="gallery-overlay"></div>
+        <div class="gallery-zoom-hint">⤢</div>
+        <div class="gallery-caption">Evening Lounge</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testimonials-inner">
+    <div class="section-header section-header--left">
+      <p class="section-eyebrow">Voices</p>
+      <h2 class="section-title">What our guests <em>say.</em></h2>
+    </div>
+    <div class="testi-rating-summary">
+      <div class="testi-rating-score">
+        <span class="testi-rating-num">4.8</span>
+        <span class="testi-rating-stars" aria-label="4.8 out of 5 stars">★★★★★</span>
+      </div>
+      <span class="testi-rating-meta">Based on 847 Google reviews · 2,000+ happy customers</span>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars" aria-label="5 out of 5 stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testi-quote">"Kōhī House doesn't feel like a café. It feels like someone's very beautiful, very well-caffeinated living room. I've been here eleven Sundays in a row and I'm not stopping."</p>
+        <div class="testi-author">
+          <img
+            class="testi-avatar"
+            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&q=80"
+            alt="Portrait of Priya Raghavan"
+            width="36"
+            height="36"
+            loading="lazy" decoding="async">
+          <div>
+            <div class="testi-name">Priya Raghavan</div>
+            <div class="testi-meta">Local Resident · Regular since 2021</div>
+            <span class="testi-visit-type">Remote Worker</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars" aria-label="5 out of 5 stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testi-quote">"The Saffron Fog Latte is the only coffee that has made me emotional. Ridiculous. Absolutely worth it. The space is exactly the kind of silence you need on a Monday."</p>
+        <div class="testi-author">
+          <img
+            class="testi-avatar"
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80"
+            alt="Portrait of Arjun Mehta"
+            width="36"
+            height="36"
+            loading="lazy" decoding="async">
+          <div>
+            <div class="testi-name">Arjun Mehta</div>
+            <div class="testi-meta">Writer · Featured in Mid-Day</div>
+            <span class="testi-visit-type">Coffee Enthusiast</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars" aria-label="5 out of 5 stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testi-quote">"I've been to specialty cafés in Tokyo, Melbourne, and Copenhagen. Kōhī House belongs on that list. The Araku Gold is extraordinary — proof that Indian coffee has arrived."</p>
+        <div class="testi-author">
+          <img
+            class="testi-avatar"
+            src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80"
+            alt="Portrait of Sneha Krishnan"
+            width="36"
+            height="36"
+            loading="lazy" decoding="async">
+          <div>
+            <div class="testi-name">Sneha Krishnan</div>
+            <div class="testi-meta">Food & Travel Writer</div>
+            <span class="testi-visit-type">Local Resident</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section id="events">
+  <div class="events-inner">
+    <div class="section-header" style="text-align:left;margin-left:0;padding-left:0">
+      <p class="section-eyebrow">Live at Kōhī</p>
+      <h2 class="section-title">Music, mornings &amp; <em>moments.</em></h2>
+    </div>
+    <div class="events-body">
+      <div class="events-sidebar">
+        <div class="event-filters" id="event-filters" role="group" aria-label="Filter events by type"></div>
+        <div class="events-calendar">
+          <div class="cal-header">
+            <button type="button" class="cal-prev" aria-label="Previous month">←</button>
+            <span class="cal-month-year">June 2026</span>
+            <button type="button" class="cal-next" aria-label="Next month">→</button>
+          </div>
+          <div class="cal-weekdays">
+            <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+          </div>
+          <div class="cal-grid" id="cal-grid"></div>
+        </div>
+      </div>
+      <div class="events-list" id="events-list"></div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNAL -->
+<section id="journal">
+  <div class="journal-inner">
+    <div class="section-header">
+      <p class="section-eyebrow">The Journal</p>
+      <h2 class="section-title">Stories worth <em>savoring.</em></h2>
+      <p class="journal-subtitle">Notes on coffee, culture, and the art of slowing down.</p>
+    </div>
+    <div class="journal-grid" id="journal-grid"></div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section id="social-proof" class="social-proof" aria-label="Community and reviews">
+  <div class="social-proof-inner">
+    <div class="section-header" style="text-align:left;margin-left:0;padding-left:0;margin-bottom:0">
+      <p class="section-eyebrow">Community</p>
+      <h2 class="section-title">Loved by <em>Mumbai.</em></h2>
+    </div>
+    <div class="social-proof-grid">
+      <div>
+        <div class="google-review-card">
+          <h3>★ 4.8 on Google</h3>
+          <p style="font-size:var(--text-sm);color:var(--text-secondary);line-height:1.6;margin-bottom:0.75rem">"Best specialty coffee in Versova. The atmosphere, the staff, the saffron latte — everything is intentional."</p>
+          <p style="font-size:var(--text-xs);color:var(--text-subtle)">847 verified reviews · Updated weekly</p>
+        </div>
+        <div class="social-stats" style="margin-top:1rem">
+          <div class="social-stat"><div class="social-stat-num">7+</div><div class="social-stat-label">Years in business</div></div>
+          <div class="social-stat"><div class="social-stat-num">3K+</div><div class="social-stat-label">Weekly visitors</div></div>
+          <div class="social-stat"><div class="social-stat-num">12</div><div class="social-stat-label">Origin farms</div></div>
+          <div class="social-stat"><div class="social-stat-num">2K+</div><div class="social-stat-label">Newsletter readers</div></div>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:var(--text-sm);letter-spacing:0.1em;text-transform:uppercase;color:var(--caramel);margin-bottom:0.5rem">@kohihouse on Instagram</p>
+        <div class="instagram-grid">
+          <a href="https://www.instagram.com/kohihouse" class="instagram-thumb" target="_blank" rel="noopener noreferrer" aria-label="Instagram photo 1">
+            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80" alt="" width="400" height="400" loading="lazy" decoding="async">
+          </a>
+          <a href="https://www.instagram.com/kohihouse" class="instagram-thumb" target="_blank" rel="noopener noreferrer" aria-label="Instagram photo 2">
+            <img src="https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400&q=80" alt="" width="400" height="400" loading="lazy" decoding="async">
+          </a>
+          <a href="https://www.instagram.com/kohihouse" class="instagram-thumb" target="_blank" rel="noopener noreferrer" aria-label="Instagram photo 3">
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400&q=80" alt="" width="400" height="400" loading="lazy" decoding="async">
+          </a>
+          <a href="https://www.instagram.com/kohihouse" class="instagram-thumb" target="_blank" rel="noopener noreferrer" aria-label="Instagram photo 4">
+            <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&q=80" alt="" width="400" height="400" loading="lazy" decoding="async">
+          </a>
+          <a href="https://www.instagram.com/kohihouse" class="instagram-thumb" target="_blank" rel="noopener noreferrer" aria-label="Instagram photo 5">
+            <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=400&q=80" alt="" width="400" height="400" loading="lazy" decoding="async">
+          </a>
+          <a href="https://www.instagram.com/kohihouse" class="instagram-thumb" target="_blank" rel="noopener noreferrer" aria-label="Instagram photo 6">
+            <img src="https://images.unsplash.com/photo-1534040385115-33dcb3acba5b?w=400&q=80" alt="" width="400" height="400" loading="lazy" decoding="async">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVATION -->
+<section id="reservation">
+  <div class="reservation-inner">
+    <div>
+      <p class="section-eyebrow" style="text-align:center">Book your visit</p>
+      <h2 class="section-title">Reserve a <em>moment.</em></h2>
+      <p style="font-size:var(--text-base);color:var(--text-subtitle);margin-top:1rem">We hold tables for 90 minutes. Walk-ins always welcome, subject to availability.</p>
+    </div>
+
+    <div class="wizard-shell" id="reservation-wizard">
+      <div class="wizard-progress" aria-label="Booking progress">
+        <div class="wizard-progress-step">
+          <div class="wizard-dot is-active" data-step-dot="1"><span class="wizard-dot-inner"></span><span class="wizard-dot-check">✓</span></div>
+          <div class="wizard-line"><div class="wizard-line-fill"></div></div>
+        </div>
+        <div class="wizard-progress-step">
+          <div class="wizard-dot" data-step-dot="2"><span class="wizard-dot-inner"></span><span class="wizard-dot-check">✓</span></div>
+          <div class="wizard-line"><div class="wizard-line-fill"></div></div>
+        </div>
+        <div class="wizard-progress-step">
+          <div class="wizard-dot" data-step-dot="3"><span class="wizard-dot-inner"></span><span class="wizard-dot-check">✓</span></div>
+        </div>
+      </div>
+
+      <div class="wizard-viewport">
+        <!-- STEP 1 -->
+        <div class="wizard-step is-active" data-step="1">
+          <h3 class="wizard-step-title">When &amp; Who</h3>
+          <p class="wizard-step-sub">Choose your date, time, and party details.</p>
+
+          <span class="wizard-label">Select a date</span>
+          <div class="date-picker">
+            <div class="date-picker-header">
+              <button type="button" class="date-picker-nav date-picker-prev" aria-label="Previous month">‹</button>
+              <span class="date-picker-month"></span>
+              <button type="button" class="date-picker-nav date-picker-next" aria-label="Next month">›</button>
+            </div>
+            <div class="date-picker-weekdays">
+              <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+            </div>
+            <div class="date-picker-grid"></div>
+            <p class="date-picker-selected">Choose a date for your visit</p>
+          </div>
+
+          <span class="wizard-label">Preferred time</span>
+          <p class="time-slots-note">We're open until 10 PM — choose a slot or enter your own time.</p>
+          <div class="time-slots"></div>
+          <div class="time-custom-wrap" hidden>
+            <label for="custom-time">Your preferred time</label>
+            <input type="time" id="custom-time" class="time-custom-input" min="07:00" max="22:00" step="900" aria-describedby="time-custom-hint">
+            <p id="time-custom-hint" class="time-custom-hint">Available between 7:00 AM and 10:00 PM</p>
+          </div>
+
+          <span class="wizard-label" id="guest-label">Number of guests</span>
+          <div class="guest-counter" role="group" aria-labelledby="guest-label">
+            <button type="button" class="guest-counter-btn guest-counter-minus" aria-label="Decrease guests">−</button>
+            <span class="guest-counter-value" aria-live="polite" aria-atomic="true">2</span>
+            <button type="button" class="guest-counter-btn guest-counter-plus" aria-label="Increase guests">+</button>
+          </div>
+
+          <span class="wizard-label">Occasion</span>
+          <div class="occasion-cards"></div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="wizard-step" data-step="2">
+          <h3 class="wizard-step-title">Your Details</h3>
+          <p class="wizard-step-sub">Tell us how to reach you and any preferences.</p>
+
+          <div class="wizard-field-row">
+            <div class="wizard-field" data-field="fname">
+              <label for="fname">First name</label>
+              <input type="text" id="fname" placeholder="Priya" autocomplete="given-name">
+              <span class="wizard-field-icon">✓</span>
+              <span class="wizard-field-error"></span>
+            </div>
+            <div class="wizard-field" data-field="lname">
+              <label for="lname">Last name</label>
+              <input type="text" id="lname" placeholder="Sharma" autocomplete="family-name">
+              <span class="wizard-field-icon">✓</span>
+              <span class="wizard-field-error"></span>
+            </div>
+          </div>
+          <div class="wizard-field-row">
+            <div class="wizard-field" data-field="email">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="priya@email.com" autocomplete="email">
+              <span class="wizard-field-icon">✓</span>
+              <span class="wizard-field-error"></span>
+            </div>
+            <div class="wizard-field" data-field="phone">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" placeholder="9876543210" autocomplete="tel">
+              <span class="wizard-field-icon">✓</span>
+              <span class="wizard-field-error"></span>
+            </div>
+          </div>
+          <div class="wizard-field">
+            <label for="notes">Special requests</label>
+            <textarea id="notes" rows="3" placeholder="Seating preference, celebration details, anything else..."></textarea>
+          </div>
+
+          <span class="wizard-label">Dietary requirements</span>
+          <div class="dietary-grid">
+            <label class="dietary-option" data-value="Vegan"><span class="dietary-check">✓</span>Vegan</label>
+            <label class="dietary-option" data-value="Gluten-free"><span class="dietary-check">✓</span>Gluten-free</label>
+            <label class="dietary-option" data-value="Nut allergy"><span class="dietary-check">✓</span>Nut allergy</label>
+            <label class="dietary-option" data-value="Dairy-free"><span class="dietary-check">✓</span>Dairy-free</label>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="wizard-step" data-step="3">
+          <h3 class="wizard-step-title">Confirm</h3>
+          <p class="wizard-step-sub">Review your details before confirming.</p>
+
+          <div class="booking-summary">
+            <div class="summary-row"><span class="summary-label">Date</span><span class="summary-value summary-date">—</span></div>
+            <div class="summary-row"><span class="summary-label">Time</span><span class="summary-value summary-time">—</span></div>
+            <div class="summary-row"><span class="summary-label">Guests</span><span class="summary-value summary-guests">—</span></div>
+            <div class="summary-row"><span class="summary-label">Occasion</span><span class="summary-value summary-occasion">—</span></div>
+            <div class="summary-row"><span class="summary-label">Name</span><span class="summary-value summary-name">—</span></div>
+            <div class="summary-row"><span class="summary-label">Contact</span><span class="summary-value summary-contact">—</span></div>
+            <div class="summary-row"><span class="summary-label">Dietary</span><span class="summary-value summary-dietary">—</span></div>
+            <div class="summary-row"><span class="summary-label">Notes</span><span class="summary-value summary-notes">—</span></div>
+          </div>
+
+          <p class="form-note" style="margin-top:0">Free cancellation up to 2 hours before your visit. No card required.</p>
+        </div>
+      </div>
+
+      <p class="wizard-step-error" role="alert"></p>
+
+      <div class="wizard-nav">
+        <button type="button" class="wizard-btn-back" hidden>Back</button>
+        <button type="button" class="wizard-btn-next">Continue</button>
+      </div>
+    </div>
+
+    <div class="reservation-success" id="reservation-success" hidden>
+      <div class="success-check-wrap">
+        <svg class="success-check" viewBox="0 0 52 52" aria-hidden="true">
+          <circle class="success-check-circle" cx="26" cy="26" r="25"/>
+          <path class="success-check-path" d="M14 27 l8 8 16-16"/>
+        </svg>
+      </div>
+      <p class="success-title">You're all set, <span class="success-name">Guest</span>.</p>
+      <p class="success-ref">Booking reference: <strong class="success-ref-code">KOH123</strong></p>
+      <p class="success-datetime">We'll see you soon.</p>
+      <div class="success-actions">
+        <a href="#" class="success-btn-calendar">Add to calendar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location">
+  <div class="location-inner">
+    <div class="section-header" style="text-align:left;margin-left:0;padding-left:0">
+      <p class="section-eyebrow">Find us</p>
+      <h2 class="section-title">Come <em>exactly</em> as you are.</h2>
+    </div>
+    <div class="location-grid">
+      <div>
+        <div class="live-badge"><span class="live-dot"></span>Open now · Closes at 10 PM</div>
+        <div class="location-detail">
+          <div class="location-icon">📍</div>
+          <div class="location-detail-text">
+            <strong>Address</strong>
+            <button type="button" class="location-copy-address" id="copy-address" aria-label="Copy address to clipboard">
+              12, Third Cross Street, Versova,<br>Andheri West, Mumbai – 400 061
+            </button>
+          </div>
+        </div>
+        <div class="location-detail">
+          <div class="location-icon">🕐</div>
+          <div class="location-detail-text">
+            <strong>Hours</strong>
+            <div class="hours-table">
+              <div class="hours-row">
+                <span class="hours-day">Mon – Fri</span>
+                <span class="hours-dots"></span>
+                <span class="hours-time">7 AM – 10 PM</span>
+              </div>
+              <div class="hours-row">
+                <span class="hours-day">Saturday</span>
+                <span class="hours-dots"></span>
+                <span class="hours-time">7 AM – 11 PM</span>
+              </div>
+              <div class="hours-row">
+                <span class="hours-day">Sunday</span>
+                <span class="hours-dots"></span>
+                <span class="hours-time">8 AM – 9 PM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="location-detail" style="border-bottom:none">
+          <div class="location-icon">📞</div>
+          <div class="location-detail-text">
+            <strong>Contact</strong>
+            <span>+91 88053 48821<br>hello@kohihouse.in</span>
+          </div>
+        </div>
+      </div>
+      <div class="location-map-wrap">
+        <div class="map-frame">
+          <div id="leaflet-map" style="width:100%;height:100%;min-height:400px;"></div>
+          <button type="button" class="map-interact-overlay" aria-label="Click to interact with map">
+            <span>Click to interact with map</span>
+          </button>
+        </div>
+        <a
+          href="https://maps.google.com/?q=Kohi+House+Versova+Mumbai"
+          class="map-open-external btn-outline"
+          target="_blank"
+          rel="noopener noreferrer">
+          Open in Google Maps
+        </a>
+        <div style="display:flex;gap:0.75rem;margin-top:1rem">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Kohi+House+Versova+Andheri+West+Mumbai" target="_blank" rel="noopener noreferrer" class="btn-outline" style="flex:1;justify-content:center;font-size:0.75rem;padding:0.65rem">Get Directions</a>
+          <a href="tel:+918805348821" class="btn-outline" style="flex:1;justify-content:center;font-size:0.75rem;padding:0.65rem">Call Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section id="newsletter" aria-label="Newsletter signup">
+  <div class="newsletter-inner">
+    <p class="section-eyebrow">Stay connected</p>
+    <h2 class="section-title">Stay in the <em>loop.</em></h2>
+    <p class="newsletter-lead">New seasonal drinks, upcoming events, and occasional stories from our roastery. Once a month, never more.</p>
+    <div class="newsletter-form-wrap">
+      <form class="newsletter-form" id="newsletter-form" novalidate>
+        <div class="newsletter-fields">
+          <label for="newsletter-name" class="visually-hidden">First name</label>
+          <input type="text" id="newsletter-name" name="name" placeholder="First name" autocomplete="given-name">
+          <label for="newsletter-email" class="visually-hidden">Email address</label>
+          <input type="email" id="newsletter-email" name="email" placeholder="Email address" autocomplete="email" required>
+        </div>
+        <button type="submit" class="newsletter-submit btn-primary">Keep me posted</button>
+      </form>
+      <p class="newsletter-reassurance">No spam ever. Unsubscribe anytime with one click.</p>
+      <div class="newsletter-success" hidden>
+        <h3 class="newsletter-success-title"></h3>
+        <p>We will be in touch soon. In the meantime, come visit us.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand-zone">
+      <span class="footer-logo">Kō<span>hī</span> House</span>
+      <p class="footer-tagline">Where time slows down</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/kohihouse" class="social-link" aria-label="Follow us on Instagram" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/kohihouse" class="social-link" aria-label="Follow us on Facebook" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="https://wa.me/918805348821" class="social-link" aria-label="Chat with us on WhatsApp" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-links" role="navigation" aria-label="Footer navigation">
+      <a href="#story">Story</a>
+      <span class="footer-links-sep" aria-hidden="true"></span>
+      <a href="#menu">Menu</a>
+      <span class="footer-links-sep" aria-hidden="true"></span>
+      <a href="#drinks">Drinks</a>
+      <span class="footer-links-sep" aria-hidden="true"></span>
+      <a href="#atmosphere">Space</a>
+      <span class="footer-links-sep" aria-hidden="true"></span>
+      <a href="#events">Events</a>
+      <span class="footer-links-sep" aria-hidden="true"></span>
+      <a href="#journal">Journal</a>
+      <span class="footer-links-sep" aria-hidden="true"></span>
+      <a href="#newsletter">Newsletter</a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Kōhī House. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- RESERVE FAB -->
+<a href="#reservation" id="reserve-fab" class="reserve-fab" aria-label="Book a visit">Visit</a>
+
+<div id="scroll-progress" aria-hidden="true">
+  <div id="scroll-bar"></div>
+</div>
+
+<div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <div class="lightbox-backdrop" onclick="closeLightbox()"></div>
+  <div class="lightbox-card">
+    <button type="button" class="lightbox-close" onclick="closeLightbox()" aria-label="Close image">✕</button>
+    <div class="lightbox-img-wrap">
+      <img id="lightbox-img" src="" alt="" style="width:100%;height:100%;object-fit:contain;display:block;">
+    </div>
+    <div class="lightbox-caption">
+      <span id="lightbox-caption-text"></span>
+      <span id="lightbox-counter" class="lightbox-counter"></span>
+    </div>
+  </div>
+  <button type="button" class="lightbox-prev" onclick="lightboxNav(-1)" aria-label="Previous image">←</button>
+  <button type="button" class="lightbox-next" onclick="lightboxNav(1)" aria-label="Next image">→</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Flip.min.js"></script>
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="assets/js/supabase-config.js"></script>
+<script src="assets/js/supabase-client.js"></script>
+<script src="assets/js/toast.js"></script>
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/hero.js"></script>
+<script src="assets/js/beans.js"></script>
+<script src="assets/js/cup.js"></script>
+<script src="assets/js/menu.js"></script>
+<script src="assets/js/journal.js"></script>
+<script src="assets/js/newsletter.js"></script>
+<script src="assets/js/reveal.js"></script>
+<script src="assets/js/scroll.js"></script>
+<script src="assets/js/reservation.js"></script>
+<script src="assets/js/interactions.js"></script>
+<script src="assets/js/ux.js"></script>
+<script src="assets/js/events.js"></script>
+<script src="assets/js/mobile.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

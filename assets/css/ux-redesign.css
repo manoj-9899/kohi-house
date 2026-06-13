@@ -1,0 +1,452 @@
+/* ux-redesign.css — Conversion-focused UX improvements (preserves luxury brand) */
+
+:root {
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 2.5rem;
+  --space-6: 3.5rem;
+  --section-y: 5.5rem;
+  --focus-ring: 0 0 0 3px rgba(200, 137, 74, 0.55);
+  --text-body-min: 1rem;
+  --line-body: 1.6;
+}
+
+/* ─── Accessibility: focus & contrast ───────────────── */
+:focus-visible {
+  outline: 2px solid var(--caramel);
+  outline-offset: 3px;
+}
+.btn-primary:focus-visible,
+.btn-outline:focus-visible,
+.nav-cta:focus-visible,
+.menu-tab:focus-visible {
+  box-shadow: var(--focus-ring);
+}
+
+/* Improved readable body contrast */
+.hero-sub,
+.section-header p,
+.drink-desc,
+.menu-item-desc,
+.testi-meta,
+.location-detail-text span {
+  color: var(--text-secondary);
+  line-height: var(--line-body);
+}
+
+/* ─── Section spacing reduction (~25%) ───────────────── */
+#drinks {
+  padding-top: calc(var(--section-y) + 2.5rem);
+  padding-bottom: var(--section-y);
+}
+#story,
+#menu,
+#atmosphere,
+#testimonials,
+#journal,
+#events,
+#reservation,
+#location,
+#newsletter,
+#social-proof {
+  padding-top: var(--section-y);
+  padding-bottom: var(--section-y);
+}
+#trust-bar,
+.reservation-teaser {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.section-header {
+  margin-bottom: 3.5rem;
+}
+
+/* ─── Hero value prop & CTAs ─────────────────────────── */
+.hero-value-prop {
+  max-width: 540px;
+  margin: 0 auto 1.75rem;
+  font-size: var(--text-body-min);
+  line-height: var(--line-body);
+  color: var(--text-secondary);
+}
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+}
+.hero-ctas .btn-primary {
+  min-height: 48px;
+  min-width: 160px;
+  font-weight: 500;
+}
+.hero-ctas .btn-outline {
+  min-height: 48px;
+}
+
+/* ─── Trust bar ──────────────────────────────────────── */
+.trust-bar {
+  background: var(--dark-roast);
+  border-top: 1px solid var(--caramel-10);
+  border-bottom: 1px solid var(--caramel-10);
+  padding: 1.25rem 0;
+}
+.trust-bar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+.trust-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.35rem;
+  padding: 0.75rem 0.5rem;
+  border-radius: 4px;
+  background: var(--caramel-04);
+  border: 1px solid var(--caramel-10);
+}
+.trust-card-icon {
+  font-size: 1.1rem;
+  color: var(--caramel);
+  line-height: 1;
+}
+.trust-card-value {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--cream);
+  line-height: 1.2;
+}
+.trust-card-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+/* ─── Featured drinks conversion ─────────────────────── */
+.drinks-section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  padding: 0 3rem;
+}
+.drinks-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.drinks-filter {
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--caramel-20);
+  border-radius: 2rem;
+  background: transparent;
+  color: var(--text-nav);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  min-height: 36px;
+  transition: all 0.2s;
+}
+.drinks-filter.is-active,
+.drinks-filter:hover {
+  background: var(--caramel-10);
+  border-color: var(--caramel);
+  color: var(--caramel);
+}
+.drink-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 2;
+  padding: 0.3rem 0.6rem;
+  border-radius: 2px;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.drink-badge--popular {
+  background: var(--caramel);
+  color: var(--text-on-accent);
+}
+.drink-badge--seasonal {
+  background: var(--color-seasonal);
+  color: var(--obsidian);
+}
+.drink-badge--signature {
+  background: var(--forest);
+  color: var(--cream);
+}
+.drink-visual {
+  position: relative;
+}
+.mobile-nav-cta {
+  margin-top: 0.5rem;
+  min-height: 48px;
+  min-width: 200px;
+  justify-content: center;
+}
+.drink-actions {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+.drink-actions .drink-price {
+  margin-right: 0;
+}
+.drink-actions .drink-detail {
+  text-align: right;
+  max-width: 55%;
+}
+
+/* ─── Menu preview CTA ───────────────────────────────── */
+.menu-preview-cta {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 0 3rem;
+}
+
+/* ─── Testimonials credibility ───────────────────────── */
+.testi-rating-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.25rem 2rem;
+  margin-bottom: 2.5rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--card-bg);
+  border: 1px solid var(--caramel-12);
+  border-radius: 4px;
+}
+.testi-rating-score {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.testi-rating-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--caramel);
+  line-height: 1;
+}
+.testi-rating-stars {
+  color: var(--caramel);
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+.testi-rating-meta {
+  font-size: var(--text-sm);
+  color: var(--text-subtle);
+}
+.testi-visit-type {
+  display: inline-block;
+  margin-top: 0.2rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--caramel);
+  background: var(--caramel-08);
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+}
+
+/* ─── Social proof ───────────────────────────────────── */
+.social-proof {
+  padding: var(--section-y) 0;
+  background: var(--obsidian);
+  border-top: 1px solid var(--caramel-08);
+}
+.social-proof-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+.social-proof-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2rem;
+  margin-top: 2.5rem;
+  align-items: start;
+}
+.social-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.social-stat {
+  padding: 1.25rem;
+  background: var(--card-bg);
+  border: 1px solid var(--caramel-10);
+  border-radius: 4px;
+  text-align: center;
+}
+.social-stat-num {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--caramel);
+  line-height: 1;
+}
+.social-stat-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+  margin-top: 0.35rem;
+}
+.google-review-card {
+  padding: 1.5rem;
+  background: var(--card-bg-strong);
+  border: 1px solid var(--caramel-15);
+  border-radius: 4px;
+}
+.google-review-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+.instagram-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.instagram-thumb {
+  aspect-ratio: 1;
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid var(--caramel-10);
+}
+.instagram-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s;
+}
+.instagram-thumb:hover img {
+  transform: scale(1.05);
+}
+
+/* ─── Sticky reservation FAB ───────────────────────── */
+.reserve-fab {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 180;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 48px;
+  min-width: 48px;
+  padding: 0 1.25rem;
+  background: var(--caramel);
+  color: var(--text-on-accent);
+  border: none;
+  border-radius: 2rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-decoration: none;
+  box-shadow: 0 8px 28px var(--shadow-caramel);
+  cursor: pointer;
+  transition: transform 0.2s var(--snap), box-shadow 0.2s, opacity 0.3s;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+}
+.reserve-fab.is-visible {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+.reserve-fab:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px var(--shadow-caramel-strong);
+}
+
+/* ─── Menu readability ───────────────────────────────── */
+.menu-item-top {
+  align-items: baseline;
+}
+.menu-item-price {
+  min-width: 4.5rem;
+  text-align: right;
+  flex-shrink: 0;
+}
+.menu-tabs {
+  gap: 0.25rem;
+}
+.menu-tab {
+  min-height: 44px;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .trust-bar-inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .trust-bar-inner .trust-card:last-child {
+    grid-column: 1 / -1;
+  }
+  .social-proof-grid {
+    grid-template-columns: 1fr;
+  }
+  .drinks-section-head {
+    padding: 0 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-y: 4rem;
+  }
+  .trust-bar-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+    padding: 0 1.25rem;
+  }
+  .trust-card-value {
+    font-size: 0.95rem;
+  }
+  .reserve-fab {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0 1rem;
+  }
+  .hero-ctas {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .hero-ctas .btn-primary,
+  .hero-ctas .btn-outline {
+    width: 100%;
+  }
+}

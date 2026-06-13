@@ -1,0 +1,12 @@
+/* animations.css — Keyframe definitions for ambient UI motion */
+
+/* ─── KEYFRAMES ────────────────────────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:0.85}}
+@keyframes slideUp{from{opacity:0;transform:translateY(110%)}to{opacity:1;transform:translateY(0)}}
+@keyframes scrollPulse{0%,100%{opacity:0.6;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.15)}}
+@keyframes pulse{0%,100%{opacity:0.6;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
+@keyframes pinBounce{0%,100%{transform:rotate(-45deg) translateY(0)}50%{transform:rotate(-45deg) translateY(-6px)}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}33%{transform:translateY(-12px) rotate(5deg)}66%{transform:translateY(8px) rotate(-3deg)}}
+@keyframes rotateCup{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes steamRise{0%{opacity:0;transform:translateY(0) scaleX(1)}20%{opacity:0.6}80%{opacity:0.2;transform:translateY(-60px) scaleX(1.8)}100%{opacity:0;transform:translateY(-80px) scaleX(2)}}

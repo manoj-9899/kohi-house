@@ -1,0 +1,157 @@
+/* theme.css — Theme transitions, toggle control, and light-mode overrides */
+
+html {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body,
+#navbar,
+.mobile-nav,
+section,
+footer,
+.drink-card,
+.menu-item,
+.testi-card,
+.event-card,
+.journal-card,
+.newsletter-form input,
+.reservation-form,
+.wizard-shell,
+.toast,
+.event-modal,
+.journal-modal,
+.form-group input,
+.form-group select,
+.form-group textarea,
+.menu-search,
+.newsletter-input,
+.theme-toggle {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* ─── Theme toggle ─────────────────────────────────── */
+.theme-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--cream-25);
+  background: transparent;
+  color: var(--cream);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s var(--silk);
+  padding: 0;
+  line-height: 1;
+}
+.theme-toggle:hover {
+  border-color: var(--caramel);
+  transform: rotate(20deg);
+}
+.theme-icon {
+  display: block;
+  transition: transform 0.35s var(--snap);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ─── Hero — light mode ────────────────────────────── */
+.hero-bg::after {
+  opacity: var(--hero-overlay-strength);
+  transition: opacity 0.4s ease;
+}
+.hero-vignette {
+  opacity: var(--hero-vignette-strength);
+  transition: opacity 0.4s ease;
+}
+
+[data-theme="light"] .hero-bg::after {
+  background: radial-gradient(
+    ellipse 80% 80% at 60% 40%,
+    var(--hero-gradient-mid) 0%,
+    rgba(250, 246, 238, 0.15) 60%
+  );
+}
+
+[data-theme="light"] .btn-outline {
+  border-color: var(--caramel-30);
+  color: var(--cream);
+}
+[data-theme="light"] .btn-outline:hover {
+  border-color: var(--caramel);
+  background: var(--caramel-06);
+}
+
+[data-theme="light"] .nav-cta,
+[data-theme="light"] .btn-primary,
+[data-theme="light"] .form-submit,
+[data-theme="light"] .newsletter-btn,
+[data-theme="light"] .wizard-btn-next {
+  color: var(--text-on-accent);
+}
+
+[data-theme="light"] .form-submit:hover,
+[data-theme="light"] .newsletter-btn:hover,
+[data-theme="light"] .wizard-btn-next:hover {
+  background: var(--caramel-hover);
+}
+
+[data-theme="light"] .hero-title,
+[data-theme="light"] .hero-title .line span {
+  color: var(--cream);
+}
+[data-theme="light"] .hero-sub {
+  color: var(--text-secondary);
+}
+[data-theme="light"] #navbar:not(.scrolled) {
+  background: transparent;
+}
+[data-theme="light"] .toast {
+  background: var(--surface-solid);
+  box-shadow: 0 12px 40px var(--shadow-card);
+}
+[data-theme="light"] .event-modal,
+[data-theme="light"] .journal-modal-content {
+  color: var(--text-primary);
+}
+[data-theme="light"] .form-group input,
+[data-theme="light"] .form-group select,
+[data-theme="light"] .form-group textarea,
+[data-theme="light"] .menu-search,
+[data-theme="light"] .newsletter-input,
+[data-theme="light"] .wizard-field input,
+[data-theme="light"] .wizard-field textarea {
+  color: var(--text-primary);
+  background: var(--input-bg);
+  border-color: var(--input-border);
+}
+[data-theme="light"] .leaflet-container {
+  filter: saturate(0.95) contrast(1.02);
+}
+
+@media (max-width: 900px) {
+  .nav-actions .theme-toggle {
+    display: none;
+  }
+  .theme-toggle--mobile {
+    display: flex;
+    margin-top: 1.5rem;
+  }
+}
+
+@media (min-width: 901px) {
+  .theme-toggle--mobile {
+    display: none;
+  }
+}

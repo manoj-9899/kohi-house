@@ -1,0 +1,175 @@
+/* responsive.css — Breakpoint overrides and reduced-motion preferences */
+
+/* ─── TABLET (769px–900px) ─────────────────────────── */
+@media(max-width:900px){
+  #navbar{padding:1rem 1.5rem;background:var(--nav-bg-mobile);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+  body.nav-open #navbar{z-index:210}
+  body.nav-open{overflow:hidden;touch-action:none}
+  #navbar{grid-template-columns:1fr auto}
+  .nav-links{display:none}
+  .nav-end{grid-column:2}
+  .nav-actions{display:flex;align-items:center;gap:0.5rem;margin-right:0}
+  .nav-actions .theme-toggle{display:none}
+  .nav-cta{padding:0.55rem 1.1rem;font-size:0.65rem;letter-spacing:0.1em}
+  .hamburger{display:flex}
+  .mobile-close{display:none}
+  .hero-content{padding:0 1.5rem}
+  .story-grid{grid-template-columns:1fr;gap:3rem}
+  .story-visual{order:-1}
+  .menu-grid{grid-template-columns:1fr}
+  .menu-item:nth-child(even){border-right:1px solid var(--caramel-08)}
+  .testi-grid{grid-template-columns:1fr}
+  .location-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .story-container,.location-inner,.events-inner,.journal-inner,.newsletter-inner,.atmosphere-inner,.menu-wrapper,.testimonials-inner{padding:0 1.5rem}
+  .footer-inner{padding:0}
+  footer{padding:3rem 1.5rem 2rem}
+  .journey-row{flex-wrap:wrap}
+  .journey-step{flex:1 1 calc(50% - 1rem);min-width:0;border-right:none;border-bottom:1px solid var(--caramel-15)}
+}
+
+@media(min-width:901px){
+  .mobile-nav{display:none!important}
+}
+
+@media(max-width:1100px) and (min-width:901px){
+  #navbar{padding-left:2rem;padding-right:2rem;gap:1rem}
+  .nav-links{gap:1.75rem}
+  .nav-links a{font-size:0.72rem;letter-spacing:0.12em}
+}
+
+@media(max-width:900px) and (min-width:769px){
+  .drinks-grid{grid-template-columns:1fr;max-width:440px;margin:0 auto;padding:0 1.5rem}
+}
+
+/* ─── MOBILE (≤768px) ──────────────────────────────── */
+@media(max-width:768px){
+  /* Global — avoid overflow-x on sections (creates nested scroll containers that trap touch/wheel) */
+  #hero{min-height:100dvh;height:auto;padding:6rem 0 5rem}
+  #cup-canvas{display:none!important}
+
+  /* Navigation */
+  #navbar.scrolled,#navbar{background:var(--nav-bg-mobile-scrolled);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+
+  /* Hero */
+  .hero-title{font-size:3rem}
+  .hero-sub{font-size:var(--text-base);margin:1rem auto 0}
+  .hero-ctas{flex-direction:column;align-items:stretch;width:100%;max-width:340px;margin:2rem auto 0;gap:0.75rem}
+  .hero-ctas .btn-primary,.hero-ctas .btn-outline{width:100%;justify-content:center;min-height:44px;padding-top:0.85rem;padding-bottom:0.85rem}
+  .hero-scroll{display:flex;bottom:1.5rem}
+
+  /* Story */
+  .story-img-wrap{position:relative}
+  .story-year{bottom:0.75rem;right:0.75rem;width:68px;height:68px}
+  .story-year span:first-child{font-size:var(--text-xl)}
+  .story-year span:last-child{font-size:0.55rem}
+  .story-text h2{font-size:var(--text-3xl)}
+  .story-text p{font-size:var(--text-base)}
+  .story-stats{display:flex;justify-content:space-between;gap:0.5rem;margin-top:1.75rem;padding-top:1.75rem;flex-wrap:nowrap}
+  .stat-item{flex:1;min-width:0}
+  .stat-num{font-size:var(--text-xl)}
+  .stat-label{font-size:0.55rem;letter-spacing:0.1em}
+
+  /* Drinks carousel */
+  #drinks{padding-bottom:5rem}
+  .drinks-scroll-wrap{overflow-x:auto;overflow-y:visible;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:0.25rem;overscroll-behavior-x:contain}
+  .drinks-scroll-wrap::-webkit-scrollbar{display:none}
+  .drinks-grid{display:flex;flex-wrap:nowrap;gap:1rem;max-width:none;width:max-content;margin:0;padding:0 1.5rem}
+  .drink-card{flex:0 0 calc((100vw - 3rem) / 1.15);scroll-snap-align:start;scroll-snap-stop:always;max-width:none}
+  .drink-info{padding:1.15rem}
+  .drink-name{font-size:var(--text-xl)}
+  .drink-desc{font-size:var(--text-xs);margin-bottom:0.75rem}
+  .drinks-dots{display:flex;justify-content:center;align-items:center;gap:0.25rem;margin-top:1.25rem;padding:0 1.5rem}
+  .drinks-dot{width:44px;height:44px;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;flex-shrink:0}
+  .drinks-dot::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--caramel-30);transition:transform 0.25s var(--silk),background 0.25s}
+  .drinks-dot.is-active::before{background:var(--caramel);transform:scale(1.35)}
+
+  /* Menu */
+  .menu-tabs{gap:0;scrollbar-width:none;margin-left:-1.5rem;margin-right:-1.5rem;padding:0 1.5rem}
+  .menu-tabs::-webkit-scrollbar{display:none}
+  .menu-tab{min-height:44px;display:inline-flex;align-items:center;padding:0.75rem 1.25rem;flex-shrink:0}
+  .menu-search{min-height:44px;padding-top:0.75rem;padding-bottom:0.75rem;font-size:var(--text-base)}
+  .menu-item{padding:1rem 1.15rem;gap:0.5rem}
+  .menu-item-name,.menu-item-price{font-size:var(--text-base)}
+  .menu-item-desc{font-size:var(--text-xs);line-height:1.5}
+
+  /* Gallery */
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,minmax(0,1fr));gap:0.65rem;margin-top:2rem}
+  .gallery-cell:first-child{grid-row:auto;grid-column:auto}
+  .gallery-cell{aspect-ratio:1;min-height:0;position:relative}
+  .gallery-cell .gallery-img{min-height:0;height:100%;position:absolute;inset:0;object-fit:cover}
+  .gallery-cell:hover .gallery-img{transform:none}
+  .gallery-cell:hover .gallery-overlay,.gallery-cell:hover .gallery-caption{opacity:0}
+  .gallery-cell.is-tapped .gallery-overlay{opacity:1}
+  .gallery-cell.is-tapped .gallery-caption{opacity:1}
+
+  /* Events */
+  .event-row{grid-template-columns:56px 1fr;grid-template-rows:auto auto;gap:0.5rem 1rem;padding:1.15rem 0;align-items:start}
+
+  /* Events — mobile cards */
+  .event-card{grid-template-columns:52px 1fr;grid-template-rows:auto auto}
+  .event-date{text-align:left}
+  .event-day{font-size:var(--text-2xl)}
+  .event-month{font-size:0.6rem}
+  .event-info h4{font-size:var(--text-lg);margin-bottom:0.2rem}
+  .event-info p{font-size:var(--text-sm)}
+  .event-tag{grid-column:1/-1;justify-self:start;font-size:0.6rem;padding:0.3rem 0.75rem}
+
+  /* Reservation */
+  #reservation{padding:4rem 0}
+  .reservation-inner{padding:0 1.25rem}
+  .wizard-viewport{min-height:calc(100dvh - 240px)}
+  .wizard-step.is-active{min-height:calc(100dvh - 300px);display:flex;flex-direction:column}
+  .wizard-step.is-active .wizard-nav{margin-top:auto}
+
+  /* Footer */
+  footer{padding:0 1.5rem 2rem}
+  .footer-brand-zone{padding:3.25rem 0 2rem}
+  .footer-watermark{font-size:28vw;top:14%}
+  .footer-links{padding:2rem 0 2.25rem;gap:0.1rem;position:static;display:flex}
+  .footer-links a{padding:0.5rem 0.65rem;font-size:0.58rem}
+  .footer-links-sep{display:none}
+  .footer-bottom{flex-direction:column;gap:0.75rem;text-align:center;align-items:center}
+  .footer-legal{justify-content:center}
+  .social-link{min-width:44px;min-height:44px}
+
+  /* Tap targets */
+  .nav-cta,.btn-primary,.btn-outline,.wizard-btn-next,.wizard-btn-back,.form-submit,.guest-counter-btn,.date-picker-nav{min-height:44px}
+  .time-slot,.occasion-card{min-height:44px;display:flex;flex-direction:column;justify-content:center}
+
+  /* Location map — static on mobile, external link */
+  .map-open-external{display:flex}
+  .map-interact-overlay{display:none}
+
+  /* Toasts — bottom center, full width */
+  #toast-container{
+    left:1rem;
+    right:1rem;
+    bottom:1.25rem;
+    align-items:center;
+  }
+  .toast{
+    min-width:0;
+    width:100%;
+    max-width:none;
+  }
+  .toast-close{min-width:44px;min-height:44px;margin:0}
+}
+
+/* Hero title: 3.5rem at 414px+ within mobile range */
+@media(min-width:414px) and (max-width:768px){
+  .hero-title{font-size:3.5rem}
+}
+
+@media(max-width:600px){
+  .location-grid{gap:2rem}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
+  #cup-canvas{opacity:1}
+  .mobile-nav.open a[data-nav]{opacity:1!important;transform:none!important}
+}
+
+/* Hide drinks dots on desktop */
+.drinks-dots{display:none}

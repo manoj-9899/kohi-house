@@ -1,0 +1,208 @@
+/* variables.css — Design tokens: colors, easing curves, and theme overrides */
+
+:root,
+[data-theme="dark"] {
+  /* Brand palette — dark (default) */
+  --obsidian: #0D0906;
+  --dark-roast: #1A1108;
+  --espresso: #5C3D20;
+  --caramel: #C8894A;
+  --caramel-hover: #D4975A;
+  --cream: #F5E6C8;
+  --forest: #3D5A4A;
+  --warm-white: #FAF6EE;
+
+  /* Surfaces */
+  --surface-footer: #0A0705;
+  --surface-section-alt: #1A1A0A;
+  --surface-map: #0A0F0A;
+  --surface-modal: #1A1108;
+  --surface-story-mid: #4A2E14;
+  --surface-solid: #1A1108;
+  --hero-gradient-mid: #2A1A0A;
+  --newsletter-bg-start: #0D0906;
+  --newsletter-bg-mid: #2A1508;
+
+  /* Semantic text */
+  --text-primary: var(--cream);
+  --text-secondary: rgba(245, 230, 200, 0.78);
+  --text-muted: rgba(245, 230, 200, 0.82);
+  --text-subtle: rgba(245, 230, 200, 0.68);
+  --text-faint: rgba(245, 230, 200, 0.55);
+  --text-ghost: rgba(245, 230, 200, 0.48);
+  --text-placeholder: rgba(245, 230, 200, 0.4);
+  --text-quote: rgba(245, 230, 200, 0.9);
+  --text-body-soft: rgba(245, 230, 200, 0.82);
+  --text-body-mid: rgba(245, 230, 200, 0.72);
+  --text-nav: rgba(245, 230, 200, 0.72);
+  --text-author: rgba(245, 230, 200, 0.85);
+  --text-subtitle: rgba(245, 230, 200, 0.65);
+  --text-on-accent: var(--obsidian);
+
+  /* Component tokens */
+  --nav-bg: rgba(13, 9, 6, 0.85);
+  --nav-bg-mobile: rgba(13, 9, 6, 0.88);
+  --nav-bg-mobile-scrolled: rgba(13, 9, 6, 0.92);
+  --mobile-nav-bg: rgba(13, 9, 6, 0.97);
+  --card-bg: rgba(26, 17, 8, 0.65);
+  --card-bg-strong: rgba(26, 17, 8, 0.7);
+  --card-bg-soft: rgba(26, 17, 8, 0.55);
+  --card-bg-subtle: rgba(26, 17, 8, 0.6);
+  --card-bg-form: rgba(26, 17, 8, 0.8);
+  --card-border: rgba(200, 137, 74, 0.1);
+  --input-bg: rgba(255, 255, 255, 0.04);
+  --input-border: rgba(200, 137, 74, 0.15);
+  --surface-hover: rgba(255, 255, 255, 0.03);
+  --overlay-backdrop: rgba(13, 9, 6, 0.88);
+  --overlay-modal-close: rgba(13, 9, 6, 0.75);
+  --overlay-badge: rgba(13, 9, 6, 0.82);
+  --overlay-gallery: rgba(13, 9, 6, 0.7);
+  --overlay-map: rgba(13, 9, 6, 0.55);
+  --overlay-cart: rgba(0, 0, 0, 0.5);
+  --overlay-map-label: rgba(26, 17, 8, 0.9);
+  --shadow-card: rgba(0, 0, 0, 0.35);
+  --shadow-card-hover: rgba(0, 0, 0, 0.4);
+  --shadow-caramel: rgba(200, 137, 74, 0.35);
+  --shadow-caramel-strong: rgba(200, 137, 74, 0.4);
+  --sold-bg: rgba(255, 255, 255, 0.06);
+  --hero-vignette-color: rgba(13, 9, 6, 0.7);
+  --hero-overlay-strength: 1;
+  --hero-vignette-strength: 1;
+  --bean-fill: rgba(92, 61, 32, 0.15);
+  --bean-stroke: rgba(13, 9, 6, 0.5);
+
+  /* Alpha — caramel */
+  --caramel-04: rgba(200, 137, 74, 0.04);
+  --caramel-05: rgba(200, 137, 74, 0.05);
+  --caramel-06: rgba(200, 137, 74, 0.06);
+  --caramel-08: rgba(200, 137, 74, 0.08);
+  --caramel-10: rgba(200, 137, 74, 0.1);
+  --caramel-12: rgba(200, 137, 74, 0.12);
+  --caramel-15: rgba(200, 137, 74, 0.15);
+  --caramel-20: rgba(200, 137, 74, 0.2);
+  --caramel-25: rgba(200, 137, 74, 0.25);
+  --caramel-28: rgba(200, 137, 74, 0.28);
+  --caramel-30: rgba(200, 137, 74, 0.3);
+  --caramel-35: rgba(200, 137, 74, 0.35);
+  --caramel-40: rgba(200, 137, 74, 0.4);
+  --caramel-45: rgba(200, 137, 74, 0.45);
+  --caramel-50: rgba(200, 137, 74, 0.5);
+  --caramel-55: rgba(200, 137, 74, 0.55);
+  --caramel-60: rgba(200, 137, 74, 0.6);
+
+  /* Alpha — cream */
+  --cream-06: rgba(245, 230, 200, 0.06);
+  --cream-08: rgba(245, 230, 200, 0.08);
+  --cream-12: rgba(245, 230, 200, 0.12);
+  --cream-25: rgba(245, 230, 200, 0.25);
+  --cream-30: rgba(245, 230, 200, 0.3);
+  --cream-45: rgba(245, 230, 200, 0.45);
+  --cream-55: rgba(245, 230, 200, 0.55);
+
+  /* Status / accent (theme-stable) */
+  --urgent-amber: #E0A030;
+  --whatsapp-green: #25D366;
+  --color-success: #5AAA7A;
+  --color-error: #C45C5C;
+  --color-vegan: #5AAA7A;
+  --color-new: #8CAE8C;
+  --color-seasonal: #D4A574;
+
+  /* Easing */
+  --silk: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --snap: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --lush: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="light"] {
+  --obsidian: #FAF6EE;
+  --dark-roast: #F0E8D8;
+  --espresso: #C8894A;
+  --caramel: #8B5E2A;
+  --caramel-hover: #A07030;
+  --cream: #2A1A0A;
+  --forest: #2A4A35;
+  --warm-white: #FFFFFF;
+
+  --surface-footer: #EDE5D5;
+  --surface-section-alt: #E8DFCF;
+  --surface-map: #EDE8DC;
+  --surface-modal: #FFFFFF;
+  --surface-story-mid: #C4A882;
+  --surface-solid: #FFFFFF;
+  --hero-gradient-mid: rgba(250, 246, 238, 0.55);
+  --newsletter-bg-start: #E8DFCF;
+  --newsletter-bg-mid: #C4A882;
+
+  --text-primary: #1A0A04;
+  --text-secondary: rgba(26, 10, 4, 0.65);
+  --text-muted: rgba(26, 10, 4, 0.55);
+  --text-subtle: rgba(26, 10, 4, 0.48);
+  --text-faint: rgba(26, 10, 4, 0.4);
+  --text-ghost: rgba(26, 10, 4, 0.35);
+  --text-placeholder: rgba(26, 10, 4, 0.35);
+  --text-quote: rgba(26, 10, 4, 0.82);
+  --text-body-soft: rgba(26, 10, 4, 0.72);
+  --text-body-mid: rgba(26, 10, 4, 0.58);
+  --text-nav: rgba(26, 10, 4, 0.55);
+  --text-author: rgba(26, 10, 4, 0.72);
+  --text-subtitle: rgba(26, 10, 4, 0.55);
+  --text-on-accent: #FAF6EE;
+
+  --nav-bg: rgba(250, 246, 238, 0.9);
+  --nav-bg-mobile: rgba(250, 246, 238, 0.92);
+  --nav-bg-mobile-scrolled: rgba(250, 246, 238, 0.95);
+  --mobile-nav-bg: rgba(250, 246, 238, 0.98);
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --card-bg-strong: rgba(255, 255, 255, 0.85);
+  --card-bg-soft: rgba(255, 255, 255, 0.65);
+  --card-bg-subtle: rgba(255, 255, 255, 0.7);
+  --card-bg-form: rgba(255, 255, 255, 0.88);
+  --card-border: rgba(139, 94, 42, 0.15);
+  --input-bg: rgba(255, 255, 255, 0.9);
+  --input-border: rgba(139, 94, 42, 0.2);
+  --surface-hover: rgba(139, 94, 42, 0.04);
+  --overlay-backdrop: rgba(26, 10, 4, 0.45);
+  --overlay-modal-close: rgba(255, 255, 255, 0.92);
+  --overlay-badge: rgba(255, 255, 255, 0.92);
+  --overlay-gallery: rgba(26, 10, 4, 0.35);
+  --overlay-map: rgba(250, 246, 238, 0.35);
+  --overlay-cart: rgba(26, 10, 4, 0.35);
+  --overlay-map-label: rgba(255, 255, 255, 0.95);
+  --shadow-card: rgba(42, 26, 10, 0.08);
+  --shadow-card-hover: rgba(42, 26, 10, 0.14);
+  --shadow-caramel: rgba(139, 94, 42, 0.22);
+  --shadow-caramel-strong: rgba(139, 94, 42, 0.28);
+  --sold-bg: rgba(26, 10, 4, 0.06);
+  --hero-vignette-color: rgba(250, 246, 238, 0.25);
+  --hero-overlay-strength: 0.35;
+  --hero-vignette-strength: 0.4;
+  --bean-fill: rgba(92, 61, 32, 0.08);
+  --bean-stroke: rgba(92, 61, 32, 0.2);
+
+  --caramel-04: rgba(139, 94, 42, 0.04);
+  --caramel-05: rgba(139, 94, 42, 0.05);
+  --caramel-06: rgba(139, 94, 42, 0.06);
+  --caramel-08: rgba(139, 94, 42, 0.08);
+  --caramel-10: rgba(139, 94, 42, 0.1);
+  --caramel-12: rgba(139, 94, 42, 0.12);
+  --caramel-15: rgba(139, 94, 42, 0.15);
+  --caramel-20: rgba(139, 94, 42, 0.2);
+  --caramel-25: rgba(139, 94, 42, 0.25);
+  --caramel-28: rgba(139, 94, 42, 0.28);
+  --caramel-30: rgba(139, 94, 42, 0.3);
+  --caramel-35: rgba(139, 94, 42, 0.35);
+  --caramel-40: rgba(139, 94, 42, 0.4);
+  --caramel-45: rgba(139, 94, 42, 0.45);
+  --caramel-50: rgba(139, 94, 42, 0.5);
+  --caramel-55: rgba(139, 94, 42, 0.55);
+  --caramel-60: rgba(139, 94, 42, 0.6);
+
+  --cream-06: rgba(42, 26, 10, 0.06);
+  --cream-08: rgba(42, 26, 10, 0.08);
+  --cream-12: rgba(42, 26, 10, 0.12);
+  --cream-25: rgba(42, 26, 10, 0.25);
+  --cream-30: rgba(42, 26, 10, 0.3);
+  --cream-45: rgba(42, 26, 10, 0.45);
+  --cream-55: rgba(42, 26, 10, 0.55);
+}
