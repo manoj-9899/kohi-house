@@ -148,6 +148,12 @@ function initLenis() {
     return
   }
 
+  // Native touch scroll on mobile — Lenis can block vertical panning on iOS/Android
+  if (MOBILE_MQ.matches || window.matchMedia('(pointer: coarse)').matches) {
+    initNativeScrollFallback()
+    return
+  }
+
   lenis = new Lenis({
     duration: 1.2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
