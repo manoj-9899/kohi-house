@@ -1,10 +1,20 @@
 const { Resend } = require('resend')
-const { readFileSync } = require('fs')
+const { readFileSync, existsSync } = require('fs')
 const { join } = require('path')
 
-const manifest = JSON.parse(
-  readFileSync(join(__dirname, '../_templates/manifest.json'), 'utf8')
-)
+function getTemplatesDir() {
+  const candidates = [
+    join(__dirname, '_templates'),
+    join(__dirname, '../_templates'),
+  ]
+  for (const dir of candidates) {
+    if (existsSync(join(dir, 'manifest.json'))) return dir
+  }
+  throw new Error('Email templates not found. Run npm run build:emails before deploy.')
+}
+
+const templatesDir = getTemplatesDir()
+const manifest = JSON.parse(readFileSync(join(templatesDir, 'manifest.json'), 'utf8'))
 
 function getResend() {
   const key = process.env.RESEND_API_KEY
@@ -19,7 +29,7 @@ function getFromAddress() {
 }
 
 function loadTemplate(name) {
-  return readFileSync(join(__dirname, '../_templates', `${name}.html`), 'utf8')
+  return readFileSync(join(templatesDir, `${name}.html`), 'utf8')
 }
 
 function applyVars(html, vars) {
