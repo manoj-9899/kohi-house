@@ -2,8 +2,20 @@
   "name": "kohi-house",
   "private": true,
   "scripts": {
-    "build": "node scripts/generate-supabase-config.js",
+    "build": "node scripts/generate-supabase-config.js && npm run build:emails",
+    "build:emails": "tsx scripts/render-emails.ts",
     "start": "python -m http.server 8080 --bind 0.0.0.0",
     "start:local": "python -m http.server 8080"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.1",
+    "resend": "^4.0.1"
+  },
+  "devDependencies": {
+    "@react-email/components": "^0.0.31",
+    "@react-email/render": "^1.0.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tsx": "^4.19.2"
   }
 }

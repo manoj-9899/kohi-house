@@ -1,8 +1,27 @@
-# Netlify — static site + Supabase config at build time
+# Netlify — static site + Supabase config + serverless newsletter API
 
 [build]
-  command = "npm run build"
+  command = "npm install && npm run build"
   publish = "."
 
 [build.environment]
   NODE_VERSION = "20"
+
+[functions]
+  node_bundler = "esbuild"
+  included_files = ["netlify/functions/_templates/**"]
+
+[[redirects]]
+  from = "/api/newsletter/subscribe"
+  to = "/.netlify/functions/newsletter-subscribe"
+  status = 200
+
+[[redirects]]
+  from = "/api/newsletter/confirm"
+  to = "/.netlify/functions/newsletter-confirm"
+  status = 200
+
+[[redirects]]
+  from = "/api/newsletter/unsubscribe"
+  to = "/.netlify/functions/newsletter-unsubscribe"
+  status = 200

@@ -1,6 +1,5 @@
 // Local dev: copy to supabase-config.js and fill in credentials.
-// Netlify / Vercel: set SUPABASE_URL and SUPABASE_ANON_KEY in site environment variables
-//                  (build auto-generates supabase-config.js — do not commit real keys)
+// Netlify: Site configuration → Environment variables → SUPABASE_URL, SUPABASE_ANON_KEY
 
 window.KOHI_SUPABASE_CONFIG = {
   url: 'https://YOUR_PROJECT_REF.supabase.co',

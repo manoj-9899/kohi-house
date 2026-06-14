@@ -1,0 +1,10 @@
+{
+  "welcome": {
+    "subject": "Welcome to The Kōhī Club ☕",
+    "preview": "Slow mornings, seasonal drinks, and exclusive member rewards await."
+  },
+  "confirm": {
+    "subject": "Confirm your Kōhī Club membership ☕",
+    "preview": "One click to confirm and receive your welcome reward."
+  }
+}

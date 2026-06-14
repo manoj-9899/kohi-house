@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Unsubscribe — Kōhī House</title>
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0D0906;
+      color: #F5E6C8;
+      font-family: Georgia, 'Times New Roman', serif;
+      padding: 2rem;
+    }
+    .card { max-width: 420px; text-align: center; }
+    h1 { font-size: 1.75rem; margin: 0 0 1rem; font-weight: 700; }
+    p { color: rgba(245, 230, 200, 0.72); line-height: 1.65; margin: 0 0 1.5rem; }
+    a { color: #C8894A; }
+    .status { margin-top: 1rem; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Unsubscribe</h1>
+    <p id="message">Processing your request…</p>
+    <p><a href="/">Return to Kōhī House</a></p>
+    <p class="status" id="status" hidden></p>
+  </div>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search)
+      var email = (params.get('email') || '').trim().toLowerCase()
+      var message = document.getElementById('message')
+      if (!email) {
+        message.textContent = 'Use the unsubscribe link from your email, or contact us at hello@kohihouse.in.'
+        return
+      }
+      fetch('/api/newsletter/unsubscribe?email=' + encodeURIComponent(email))
+        .then(function (res) { return res.text() })
+        .then(function () {
+          message.textContent = 'You have been unsubscribed from The Kōhī Club. We hope to see you at the café.'
+        })
+        .catch(function () {
+          message.textContent = 'Something went wrong. Please email hello@kohihouse.in to unsubscribe.'
+        })
+    })()
+  </script>
+</body>
+</html>

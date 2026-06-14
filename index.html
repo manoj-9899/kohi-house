@@ -860,23 +860,29 @@
 <!-- NEWSLETTER -->
 <section id="newsletter" aria-label="Newsletter signup">
   <div class="newsletter-inner">
-    <p class="section-eyebrow">Stay connected</p>
+    <p class="section-eyebrow">The Kōhī Club</p>
     <h2 class="section-title">Stay in the <em>loop.</em></h2>
-    <p class="newsletter-lead">New seasonal drinks, upcoming events, and occasional stories from our roastery. Once a month, never more.</p>
+    <p class="newsletter-lead">Join The Kōhī Club for seasonal drinks, exclusive events, brewing workshops, and 10% off your first specialty drink.</p>
     <div class="newsletter-form-wrap">
       <form class="newsletter-form" id="newsletter-form" novalidate>
-        <div class="newsletter-fields">
-          <label for="newsletter-name" class="visually-hidden">First name</label>
-          <input type="text" id="newsletter-name" name="name" placeholder="First name" autocomplete="given-name">
-          <label for="newsletter-email" class="visually-hidden">Email address</label>
-          <input type="email" id="newsletter-email" name="email" placeholder="Email address" autocomplete="email" required>
+        <div class="newsletter-field" data-field="email">
+          <label for="newsletter-email">Email address</label>
+          <input type="email" id="newsletter-email" name="email" placeholder="you@email.com" autocomplete="email" inputmode="email" aria-describedby="newsletter-email-error" required>
+          <span class="newsletter-field-error" id="newsletter-email-error" role="alert" aria-live="polite"></span>
         </div>
-        <button type="submit" class="newsletter-submit btn-primary">Keep me posted</button>
+        <input type="text" name="company" id="newsletter-company" class="newsletter-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button type="submit" class="newsletter-submit btn-primary" id="newsletter-submit">
+          <span class="newsletter-submit-label">Join The Kōhī Club</span>
+          <span class="newsletter-submit-loading" hidden aria-hidden="true">Joining…</span>
+        </button>
       </form>
       <p class="newsletter-reassurance">No spam ever. Unsubscribe anytime with one click.</p>
-      <div class="newsletter-success" hidden>
-        <h3 class="newsletter-success-title"></h3>
-        <p>We will be in touch soon. In the meantime, come visit us.</p>
+      <div class="newsletter-success" hidden role="status" aria-live="polite">
+        <div class="newsletter-success-icon" aria-hidden="true">☕</div>
+        <h3 class="newsletter-success-title">Welcome to The Kōhī Club</h3>
+        <p class="newsletter-success-body">Check your inbox for your welcome reward and member benefits.</p>
+        <p class="newsletter-success-email">A confirmation email has been sent to:<br><strong class="newsletter-success-address"></strong></p>
+        <p class="newsletter-success-note newsletter-success-note--confirm" hidden>Please confirm your email to activate your membership and receive your welcome reward.</p>
       </div>
     </div>
   </div>

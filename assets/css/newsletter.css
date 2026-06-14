@@ -1,27 +1,10 @@
-/* newsletter.css — Newsletter signup section */
+/* newsletter.css — Kōhī Club signup */
 
 #newsletter {
   position: relative;
   overflow: hidden;
   isolation: isolate;
   background: linear-gradient(135deg, var(--newsletter-bg-start) 0%, var(--newsletter-bg-mid) 50%, var(--newsletter-bg-start) 100%);
-}
-
-.newsletter-watermark {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: var(--font-script);
-  font-size: min(18vw, 220px);
-  line-height: 1;
-  color: var(--cream);
-  opacity: 0.04;
-  pointer-events: none;
-  user-select: none;
-  white-space: nowrap;
-  z-index: 0;
-  max-width: 100%;
 }
 
 .newsletter-inner {
@@ -45,30 +28,36 @@
   font-size: var(--text-base);
   color: var(--text-secondary);
   line-height: 1.65;
-  max-width: 520px;
+  max-width: 540px;
   margin: 0 auto 2rem;
 }
 
 .newsletter-form-wrap {
-  max-width: 620px;
+  max-width: 420px;
   margin: 0 auto;
 }
 
 .newsletter-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
+  align-items: stretch;
+  gap: 0.85rem;
 }
 
-.newsletter-fields {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-  width: 100%;
+.newsletter-field {
+  text-align: left;
 }
 
-.newsletter-form input {
+.newsletter-field label {
+  display: block;
+  font-size: var(--text-xs);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+  margin-bottom: 0.45rem;
+}
+
+.newsletter-field input {
   width: 100%;
   padding: 0.85rem 1rem;
   background: var(--input-bg);
@@ -82,28 +71,59 @@
   min-height: 48px;
 }
 
-.newsletter-form input::placeholder {
+.newsletter-field input::placeholder {
   color: var(--text-placeholder);
 }
 
-.newsletter-form input:focus {
+.newsletter-field input:focus {
   border-color: var(--caramel-50);
   background: var(--caramel-04);
   box-shadow: 0 0 0 3px var(--caramel-12);
 }
 
+.newsletter-field.is-error input {
+  border-color: var(--color-error);
+  background: rgba(196, 92, 92, 0.06);
+}
+
+.newsletter-field-error {
+  display: block;
+  min-height: 1.25rem;
+  margin-top: 0.4rem;
+  font-size: var(--text-xs);
+  color: var(--color-error);
+  line-height: 1.4;
+}
+
+.newsletter-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .newsletter-submit.btn-primary {
-  width: auto;
-  min-width: 220px;
-  max-width: 260px;
-  padding: 0.85rem 2.25rem;
+  width: 100%;
+  min-height: 48px;
+  padding: 0.85rem 2rem;
   border-radius: 2px;
   justify-content: center;
-  min-height: 48px;
-  margin-top: 0.25rem;
   cursor: pointer;
   letter-spacing: 0.12em;
   font-size: var(--text-sm);
+  margin-top: 0.25rem;
+}
+
+.newsletter-submit.btn-primary:disabled {
+  opacity: 0.72;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.newsletter-submit-loading {
+  letter-spacing: 0.12em;
 }
 
 .newsletter-reassurance {
@@ -118,21 +138,48 @@
   padding: 1.5rem 0 0;
 }
 
+.newsletter-success-icon {
+  font-size: 2rem;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
 .newsletter-success h3 {
   font-family: var(--font-display);
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 700;
   color: var(--cream);
-  margin: 0 0 0.65rem;
+  margin: 0 0 0.75rem;
   line-height: 1.25;
 }
 
-.newsletter-success p {
+.newsletter-success-body {
   font-size: var(--text-base);
-  color: var(--text-muted);
+  color: var(--text-secondary);
   line-height: 1.65;
   max-width: 420px;
-  margin: 0 auto;
+  margin: 0 auto 1rem;
+}
+
+.newsletter-success-email {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0 auto 0.75rem;
+}
+
+.newsletter-success-address {
+  color: var(--caramel);
+  font-weight: 500;
+  word-break: break-all;
+}
+
+.newsletter-success-note {
+  font-size: var(--text-xs);
+  color: var(--text-subtle);
+  line-height: 1.6;
+  max-width: 380px;
+  margin: 0.75rem auto 0;
 }
 
 .newsletter-form.is-hidden,
@@ -142,21 +189,7 @@
 }
 
 @media (max-width: 768px) {
-  .newsletter-watermark {
-    display: none;
-  }
-
   .newsletter-inner {
     padding: 0 1.5rem;
-  }
-
-  .newsletter-fields {
-    grid-template-columns: 1fr;
-  }
-
-  .newsletter-form input,
-  .newsletter-submit.btn-primary {
-    width: 100%;
-    max-width: none;
   }
 }
