@@ -156,11 +156,6 @@
   .toast-close{min-width:44px;min-height:44px;margin:0}
 }
 
-/* Hero title: 3.5rem at 414px+ within mobile range */
-@media(min-width:414px) and (max-width:768px){
-  .hero-title{font-size:3.5rem}
-}
-
 @media(max-width:600px){
   .location-grid{gap:2rem}
 }

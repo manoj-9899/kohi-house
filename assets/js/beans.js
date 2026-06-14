@@ -33,7 +33,7 @@
     H = c.height = window.innerHeight
   })
 
-  const N = window.matchMedia('(max-width:768px)').matches ? 8 : 18
+  const N = window.matchMedia('(max-width:768px)').matches ? 6 : 18
   const beans = Array.from({ length: N }, () => ({
     x: Math.random() * W,
     y: Math.random() * H,

@@ -198,6 +198,8 @@
   window.openLightbox = openLightbox
   window.closeLightbox = closeLightbox
   window.lightboxNav = lightboxNav
+  window.openLightbox = openLightbox
+  window.closeLightbox = closeLightbox
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init)

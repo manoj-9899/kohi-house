@@ -1,7 +1,12 @@
-// mobile.js — Mobile-specific interactions: drinks dots, gallery tap, footer accordions, input scroll
+// mobile.js — Mobile-specific interactions: drinks carousel, gallery tap, input scroll
 
-(function () {
+;(function () {
   const MOBILE_MQ = window.matchMedia('(max-width: 768px)')
+
+  function scrollCardToCenter(wrap, card) {
+    const offset = card.offsetLeft - (wrap.clientWidth - card.offsetWidth) / 2
+    wrap.scrollTo({ left: offset, behavior: 'smooth' })
+  }
 
   function initDrinksCarousel() {
     const wrap = document.querySelector('.drinks-scroll-wrap')
@@ -12,6 +17,10 @@
     const cards = () => grid.querySelectorAll('.drink-card')
 
     function buildDots() {
+      if (!MOBILE_MQ.matches) {
+        dotsContainer.innerHTML = ''
+        return
+      }
       dotsContainer.innerHTML = ''
       cards().forEach((_, i) => {
         const dot = document.createElement('button')
@@ -20,19 +29,26 @@
         dot.setAttribute('aria-label', `Go to drink ${i + 1}`)
         dot.addEventListener('click', () => {
           const card = cards()[i]
-          if (card) wrap.scrollTo({ left: card.offsetLeft - wrap.offsetLeft, behavior: 'smooth' })
+          if (card) scrollCardToCenter(wrap, card)
         })
         dotsContainer.appendChild(dot)
       })
     }
 
     function updateActiveDot() {
+      if (!MOBILE_MQ.matches) return
       const list = cards()
       if (!list.length) return
+      const center = wrap.scrollLeft + wrap.clientWidth / 2
       let active = 0
-      const scrollLeft = wrap.scrollLeft
+      let minDist = Infinity
       list.forEach((card, i) => {
-        if (card.offsetLeft - wrap.offsetLeft <= scrollLeft + wrap.clientWidth * 0.2) active = i
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2
+        const dist = Math.abs(cardCenter - center)
+        if (dist < minDist) {
+          minDist = dist
+          active = i
+        }
       })
       dotsContainer.querySelectorAll('.drinks-dot').forEach((dot, i) => {
         dot.classList.toggle('is-active', i === active)
@@ -41,32 +57,47 @@
 
     buildDots()
     wrap.addEventListener('scroll', updateActiveDot, { passive: true })
-    window.addEventListener('resize', () => {
-      if (MOBILE_MQ.matches) buildDots()
-    })
+    window.addEventListener('resize', buildDots)
   }
 
   function initGalleryTap() {
-    document.querySelectorAll('.gallery-cell').forEach((cell) => {
-      cell.addEventListener('click', () => {
+    document.querySelectorAll('.gallery-cell').forEach((cell, index) => {
+      cell.addEventListener(
+        'click',
+        (e) => {
+          if (!MOBILE_MQ.matches) return
+
+          const wasTapped = cell.classList.contains('is-tapped')
+          document.querySelectorAll('.gallery-cell.is-tapped').forEach((c) => {
+            if (c !== cell) c.classList.remove('is-tapped')
+          })
+
+          if (!wasTapped) {
+            e.preventDefault()
+            e.stopPropagation()
+            cell.classList.add('is-tapped')
+            return
+          }
+        },
+        true
+      )
+
+      const zoom = cell.querySelector('.gallery-zoom-hint')
+      zoom?.addEventListener('click', (e) => {
         if (!MOBILE_MQ.matches) return
-        const wasTapped = cell.classList.contains('is-tapped')
-        document.querySelectorAll('.gallery-cell.is-tapped').forEach((c) => c.classList.remove('is-tapped'))
-        if (!wasTapped) cell.classList.add('is-tapped')
+        e.stopPropagation()
+        if (typeof window.openLightbox === 'function') {
+          window.openLightbox(index)
+          cell.classList.remove('is-tapped')
+        }
       })
     })
-  }
 
-  function initFooterAccordion() {
-    document.querySelectorAll('.footer-col--collapsible').forEach((col) => {
-      const toggle = col.querySelector('.footer-col-toggle')
-      const panel = col.querySelector('.footer-col-panel')
-      if (!toggle || !panel) return
-
-      toggle.addEventListener('click', () => {
-        const open = col.classList.toggle('is-open')
-        toggle.setAttribute('aria-expanded', open)
-      })
+    document.addEventListener('click', (e) => {
+      if (!MOBILE_MQ.matches) return
+      if (!e.target.closest('.gallery-cell')) {
+        document.querySelectorAll('.gallery-cell.is-tapped').forEach((c) => c.classList.remove('is-tapped'))
+      }
     })
   }
 
@@ -78,11 +109,7 @@
       input.addEventListener('focus', () => {
         if (!MOBILE_MQ.matches) return
         setTimeout(() => {
-          const vh = window.visualViewport?.height ?? window.innerHeight
-          const rect = input.getBoundingClientRect()
-          if (rect.bottom > vh - 24) {
-            input.scrollIntoView({ behavior: 'smooth', block: 'center' })
-          }
+          input.scrollIntoView({ behavior: 'smooth', block: 'center' })
         }, 320)
       })
     })
@@ -90,7 +117,7 @@
     window.visualViewport?.addEventListener('resize', () => {
       if (!MOBILE_MQ.matches) return
       const active = document.activeElement
-      if (active && wizard.contains(active) && (active.matches('input, textarea, select'))) {
+      if (active && wizard.contains(active) && active.matches('input, textarea, select')) {
         active.scrollIntoView({ behavior: 'smooth', block: 'center' })
       }
     })
@@ -98,6 +125,5 @@
 
   initDrinksCarousel()
   initGalleryTap()
-  initFooterAccordion()
   initReservationInputScroll()
 })()
