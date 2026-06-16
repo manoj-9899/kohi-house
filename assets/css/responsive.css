@@ -10,6 +10,7 @@
   .nav-end{grid-column:2}
   .nav-actions{display:flex;align-items:center;gap:0.5rem;margin-right:0}
   .nav-actions .theme-toggle{display:none}
+  .nav-mobile-cluster{display:flex}
   .nav-cta{padding:0.55rem 1.1rem;font-size:0.65rem;letter-spacing:0.1em}
   .hamburger{display:flex}
   .mobile-close{display:none}
@@ -46,7 +47,6 @@
 @media(max-width:768px){
   /* Global — avoid overflow-x on sections (creates nested scroll containers that trap touch/wheel) */
   #hero{min-height:100dvh;height:auto;padding:6rem 0 5rem}
-  #cup-canvas{display:none!important}
 
   /* Navigation */
   #navbar.scrolled,#navbar{background:var(--nav-bg-mobile-scrolled);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
@@ -162,7 +162,6 @@
 
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
-  #cup-canvas{opacity:1}
   .mobile-nav.open a[data-nav]{opacity:1!important;transform:none!important}
 }
 

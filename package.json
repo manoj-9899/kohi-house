@@ -2,7 +2,7 @@
   "name": "kohi-house",
   "private": true,
   "scripts": {
-    "build": "node scripts/generate-supabase-config.js && npm run build:emails",
+    "build": "npm run build:emails",
     "build:emails": "tsx scripts/render-emails.ts",
     "start": "python -m http.server 8080 --bind 0.0.0.0",
     "start:local": "python -m http.server 8080"

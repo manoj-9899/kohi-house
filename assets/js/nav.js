@@ -56,8 +56,7 @@ function setTheme(theme) {
 
 function initThemeToggle() {
   const saved = localStorage.getItem('kohi-theme')
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-  const initial = saved || (prefersDark ? 'dark' : 'light')
+  const initial = saved || 'dark'
   setTheme(initial)
 
   document.querySelectorAll('#theme-toggle, #theme-toggle-mobile').forEach((toggle) => {

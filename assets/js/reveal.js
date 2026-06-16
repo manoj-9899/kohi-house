@@ -16,7 +16,6 @@
       gsap.set('.hero-sub', { y: 30, opacity: 0 })
       gsap.set('.hero-ctas', { y: 30, opacity: 0 })
       gsap.set('.hero-scroll', { opacity: 0 })
-      gsap.set('#cup-canvas', { opacity: 0 })
 
       gsap.to('.hero-eyebrow', { y: 0, opacity: 1, duration: 0.8, delay: 0.4, ease: 'power3.out' })
 
@@ -33,7 +32,6 @@
       gsap.to('.hero-sub', { y: 0, opacity: 1, duration: 0.8, delay: 1.2, ease: 'power3.out' })
       gsap.to('.hero-ctas', { y: 0, opacity: 1, duration: 0.8, delay: 1.4, ease: 'power3.out' })
       gsap.to('.hero-scroll', { opacity: 1, duration: 0.8, delay: 2, ease: 'power2.out' })
-      gsap.to('#cup-canvas', { opacity: 1, duration: 1, delay: 1.2, ease: 'power2.out' })
     }
 
     function initStory() {
@@ -239,34 +237,6 @@
       })
     }
 
-    function initEvents() {
-      gsap.from('#events .section-header', {
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: '#events', start: 'top 80%' },
-      })
-
-      gsap.from('.events-sidebar', {
-        x: -30,
-        opacity: 0,
-        duration: 0.85,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: '.events-body', start: 'top 85%' },
-      })
-
-      gsap.from('.event-card', {
-        y: 30,
-        opacity: 0,
-        duration: 0.75,
-        stagger: 0.1,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: '.events-list', start: 'top 85%' },
-        mediaQuery: '(min-width: 1px)',
-      })
-    }
-
     function initLocation() {
       gsap.from('#location .section-header', {
         y: 30,
@@ -312,7 +282,6 @@
     initGallery()
     initTestimonials()
     initJournal()
-    initEvents()
     initLocation()
     initFooter()
 

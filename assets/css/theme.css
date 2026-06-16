@@ -583,14 +583,10 @@ footer,
   .nav-actions .theme-toggle {
     display: none;
   }
-  .theme-toggle--mobile {
-    display: flex;
-    margin-top: 1.5rem;
-  }
 }
 
 @media (min-width: 901px) {
-  .theme-toggle--mobile {
+  .nav-mobile-cluster .theme-toggle--bar {
     display: none;
   }
 }

@@ -7,6 +7,7 @@
 .nav-logo span{color:var(--caramel)}
 .nav-links{display:flex;gap:2.5rem;list-style:none;justify-self:center;grid-column:2;margin:0;padding:0;flex-wrap:nowrap;white-space:nowrap}
 .nav-end{justify-self:end;grid-column:3;display:flex;align-items:center;gap:0.75rem;flex-shrink:0}
+.nav-mobile-cluster{display:none;flex-direction:column;align-items:center;justify-content:center;gap:0.2rem}
 .nav-links a{color:var(--text-muted);text-decoration:none;font-size:var(--text-sm);letter-spacing:0.15em;text-transform:uppercase;transition:color 0.2s;font-weight:400}
 .nav-links a:hover,.nav-links a.is-active{color:var(--cream)}
 .nav-links a[aria-current="page"]{color:var(--caramel)}

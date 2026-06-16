@@ -1,6 +1,6 @@
 <!-- index.html — Main entry point for the Kōhī House café website -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -121,7 +121,7 @@
   rel="stylesheet">
 <link rel="stylesheet" href="assets/css/variables.css">
 <script>
-(function(){try{var s=localStorage.getItem('kohi-theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();
+(function(){try{var s=localStorage.getItem('kohi-theme');document.documentElement.setAttribute('data-theme',s||'dark');}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();
 </script>
 <link rel="stylesheet" href="assets/css/reset.css">
 <link rel="stylesheet" href="assets/css/typography.css">
@@ -130,9 +130,7 @@
 <link rel="stylesheet" href="assets/css/animations.css">
 <link rel="stylesheet" href="assets/css/responsive.css">
 <link rel="stylesheet" href="assets/css/reservation.css">
-<link rel="stylesheet" href="assets/css/events.css">
 <link rel="stylesheet" href="assets/css/journal.css">
-<link rel="stylesheet" href="assets/css/newsletter.css">
 <link rel="stylesheet" href="assets/css/theme.css">
 <link rel="stylesheet" href="assets/css/location.css">
 <link rel="stylesheet" href="assets/css/scroll.css">
@@ -160,9 +158,14 @@
       </button>
       <a href="#reservation" class="nav-cta"><span class="nav-cta-long">Reserve a Table</span><span class="nav-cta-short">Reserve</span></a>
     </div>
-    <button type="button" class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-mobile-cluster">
+      <button type="button" class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+      <button type="button" class="theme-toggle theme-toggle--bar" id="theme-toggle-mobile" aria-label="Switch to light mode">
+        <span class="theme-icon">☽</span>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -174,9 +177,6 @@
   <a href="#menu" data-nav="menu">Menu</a>
   <a href="#atmosphere" data-nav="atmosphere">Space</a>
   <a href="#reservation" class="mobile-nav-cta btn-primary" data-nav="reservation">Reserve a Table</a>
-  <button type="button" class="theme-toggle theme-toggle--mobile" id="theme-toggle-mobile" aria-label="Toggle light mode">
-    <span class="theme-icon">☽</span>
-  </button>
 </nav>
 
 <!-- HERO -->
@@ -196,7 +196,6 @@
   <div class="hero-grain"></div>
   <div class="hero-vignette"></div>
   <canvas id="bean-canvas"></canvas>
-  <canvas id="cup-canvas"></canvas>
   <div class="hero-content">
     <p class="hero-eyebrow">Est. 2019 · Specialty Coffee House</p>
     <h1 class="hero-title">
@@ -325,9 +324,6 @@
       <button type="button" class="menu-tab" data-category="desserts" role="tab" aria-selected="false">Desserts</button>
     </div>
     <div class="menu-grid" id="menu-grid"></div>
-    <div class="menu-preview-cta">
-      <a href="#reservation" class="btn-outline">Plan your visit</a>
-    </div>
   </div>
 </section>
 
@@ -356,7 +352,6 @@
           <div class="stat-item"><div class="stat-num">40+</div><div class="stat-label">Menu items</div></div>
           <div class="stat-item"><div class="stat-num">3K+</div><div class="stat-label">Daily guests</div></div>
         </div>
-        <a href="#reservation" class="btn-outline" style="margin-top:1.5rem;display:inline-flex">Plan Your Visit</a>
       </div>
     </div>
     <div class="journey-pin-wrap">
@@ -890,29 +885,20 @@
   <button type="button" class="lightbox-next" onclick="lightboxNav(1)" aria-label="Next image">→</button>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Flip.min.js"></script>
 <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-<script src="assets/js/supabase-config.js"></script>
-<script src="assets/js/supabase-client.js"></script>
 <script src="assets/js/toast.js"></script>
 <script src="assets/js/nav.js"></script>
-<script src="assets/js/hero.js"></script>
 <script src="assets/js/beans.js"></script>
-<script src="assets/js/cup.js"></script>
 <script src="assets/js/menu.js"></script>
 <script src="assets/js/journal.js"></script>
-<script src="assets/js/newsletter.js"></script>
 <script src="assets/js/reveal.js"></script>
 <script src="assets/js/scroll.js"></script>
 <script src="assets/js/whatsapp.js"></script>
 <script src="assets/js/reservation.js"></script>
 <script src="assets/js/interactions.js"></script>
 <script src="assets/js/ux.js"></script>
-<script src="assets/js/events.js"></script>
 <script src="assets/js/mobile.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="assets/js/main.js"></script>
