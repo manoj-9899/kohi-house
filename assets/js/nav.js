@@ -50,6 +50,10 @@ function setTheme(theme) {
     btn.setAttribute('aria-label', next === 'light' ? 'Switch to dark mode' : 'Switch to light mode')
   })
 
+  document.querySelectorAll('.theme-toggle-label').forEach((label) => {
+    label.textContent = next === 'light' ? 'Dark mode' : 'Light mode'
+  })
+
   updateHeroForTheme(next)
   window.dispatchEvent(new CustomEvent('themechange', { detail: { theme: next } }))
 }

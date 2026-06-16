@@ -10,7 +10,6 @@
   .nav-end{grid-column:2}
   .nav-actions{display:flex;align-items:center;gap:0.5rem;margin-right:0}
   .nav-actions .theme-toggle{display:none}
-  .nav-mobile-cluster{display:flex}
   .nav-cta{padding:0.55rem 1.1rem;font-size:0.65rem;letter-spacing:0.1em}
   .hamburger{display:flex}
   .mobile-close{display:none}

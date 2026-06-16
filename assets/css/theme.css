@@ -583,10 +583,14 @@ footer,
   .nav-actions .theme-toggle {
     display: none;
   }
+
+  .theme-toggle--menu {
+    display: inline-flex;
+  }
 }
 
 @media (min-width: 901px) {
-  .nav-mobile-cluster .theme-toggle--bar {
+  .theme-toggle--menu {
     display: none;
   }
 }

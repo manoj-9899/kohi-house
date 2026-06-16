@@ -158,14 +158,9 @@
       </button>
       <a href="#reservation" class="nav-cta"><span class="nav-cta-long">Reserve a Table</span><span class="nav-cta-short">Reserve</span></a>
     </div>
-    <div class="nav-mobile-cluster">
-      <button type="button" class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
-        <span></span><span></span><span></span>
-      </button>
-      <button type="button" class="theme-toggle theme-toggle--bar" id="theme-toggle-mobile" aria-label="Switch to light mode">
-        <span class="theme-icon">☽</span>
-      </button>
-    </div>
+    <button type="button" class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
@@ -176,7 +171,10 @@
   <a href="#drinks" data-nav="drinks">Drinks</a>
   <a href="#menu" data-nav="menu">Menu</a>
   <a href="#atmosphere" data-nav="atmosphere">Space</a>
-  <a href="#reservation" class="mobile-nav-cta btn-primary" data-nav="reservation">Reserve a Table</a>
+  <button type="button" class="theme-toggle theme-toggle--menu" id="theme-toggle-mobile" aria-label="Switch to light mode">
+    <span class="theme-icon" aria-hidden="true">☽</span>
+    <span class="theme-toggle-label">Light mode</span>
+  </button>
 </nav>
 
 <!-- HERO -->
