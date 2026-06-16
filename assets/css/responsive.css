@@ -17,7 +17,7 @@
   .story-grid{grid-template-columns:1fr;gap:3rem}
   .story-visual{order:-1}
   .menu-grid{grid-template-columns:1fr}
-  .menu-item:nth-child(even){border-right:1px solid var(--caramel-08)}
+  .menu-item:nth-child(even){border-right:1px solid var(--caramel-05)}
   .testi-grid{grid-template-columns:1fr}
   .location-grid{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
@@ -54,7 +54,7 @@
   /* Hero */
   .hero-title{font-size:3rem}
   .hero-sub{font-size:var(--text-base);margin:1rem auto 0}
-  .hero-ctas{flex-direction:column;align-items:stretch;width:100%;max-width:340px;margin:2rem auto 0;gap:0.75rem}
+  .hero-ctas{flex-direction:column;align-items:stretch;width:100%;max-width:340px;margin:48px auto 0;gap:0.75rem}
   .hero-ctas .btn-primary,.hero-ctas .btn-outline{width:100%;justify-content:center;min-height:44px;padding-top:0.85rem;padding-bottom:0.85rem}
   .hero-scroll{display:flex;bottom:1.5rem}
 
@@ -89,9 +89,10 @@
   .menu-tabs::-webkit-scrollbar{display:none}
   .menu-tab{min-height:44px;display:inline-flex;align-items:center;padding:0.75rem 1.25rem;flex-shrink:0}
   .menu-search{min-height:44px;padding-top:0.75rem;padding-bottom:0.75rem;font-size:var(--text-base)}
-  .menu-item{padding:1rem 1.15rem;gap:0.5rem}
-  .menu-item-name,.menu-item-price{font-size:var(--text-base)}
-  .menu-item-desc{font-size:var(--text-xs);line-height:1.5}
+  .menu-item{padding:1.35rem 1.15rem;gap:0.4rem}
+  .menu-item-name{font-size:var(--text-lg);line-height:1.3}
+  .menu-item-desc{font-size:var(--text-sm);line-height:1.6;max-width:none}
+  .menu-item-price{font-size:var(--text-sm)}
 
   /* Gallery */
   .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,minmax(0,1fr));gap:0.65rem;margin-top:2rem}
@@ -129,16 +130,15 @@
   .footer-links{padding:2rem 0 2.25rem;gap:0.1rem;position:static;display:flex}
   .footer-links a{padding:0.5rem 0.65rem;font-size:0.58rem}
   .footer-links-sep{display:none}
-  .footer-bottom{flex-direction:column;gap:0.75rem;text-align:center;align-items:center}
-  .footer-legal{justify-content:center}
+  .footer-bottom{flex-direction:column;gap:0.35rem;text-align:center;align-items:center}
+  .footer-legal{justify-content:center;gap:1rem}
   .social-link{min-width:44px;min-height:44px}
 
   /* Tap targets */
   .nav-cta,.btn-primary,.btn-outline,.wizard-btn-next,.wizard-btn-back,.form-submit,.guest-counter-btn,.date-picker-nav{min-height:44px}
   .time-slot,.occasion-card{min-height:44px;display:flex;flex-direction:column;justify-content:center}
 
-  /* Location map — static on mobile, external link */
-  .map-open-external{display:flex}
+  /* Location map — static on mobile */
   .map-interact-overlay{display:none}
 
   /* Toasts — bottom center, full width */

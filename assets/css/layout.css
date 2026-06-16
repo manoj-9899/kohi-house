@@ -29,7 +29,7 @@
 /* ─── MENU ─────────────────────────────────────────── */
 #menu{padding:8rem 0;background:linear-gradient(180deg,var(--obsidian),var(--dark-roast))}
 .menu-wrapper{max-width:1100px;margin:0 auto;padding:0 3rem}
-.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--caramel-10);margin-top:3rem}
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--caramel-05);margin-top:3rem}
 
 /* ─── ATMOSPHERE ───────────────────────────────────── */
 #atmosphere{padding:8rem 0;background:var(--obsidian);overflow:hidden}

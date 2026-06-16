@@ -349,13 +349,13 @@ footer,
 }
 
 [data-theme="light"] .menu-item-price {
-  color: var(--accent);
-  font-weight: 600;
+  color: var(--text-muted);
+  font-weight: 500;
 }
 
-[data-theme="light"] .menu-item-prep,
-[data-theme="light"] .menu-item-calories {
+[data-theme="light"] .menu-item-note {
   color: var(--text-muted);
+  opacity: 0.85;
 }
 
 [data-theme="light"] .menu-tab {

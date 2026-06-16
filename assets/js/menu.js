@@ -2,43 +2,71 @@
 
 const menuData = {
   coffee: [
-    { name: 'Ethiopian Pour-Over', price: '₹340', desc: 'Light roast, jasmine florals, bright acidity.', tags: ['Single Origin'], isNew: true, isBestseller: false, prepTime: '5 min', calories: '5 kcal' },
-    { name: 'Ginger Honey Flat White', price: '₹290', desc: 'Two ristretto shots, steamed milk, raw honey, ginger.', tags: ['Seasonal'], isNew: false, isBestseller: false, prepTime: '4 min', calories: '140 kcal' },
-    { name: 'Masala Cappuccino', price: '₹260', desc: 'Cardamom, cinnamon, ginger — our take on tradition.', tags: ['Spiced'], isNew: false, isBestseller: false, prepTime: '4 min', calories: '120 kcal' },
-    { name: 'Origin Flight — Three Regions', price: '₹540', desc: 'Araku, Coorg, and Chikmagalur. Side by side.', tags: ['Tasting'], isNew: true, isBestseller: false, prepTime: '6 min', calories: '30 kcal' },
+    { name: 'Ethiopian Pour-Over', price: '₹340', desc: 'Light roast, jasmine florals, bright acidity.', tags: ['Single Origin'], isNew: true, isBestseller: false },
+    { name: 'Ginger Honey Flat White', price: '₹290', desc: 'Two ristretto shots, steamed milk, raw honey, ginger.', tags: ['Seasonal'], isNew: false, isBestseller: false },
+    { name: 'Masala Cappuccino', price: '₹260', desc: 'Cardamom, cinnamon, ginger — our take on tradition.', tags: ['Spiced'], isNew: false, isBestseller: false },
+    { name: 'Origin Flight — Three Regions', price: '₹540', desc: 'Araku, Coorg, and Chikmagalur. Side by side.', tags: ['Tasting'], isNew: true, isBestseller: false },
   ],
   espresso: [
-    { name: 'Double Espresso', price: '₹180', desc: 'Rich, full-bodied. Two shots of our house blend.', tags: ['Strong'], isNew: false, isBestseller: true, prepTime: '2 min', calories: '10 kcal' },
-    { name: 'Araku Gold Cortado', price: '₹280', desc: 'Equal parts espresso and steamed milk.', tags: ['Balanced'], isNew: true, isBestseller: true, prepTime: '3 min', calories: '90 kcal' },
-    { name: 'Saffron Fog Latte', price: '₹320', desc: 'House saffron syrup, double shot, oat microfoam.', tags: ['Signature'], isNew: false, isBestseller: true, prepTime: '4 min', calories: '180 kcal' },
-    { name: 'Monsoon Spice Latte', price: '₹350', desc: 'Seasonal. Wet-processed bean, black pepper, cardamom.', tags: ['Seasonal'], isNew: false, isBestseller: true, prepTime: '4 min', calories: '160 kcal' },
+    { name: 'Double Espresso', price: '₹180', desc: 'Rich, full-bodied. Two shots of our house blend.', tags: ['Strong'], isNew: false, isBestseller: true },
+    { name: 'Araku Gold Cortado', price: '₹280', desc: 'Equal parts espresso and steamed milk.', tags: ['Balanced'], isNew: true, isBestseller: true },
+    { name: 'Saffron Fog Latte', price: '₹320', desc: 'House saffron syrup, double shot, oat microfoam.', tags: ['Signature'], isNew: false, isBestseller: true },
+    { name: 'Monsoon Spice Latte', price: '₹350', desc: 'Seasonal. Wet-processed bean, black pepper, cardamom.', tags: ['Seasonal'], isNew: false, isBestseller: true },
   ],
   cold: [
-    { name: 'Midnight Nitro Cold Brew', price: '₹340', desc: '18-hour cold brew, nitrogen-infused. Velvet smooth.', tags: ['Nitro'], isNew: false, isBestseller: true, prepTime: '1 min', calories: '15 kcal' },
-    { name: 'Deconstructed Iced Latte', price: '₹300', desc: 'Espresso on ice, oat milk on the side.', tags: ['Oat'], isNew: true, isBestseller: false, prepTime: '3 min', calories: '110 kcal' },
-    { name: 'Mango Cold Brew Float', price: '₹360', desc: 'House cold brew, Alphonso mango purée, ice cream.', tags: ['Seasonal'], isNew: false, isBestseller: true, prepTime: '4 min', calories: '280 kcal' },
-    { name: 'Hibiscus Tonic Espresso', price: '₹320', desc: 'Iced tonic water, hibiscus, double shot.', tags: ['Floral'], isNew: true, isBestseller: false, prepTime: '3 min', calories: '45 kcal' },
-    { name: 'Charcoal Lemonade', price: '₹240', desc: 'Activated charcoal, lemon, salt, sparkling water.', tags: ['Vegan'], isNew: false, isBestseller: false, prepTime: '2 min', calories: '35 kcal' },
-    { name: 'Rose Cold Brew Lemonade', price: '₹280', desc: 'Cold brew, rose syrup, fresh lemon, ice.', tags: ['Floral'], isNew: false, isBestseller: true, prepTime: '3 min', calories: '60 kcal' },
+    { name: 'Midnight Nitro Cold Brew', price: '₹340', desc: '18-hour cold brew, nitrogen-infused. Velvet smooth.', tags: ['Nitro'], isNew: false, isBestseller: true },
+    { name: 'Deconstructed Iced Latte', price: '₹300', desc: 'Espresso on ice, oat milk on the side.', tags: ['Oat'], isNew: true, isBestseller: false },
+    { name: 'Mango Cold Brew Float', price: '₹360', desc: 'House cold brew, Alphonso mango purée, ice cream.', tags: ['Seasonal'], isNew: false, isBestseller: true },
+    { name: 'Hibiscus Tonic Espresso', price: '₹320', desc: 'Iced tonic water, hibiscus, double shot.', tags: ['Floral'], isNew: true, isBestseller: false },
+    { name: 'Charcoal Lemonade', price: '₹240', desc: 'Activated charcoal, lemon, salt, sparkling water.', tags: ['Vegan'], isNew: false, isBestseller: false },
+    { name: 'Rose Cold Brew Lemonade', price: '₹280', desc: 'Cold brew, rose syrup, fresh lemon, ice.', tags: ['Floral'], isNew: false, isBestseller: true },
   ],
   tea: [
-    { name: 'Masala Chai', price: '₹180', desc: 'Slow-brewed Assam with cardamom, ginger, and clove.', tags: ['Spiced'], isNew: false, isBestseller: true, prepTime: '4 min', calories: '80 kcal' },
-    { name: 'Kashmiri Kahwa', price: '₹220', desc: 'Green tea, saffron, almond slivers, rose petals.', tags: ['Floral'], isNew: true, isBestseller: false, prepTime: '5 min', calories: '45 kcal' },
-    { name: 'Hibiscus Iced Tea', price: '₹200', desc: 'Tart hibiscus, mint, light honey. Refreshing.', tags: ['Vegan'], isNew: false, isBestseller: false, prepTime: '2 min', calories: '30 kcal' },
-    { name: 'Matcha Latte', price: '₹280', desc: 'Ceremonial grade matcha, steamed oat milk.', tags: ['Oat'], isNew: false, isBestseller: true, prepTime: '3 min', calories: '120 kcal' },
+    { name: 'Masala Chai', price: '₹180', desc: 'Slow-brewed Assam with cardamom, ginger, and clove.', tags: ['Spiced'], isNew: false, isBestseller: true },
+    { name: 'Kashmiri Kahwa', price: '₹220', desc: 'Green tea, saffron, almond slivers, rose petals.', tags: ['Floral'], isNew: true, isBestseller: false },
+    { name: 'Hibiscus Iced Tea', price: '₹200', desc: 'Tart hibiscus, mint, light honey. Refreshing.', tags: ['Vegan'], isNew: false, isBestseller: false },
+    { name: 'Matcha Latte', price: '₹280', desc: 'Ceremonial grade matcha, steamed oat milk.', tags: ['Oat'], isNew: false, isBestseller: true },
   ],
   pastries: [
-    { name: 'Almond Croissant', price: '₹180', desc: 'Twice-baked. Frangipane filling. Perfectly flaky.', tags: ['Pastry'], isNew: false, isBestseller: true, prepTime: '2 min', calories: '340 kcal' },
-    { name: 'Shakshuka Croissant', price: '₹380', desc: 'Spiced tomato eggs, baked into a buttery croissant.', tags: ['Brunch'], isNew: true, isBestseller: true, prepTime: '12 min', calories: '420 kcal' },
-    { name: 'Avocado Toast on Sourdough', price: '₹340', desc: 'Poached egg, microgreens, chilli flakes.', tags: ['Brunch'], isNew: false, isBestseller: true, prepTime: '10 min', calories: '310 kcal' },
-    { name: 'Dal Makhani Bruschetta', price: '₹290', desc: 'House-smoked tomatoes, slow-cooked dal on toast.', tags: ['Indian'], isNew: true, isBestseller: false, prepTime: '11 min', calories: '290 kcal' },
-    { name: "Chef's Brunch Thali", price: '₹520', desc: 'Rotating weekly. Eggs your way, sides, two drinks.', tags: ['Brunch'], isNew: true, isBestseller: false, prepTime: '18 min', calories: '750 kcal' },
+    { name: 'Almond Croissant', price: '₹180', desc: 'Twice-baked. Frangipane filling. Perfectly flaky.', tags: ['Pastry'], isNew: false, isBestseller: true },
+    { name: 'Shakshuka Croissant', price: '₹380', desc: 'Spiced tomato eggs, baked into a buttery croissant.', tags: ['Brunch'], isNew: true, isBestseller: true },
+    { name: 'Avocado Toast on Sourdough', price: '₹340', desc: 'Poached egg, microgreens, chilli flakes.', tags: ['Brunch'], isNew: false, isBestseller: true },
+    { name: 'Dal Makhani Bruschetta', price: '₹290', desc: 'House-smoked tomatoes, slow-cooked dal on toast.', tags: ['Indian'], isNew: true, isBestseller: false },
+    { name: "Chef's Brunch Thali", price: '₹520', desc: 'Rotating weekly. Eggs your way, sides, two drinks.', tags: ['Brunch'], isNew: true, isBestseller: false },
   ],
   desserts: [
-    { name: 'Dark Chocolate Tart', price: '₹260', desc: '70% Coorg cacao ganache, sea salt, hazelnut base.', tags: ['Dessert'], isNew: false, isBestseller: false, prepTime: '2 min', calories: '380 kcal' },
-    { name: 'Banana Walnut French Toast', price: '₹320', desc: 'Thick brioche, caramelised banana, whipped cream.', tags: ['Sweet'], isNew: false, isBestseller: false, prepTime: '14 min', calories: '480 kcal' },
-    { name: 'The Kōhī Signature Board', price: '₹680', desc: 'Three espresso drinks, two pastries, one story.', tags: ['Sharing'], isNew: false, isBestseller: true, prepTime: '8 min', calories: '620 kcal' },
+    { name: 'Dark Chocolate Tart', price: '₹260', desc: '70% Coorg cacao ganache, sea salt, hazelnut base.', tags: ['Dessert'], isNew: false, isBestseller: false },
+    { name: 'Banana Walnut French Toast', price: '₹320', desc: 'Thick brioche, caramelised banana, whipped cream.', tags: ['Sweet'], isNew: false, isBestseller: false },
+    { name: 'The Kōhī Signature Board', price: '₹680', desc: 'Three espresso drinks, two pastries, one story.', tags: ['Sharing'], isNew: false, isBestseller: true },
   ],
+}
+
+const noteByName = {
+  'Ethiopian Pour-Over': 'Single Origin · Ethiopia',
+  'Origin Flight — Three Regions': 'Tasting Flight · Three Regions',
+  'Araku Gold Cortado': 'Single Origin · Araku Valley',
+  'Monsoon Spice Latte': 'Limited Roast · Seasonal',
+  'The Kōhī Signature Board': 'Curated for the table',
+}
+
+const noteByTag = {
+  'Single Origin': 'Single Origin',
+  'Seasonal': 'Seasonal Feature',
+  'Spiced': 'Spiced Blend',
+  'Tasting': 'Tasting Flight',
+  'Strong': 'House Espresso',
+  'Balanced': 'Cortado Style',
+  'Signature': 'House Signature',
+  'Nitro': 'Nitro Tap',
+  'Oat': 'Oat Milk',
+  'Floral': 'Floral Notes',
+  'Vegan': 'Plant-Based',
+  'Pastry': 'Baked Daily',
+  'Brunch': 'Brunch Plate',
+  'Indian': 'Indian-Inspired',
+  'Dessert': 'Pastry Case',
+  'Sweet': 'Sweet Plate',
+  'Sharing': 'For the Table',
 }
 
 const categoryLabels = {
@@ -68,38 +96,22 @@ function highlightText(text, query) {
   return safe.replace(re, '<mark class="menu-highlight">$1</mark>')
 }
 
-function tagClass(tag) {
-  const t = tag.toLowerCase()
-  if (t === 'vegan') return 'menu-tag--vegan'
-  if (t === 'seasonal') return 'menu-tag--seasonal'
-  return 'menu-tag--default'
-}
-
-function renderTags(item) {
-  const badges = []
-  if (item.isBestseller) badges.push('<span class="menu-tag menu-tag--bestseller">Bestseller</span>')
-  if (item.isNew) badges.push('<span class="menu-tag menu-tag--new">New</span>')
-  item.tags.forEach((tag) => {
-    badges.push(`<span class="menu-tag ${tagClass(tag)}">${escapeHtml(tag)}</span>`)
-  })
-  return badges.join('')
+function getItemNote(item) {
+  if (noteByName[item.name]) return noteByName[item.name]
+  const tag = item.tags[0]
+  return tag ? noteByTag[tag] || '' : ''
 }
 
 function renderMenuItemHTML(item, category, query) {
   const showCategory = searchQuery.trim().length > 0
+  const note = getItemNote(item)
   return `
     <div class="menu-item" data-category="${category}">
       ${showCategory ? `<div class="menu-item-category">${categoryLabels[category]}</div>` : ''}
-      <div class="menu-item-top">
-        <div class="menu-item-name">${highlightText(item.name, query)}</div>
-        <div class="menu-item-price">${escapeHtml(item.price)}</div>
-      </div>
+      <div class="menu-item-name">${highlightText(item.name, query)}</div>
       <div class="menu-item-desc">${highlightText(item.desc, query)}</div>
-      <div class="menu-item-meta">
-        <span class="menu-item-prep"><span class="menu-item-prep-icon">⏱</span>${escapeHtml(item.prepTime)}</span>
-        <span class="menu-item-calories">${escapeHtml(item.calories)}</span>
-        <div class="menu-item-tags">${renderTags(item)}</div>
-      </div>
+      <div class="menu-item-price">${escapeHtml(item.price)}</div>
+      ${note ? `<p class="menu-item-note">${escapeHtml(note)}</p>` : ''}
     </div>
   `
 }

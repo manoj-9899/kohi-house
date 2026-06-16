@@ -1,25 +1,6 @@
-// ux.js — Conversion UX: reservation FAB and drinks filters
+// ux.js — Conversion UX: drinks filters
 
 ;(function () {
-  function initReserveFab() {
-    const fab = document.getElementById('reserve-fab')
-    if (!fab) return
-
-    const hero = document.getElementById('hero')
-    const reservation = document.getElementById('reservation')
-
-    function update() {
-      const heroBottom = hero ? hero.getBoundingClientRect().bottom : 0
-      const resTop = reservation ? reservation.getBoundingClientRect().top : Infinity
-      const pastHero = heroBottom < 0
-      const beforeForm = resTop > window.innerHeight * 0.5
-      fab.classList.toggle('is-visible', pastHero && beforeForm)
-    }
-
-    window.addEventListener('scroll', update, { passive: true })
-    update()
-  }
-
   function initDrinksFilters() {
     const filters = document.querySelectorAll('.drinks-filter')
     const cards = document.querySelectorAll('.drink-card')
@@ -43,7 +24,6 @@
   }
 
   function init() {
-    initReserveFab()
     initDrinksFilters()
   }
 

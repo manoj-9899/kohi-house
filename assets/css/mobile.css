@@ -84,14 +84,16 @@
   }
 
   .nav-cta {
-    padding: 0.45rem 0.75rem;
-    font-size: 0.58rem;
-    letter-spacing: 0.08em;
+    padding: 0.5rem 1.1rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
     border-radius: 2rem;
-    min-height: 36px;
+    min-height: 44px;
+    min-width: auto;
     display: inline-flex;
     align-items: center;
-    box-shadow: 0 2px 12px var(--caramel-35);
+    justify-content: center;
+    box-shadow: 0 2px 10px var(--caramel-35);
   }
 
   .nav-cta-long {
@@ -194,7 +196,7 @@
     align-items: center;
     width: 85%;
     max-width: none;
-    margin: 1.75rem auto 0;
+    margin: 48px auto 0;
     gap: 0.75rem;
   }
 
@@ -289,6 +291,9 @@
 
   .drink-name {
     font-size: 1.4rem;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    line-height: 1.15;
   }
 
   .drink-desc {
@@ -298,6 +303,21 @@
 
   .drink-price {
     font-size: 1.15rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .drink-actions {
+    flex-wrap: nowrap;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+
+  .drink-detail {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .flavor-tags {
@@ -378,9 +398,9 @@
   }
 
   .menu-item {
-    padding: 1rem 0;
+    padding: 1.35rem 0;
     border-right: none !important;
-    gap: 0.35rem;
+    gap: 0.4rem;
   }
 
   .menu-item:nth-child(even) {
@@ -388,16 +408,30 @@
   }
 
   .menu-item-name {
-    font-size: 1rem;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    word-break: normal;
+    overflow-wrap: break-word;
   }
 
   .menu-item-desc {
-    font-size: 0.8rem;
-    line-height: 1.55;
+    font-size: 0.85rem;
+    line-height: 1.65;
+    max-width: none;
+    word-break: normal;
+    overflow-wrap: break-word;
   }
 
   .menu-item-price {
-    font-size: 1rem;
+    font-size: 0.85rem;
+    margin-top: 0.45rem;
+  }
+
+  .menu-item-note {
+    font-size: 0.68rem;
   }
 }
 
@@ -894,28 +928,109 @@
   .wizard-field-row,
   .form-row {
     grid-template-columns: 1fr !important;
-    gap: 0;
+    gap: 16px;
   }
 
-  .wizard-field input,
-  .wizard-field textarea,
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    min-height: 48px;
-    font-size: 1rem;
+  #reservation .wizard-field {
+    margin-bottom: 16px;
   }
 
-  .time-slots {
+  #reservation .wizard-field-row .wizard-field {
+    margin-bottom: 16px;
+  }
+
+  #reservation .wizard-field-row .wizard-field:last-child {
+    margin-bottom: 16px;
+  }
+
+  #reservation .wizard-label {
+    margin-bottom: 16px;
+  }
+
+  #reservation .wizard-label + .wizard-field,
+  #reservation .wizard-label + .time-slots,
+  #reservation .wizard-label + .occasion-cards,
+  #reservation .wizard-label + .dietary-grid,
+  #reservation .wizard-label + .date-picker {
+    margin-top: 0;
+  }
+
+  #reservation .date-picker {
+    margin-bottom: 16px;
+  }
+
+  #reservation .date-picker-header {
+    margin-bottom: 16px;
+  }
+
+  #reservation .date-picker-selected {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  #reservation .time-slots {
     grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
   }
 
-  .occasion-cards {
+  #reservation .time-slots-note {
+    margin-bottom: 16px;
+  }
+
+  #reservation .occasion-cards {
     grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 16px;
   }
 
-  .dietary-grid {
+  #reservation .dietary-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  #reservation .guest-counter {
+    margin-bottom: 16px;
+  }
+
+  #reservation .wizard-field input,
+  #reservation .wizard-field textarea,
+  #reservation .form-group input,
+  #reservation .form-group select,
+  #reservation .form-group textarea,
+  #reservation .time-custom-wrap input {
+    min-height: 48px;
+    padding: 0 16px;
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
+
+  #reservation .wizard-field textarea {
+    padding: 12px 16px;
+    min-height: 96px;
+  }
+
+  #reservation .wizard-field label {
+    margin-bottom: 8px;
+  }
+
+  #reservation .time-slot,
+  #reservation .occasion-card,
+  #reservation .dietary-option {
+    min-height: 48px;
+    padding: 12px 16px;
+  }
+
+  #reservation .date-picker-day {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  #reservation .date-picker-nav,
+  #reservation .guest-counter-btn {
+    min-width: 44px;
+    min-height: 44px;
   }
 
   .wizard-nav {
@@ -928,6 +1043,8 @@
   .wizard-btn-back {
     width: 100%;
     min-height: 52px;
+    min-width: 44px;
+    padding: 12px 20px;
     margin-left: 0;
     justify-content: center;
     text-align: center;
@@ -942,99 +1059,14 @@
   }
 }
 
-/* ─── LOCATION ─────────────────────────────────────── */
+/* ─── LOCATION (mobile overrides in location.css) ──── */
 @media (max-width: 768px) {
   #location {
     padding: 4rem 0;
   }
 
-  .location-inner {
-    text-align: center;
-  }
-
-  .location-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    margin-top: 2rem;
-  }
-
-  .location-info {
-    order: -1;
-  }
-
-  .map-frame {
-    min-height: 280px;
-    height: 280px;
-    aspect-ratio: auto;
-    width: 100%;
-  }
-
-  #leaflet-map {
-    min-height: 280px !important;
-    height: 100% !important;
-  }
-
-  .location-map-wrap .btn-outline.map-open-external {
-    width: 100%;
-    min-height: 44px;
-    justify-content: center;
-    margin-top: 0.75rem;
-  }
-
-  .location-actions {
-    display: flex;
-    gap: 0.65rem;
-    margin-top: 1rem;
-  }
-
-  .location-action-btn {
-    flex: 1;
-    min-height: 44px;
-    justify-content: center;
-    align-items: center;
-    display: inline-flex;
-    font-size: 0.72rem;
-    padding: 0.75rem 0.5rem;
-  }
-
-  .location-grid {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .location-map-wrap {
-    order: 2;
-  }
-
-  .location-grid > div:first-child {
-    order: 1;
-  }
-
   .leaflet-popup {
     display: none !important;
-  }
-
-  .hours-row {
-    font-size: 0.85rem;
-    gap: 0;
-  }
-
-  .hours-day {
-    min-width: 72px;
-    font-size: 0.82rem;
-  }
-
-  .hours-time {
-    font-size: 0.82rem;
-    white-space: nowrap;
-  }
-
-  #location .location-actions {
-    flex-direction: column;
-  }
-
-  #location .location-action-btn {
-    width: 100%;
   }
 }
 
@@ -1110,27 +1142,27 @@
 
   .footer-bottom {
     flex-direction: column;
-    gap: 0.85rem;
+    gap: 0.3rem;
     text-align: center;
     align-items: center;
-    padding-top: 1.5rem;
+    padding-top: 1.25rem;
   }
 
   .footer-bottom p {
     font-size: 0.72rem;
-    order: 1;
+    margin: 0;
   }
 
   .footer-legal {
-    flex-direction: column;
-    gap: 0.5rem;
-    order: 2;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 1.25rem;
   }
 
   .footer-legal a {
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
+    min-height: auto;
+    padding: 0.1rem 0.35rem;
   }
 }
 
@@ -1141,8 +1173,9 @@
   }
 
   .nav-cta {
-    padding: 0.4rem 0.65rem;
-    font-size: 0.55rem;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.09em;
   }
 
   .drink-card {
@@ -1156,11 +1189,6 @@
   .stat-label {
     font-size: 0.6rem;
   }
-
-  .reserve-fab {
-    font-size: 0.65rem;
-    padding: 0 0.85rem;
-  }
 }
 
 @media (max-width: 320px) {
@@ -1170,5 +1198,90 @@
 
   .nav-cta-short {
     font-size: 0.5rem;
+  }
+}
+
+/* ─── CRITICAL: tap targets, touch spacing, card text ─ */
+@media (max-width: 768px) {
+  .btn-primary,
+  .btn-outline,
+  .share-btn,
+  .menu-tab,
+  .menu-search,
+  .drinks-filter,
+  .time-slot,
+  .occasion-card,
+  .dietary-option,
+  .date-picker-nav,
+  .date-picker-day:not(.is-empty),
+  .guest-counter-btn,
+  .footer-links-mobile a,
+  .social-link,
+  .theme-toggle,
+  .journal-card,
+  .gallery-cell,
+  .location-copy-address,
+  .map-interact-overlay,
+  .success-btn-retry {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .btn-primary,
+  .btn-outline,
+  .share-btn,
+  .menu-tab,
+  .drinks-filter,
+  .wizard-btn-next,
+  .wizard-btn-back,
+  .form-submit {
+    padding: 12px 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-ctas .btn-primary,
+  .hero-ctas .btn-outline {
+    width: 100%;
+    min-height: 52px;
+    padding: 12px 20px;
+  }
+
+  .nav-cta {
+    min-height: 44px;
+    padding: 0.5rem 1.1rem;
+  }
+
+  #location .location-action-btn--primary {
+    width: 100%;
+    min-height: 52px;
+    padding: 12px 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #location .location-whatsapp-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 52px;
+    width: 100%;
+    padding: 12px 0;
+    box-sizing: border-box;
+  }
+
+  .mobile-nav a[data-nav] {
+    min-height: 52px;
+    padding: 12px 20px;
+  }
+
+  .footer-links-mobile a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    width: 100%;
+    max-width: 280px;
   }
 }

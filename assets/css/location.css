@@ -158,46 +158,25 @@
 
 /* ─── WhatsApp — editorial link ─────────────────────── */
 .location-whatsapp-link {
-  display: inline-flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  margin-top: 0.15rem;
+  display: inline-block;
+  margin-top: 0;
   padding: 0;
   background: none;
   border: none;
   border-radius: 0;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--location-text-primary);
   text-decoration: none;
   transition: color 0.25s var(--silk);
 }
 
 .location-whatsapp-link:hover {
+  color: var(--location-accent);
   transform: none;
   box-shadow: none;
-}
-
-.location-whatsapp-label {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  text-transform: none;
-  color: var(--location-text-primary);
-  transition: color 0.25s var(--silk);
-}
-
-.location-whatsapp-hint {
-  font-size: 0.84rem;
-  color: var(--location-text-secondary);
-  line-height: 1.5;
-  transition: color 0.25s var(--silk);
-}
-
-.location-whatsapp-link:hover .location-whatsapp-label {
-  color: var(--location-accent);
-}
-
-.location-whatsapp-link:hover .location-whatsapp-hint {
-  color: var(--location-text-primary);
 }
 
 /* ─── Map: supporting role ──────────────────────────── */
@@ -349,4 +328,149 @@
 [data-theme="light"] #location .location-action-btn--secondary:hover {
   background: rgba(43, 30, 23, 0.04);
   border-color: var(--location-accent);
+}
+
+/* ─── Mobile: unified visit layout ──────────────────── */
+@media (max-width: 768px) {
+  #location {
+    --loc-section-gap: 3rem;
+    --loc-label-gap: 0.875rem;
+    --loc-row-gap: 1.75rem;
+    --loc-btn-gap: 1.5rem;
+    --loc-icon-col: 2rem;
+    --loc-icon-gap: 0.875rem;
+  }
+
+  #location .location-inner {
+    text-align: left;
+  }
+
+  #location .section-header {
+    text-align: left !important;
+    margin-bottom: 0;
+  }
+
+  #location .location-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: var(--loc-row-gap);
+  }
+
+  #location .location-info-col {
+    order: 1;
+    width: 100%;
+  }
+
+  #location .location-map-wrap {
+    order: 2;
+    width: 100%;
+    opacity: 1;
+    margin-top: var(--loc-section-gap);
+  }
+
+  #location .live-badge {
+    margin-bottom: var(--loc-section-gap);
+    width: 100%;
+  }
+
+  #location .location-detail {
+    display: grid;
+    grid-template-columns: var(--loc-icon-col) minmax(0, 1fr);
+    column-gap: var(--loc-icon-gap);
+    align-items: start;
+    border-bottom: none;
+    padding: 0;
+    margin: 0 0 var(--loc-section-gap);
+  }
+
+  #location .location-info-col .location-detail--contact {
+    margin-bottom: 0;
+  }
+
+  #location .location-icon {
+    width: var(--loc-icon-col);
+    height: var(--loc-icon-col);
+    font-size: 0.72rem;
+    border-color: rgba(183, 123, 58, 0.14);
+    margin-top: 0.05rem;
+  }
+
+  #location .location-detail-text strong {
+    display: block;
+    margin-bottom: var(--loc-label-gap);
+  }
+
+  #location .location-copy-address {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  #location .hours-table {
+    margin-top: 0;
+    gap: var(--loc-row-gap);
+  }
+
+  #location .hours-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    padding: 0;
+    font-size: 0.9rem;
+  }
+
+  #location .hours-day {
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+    color: var(--location-text-secondary);
+  }
+
+  #location .hours-time {
+    text-align: left;
+    font-size: 0.92rem;
+    color: var(--location-text-primary);
+    white-space: normal;
+  }
+
+  #location .location-whatsapp-link {
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  #location .map-frame {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    min-height: 0;
+    height: auto;
+    border-radius: 4px;
+    margin: 0;
+  }
+
+  #location #leaflet-map {
+    min-height: 0 !important;
+    height: 100% !important;
+  }
+
+  #location .location-actions {
+    display: block;
+    width: 100%;
+    margin-top: var(--loc-btn-gap);
+  }
+
+  #location .location-action-btn {
+    width: 100%;
+    flex: none;
+    min-height: 52px;
+    padding: 12px 20px;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #location .location-action-btn--primary {
+    box-shadow: 0 6px 20px rgba(183, 123, 58, 0.22);
+  }
 }
