@@ -25,14 +25,11 @@
   box-shadow: var(--focus-ring);
 }
 
-/* Improved readable body contrast */
-.hero-sub,
+/* Improved readable body contrast (section-specific hierarchy in theme.css) */
 .section-header p,
 .drink-desc,
-.menu-item-desc,
-.testi-meta,
-.location-detail-text span {
-  color: var(--text-secondary);
+.menu-item-desc {
+  color: var(--text-body, var(--text-secondary));
   line-height: var(--line-body);
 }
 

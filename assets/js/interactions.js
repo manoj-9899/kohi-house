@@ -163,6 +163,34 @@
     return minutes >= range.open && minutes < range.close
   }
 
+  function getCloseLabel() {
+    const day = new Date().getDay()
+    if (day === 0) return '9 PM'
+    if (day === 6) return '11 PM'
+    return '10 PM'
+  }
+
+  function getOpenLabel() {
+    const day = new Date().getDay()
+    if (day === 0) return '8 AM'
+    return '7 AM'
+  }
+
+  function initLiveBadge() {
+    const badge = document.querySelector('#location .live-badge')
+    if (!badge) return
+
+    if (isOpenNow()) {
+      badge.classList.add('is-open')
+      badge.classList.remove('is-closed')
+      badge.innerHTML = `<span class="live-dot" aria-hidden="true"></span>Brewing until ${getCloseLabel()}`
+    } else {
+      badge.classList.add('is-closed')
+      badge.classList.remove('is-open')
+      badge.innerHTML = `<span class="live-dot" aria-hidden="true"></span>Resting until ${getOpenLabel()}`
+    }
+  }
+
   function initHoursTable() {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     const todayName = days[new Date().getDay()]
@@ -176,15 +204,6 @@
         (todayName !== 'Saturday' && todayName !== 'Sunday' && text === 'Mon – Fri')
       ) {
         row.classList.add('today')
-        if (isOpenNow()) {
-          const timeEl = row.querySelector('.hours-time')
-          if (timeEl && !row.querySelector('.hours-live-dot')) {
-            const dot = document.createElement('span')
-            dot.className = 'hours-live-dot'
-            dot.title = 'Open now'
-            timeEl.insertAdjacentElement('afterend', dot)
-          }
-        }
       }
     })
   }
@@ -192,6 +211,7 @@
   function init() {
     initMagneticButtons()
     initLightbox()
+    initLiveBadge()
     initHoursTable()
   }
 

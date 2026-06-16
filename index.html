@@ -134,6 +134,7 @@
 <link rel="stylesheet" href="assets/css/journal.css">
 <link rel="stylesheet" href="assets/css/newsletter.css">
 <link rel="stylesheet" href="assets/css/theme.css">
+<link rel="stylesheet" href="assets/css/location.css">
 <link rel="stylesheet" href="assets/css/scroll.css">
 <link rel="stylesheet" href="assets/css/ux-redesign.css">
 <link rel="stylesheet" href="assets/css/mobile.css">
@@ -151,7 +152,6 @@
     <li><a href="#drinks">Drinks</a></li>
     <li><a href="#menu">Menu</a></li>
     <li><a href="#atmosphere">Space</a></li>
-    <li><a href="#events">Events</a></li>
   </ul>
   <div class="nav-end">
     <div class="nav-actions">
@@ -173,7 +173,6 @@
   <a href="#drinks" data-nav="drinks">Drinks</a>
   <a href="#menu" data-nav="menu">Menu</a>
   <a href="#atmosphere" data-nav="atmosphere">Space</a>
-  <a href="#events" data-nav="events">Events</a>
   <a href="#reservation" class="mobile-nav-cta btn-primary" data-nav="reservation">Reserve a Table</a>
   <button type="button" class="theme-toggle theme-toggle--mobile" id="theme-toggle-mobile" aria-label="Toggle light mode">
     <span class="theme-icon">☽</span>
@@ -542,33 +541,6 @@
   </div>
 </section>
 
-<!-- EVENTS -->
-<section id="events">
-  <div class="events-inner">
-    <div class="section-header" style="text-align:left;margin-left:0;padding-left:0">
-      <p class="section-eyebrow">Live at Kōhī</p>
-      <h2 class="section-title">Music, mornings &amp; <em>moments.</em></h2>
-    </div>
-    <div class="events-body">
-      <div class="events-sidebar">
-        <div class="event-filters" id="event-filters" role="group" aria-label="Filter events by type"></div>
-        <div class="events-calendar">
-          <div class="cal-header">
-            <button type="button" class="cal-prev" aria-label="Previous month">←</button>
-            <span class="cal-month-year">June 2026</span>
-            <button type="button" class="cal-next" aria-label="Next month">→</button>
-          </div>
-          <div class="cal-weekdays">
-            <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
-          </div>
-          <div class="cal-grid" id="cal-grid"></div>
-        </div>
-      </div>
-      <div class="events-list" id="events-list"></div>
-    </div>
-  </div>
-</section>
-
 <!-- JOURNAL -->
 <section id="journal">
   <div class="journal-inner">
@@ -733,6 +705,7 @@
 
           <span class="wizard-label">Dietary requirements</span>
           <div class="dietary-grid">
+            <label class="dietary-option" data-value="No allergies"><span class="dietary-check">✓</span>No allergies</label>
             <label class="dietary-option" data-value="Vegan"><span class="dietary-check">✓</span>Vegan</label>
             <label class="dietary-option" data-value="Gluten-free"><span class="dietary-check">✓</span>Gluten-free</label>
             <label class="dietary-option" data-value="Nut allergy"><span class="dietary-check">✓</span>Nut allergy</label>
@@ -775,11 +748,14 @@
           <path class="success-check-path" d="M14 27 l8 8 16-16"/>
         </svg>
       </div>
-      <p class="success-title">You're all set, <span class="success-name">Guest</span>.</p>
-      <p class="success-ref">Booking reference: <strong class="success-ref-code">KOH123</strong></p>
-      <p class="success-datetime">We'll see you soon.</p>
-      <div class="success-actions">
-        <a href="#" class="success-btn-calendar">Add to calendar</a>
+      <h2 class="success-heading">See you soon, <span class="success-name">Guest</span>.</h2>
+      <p class="success-body">Your reservation request has been sent to us on WhatsApp. We will confirm your table within a few hours.</p>
+      <p class="success-retry-note">Did WhatsApp not open? <button type="button" class="success-btn-retry">Tap here to try again</button></p>
+      <div class="success-summary-card">
+        <div class="success-summary-row"><span class="success-summary-label">Date</span><strong class="success-summary-date"></strong></div>
+        <div class="success-summary-row"><span class="success-summary-label">Time</span><strong class="success-summary-time"></strong></div>
+        <div class="success-summary-row"><span class="success-summary-label">Guests</span><strong class="success-summary-guests"></strong></div>
+        <div class="success-summary-row"><span class="success-summary-label">Name</span><strong class="success-summary-name"></strong></div>
       </div>
     </div>
   </div>
@@ -794,7 +770,7 @@
     </div>
     <div class="location-grid">
       <div>
-        <div class="live-badge"><span class="live-dot"></span>Open now · Closes at 10 PM</div>
+        <p class="live-badge" role="status" aria-live="polite"><span class="live-dot" aria-hidden="true"></span>Brewing until 10 PM</p>
         <div class="location-detail">
           <div class="location-icon">📍</div>
           <div class="location-detail-text">
@@ -811,27 +787,30 @@
             <div class="hours-table">
               <div class="hours-row">
                 <span class="hours-day">Mon – Fri</span>
-                <span class="hours-dots"></span>
+                <span class="hours-dots" aria-hidden="true"></span>
                 <span class="hours-time">7 AM – 10 PM</span>
               </div>
               <div class="hours-row">
                 <span class="hours-day">Saturday</span>
-                <span class="hours-dots"></span>
+                <span class="hours-dots" aria-hidden="true"></span>
                 <span class="hours-time">7 AM – 11 PM</span>
               </div>
               <div class="hours-row">
                 <span class="hours-day">Sunday</span>
-                <span class="hours-dots"></span>
+                <span class="hours-dots" aria-hidden="true"></span>
                 <span class="hours-time">8 AM – 9 PM</span>
               </div>
             </div>
           </div>
         </div>
         <div class="location-detail" style="border-bottom:none">
-          <div class="location-icon">📞</div>
+          <div class="location-icon">💬</div>
           <div class="location-detail-text">
             <strong>Contact</strong>
-            <span>+91 88053 48821<br>hello@kohihouse.in</span>
+            <a href="https://wa.me/918805348821?text=Hello%20K%C5%8Dh%C4%AB%20House!%20I%20have%20a%20question." target="_blank" rel="noopener noreferrer" class="location-whatsapp-link">
+              <span class="location-whatsapp-label">WhatsApp</span>
+              <span class="location-whatsapp-hint">Chat with us directly</span>
+            </a>
           </div>
         </div>
       </div>
@@ -850,40 +829,9 @@
           Open in Google Maps
         </a>
         <div class="location-actions">
-          <a href="https://www.google.com/maps/dir/?api=1&destination=Kohi+House+Versova+Andheri+West+Mumbai" target="_blank" rel="noopener noreferrer" class="btn-outline location-action-btn">Get Directions</a>
-          <a href="tel:+918805348821" class="btn-outline location-action-btn">Call Us</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Kohi+House+Versova+Andheri+West+Mumbai" target="_blank" rel="noopener noreferrer" class="btn-primary location-action-btn location-action-btn--primary">Get Directions</a>
+          <a href="https://wa.me/918805348821?text=Hello%20K%C5%8Dh%C4%AB%20House!%20I%20have%20a%20question." target="_blank" rel="noopener noreferrer" class="btn-outline location-action-btn location-action-btn--secondary">WhatsApp</a>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- NEWSLETTER -->
-<section id="newsletter" aria-label="Newsletter signup">
-  <div class="newsletter-inner">
-    <p class="section-eyebrow">The Kōhī Club</p>
-    <h2 class="section-title">Stay in the <em>loop.</em></h2>
-    <p class="newsletter-lead">Join The Kōhī Club for seasonal drinks, exclusive events, brewing workshops, and 10% off your first specialty drink.</p>
-    <div class="newsletter-form-wrap">
-      <form class="newsletter-form" id="newsletter-form" novalidate>
-        <div class="newsletter-field" data-field="email">
-          <label for="newsletter-email">Email address</label>
-          <input type="email" id="newsletter-email" name="email" placeholder="you@email.com" autocomplete="email" inputmode="email" aria-describedby="newsletter-email-error" required>
-          <span class="newsletter-field-error" id="newsletter-email-error" role="alert" aria-live="polite"></span>
-        </div>
-        <input type="text" name="company" id="newsletter-company" class="newsletter-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button type="submit" class="newsletter-submit btn-primary" id="newsletter-submit">
-          <span class="newsletter-submit-label">Join The Kōhī Club</span>
-          <span class="newsletter-submit-loading" hidden aria-hidden="true">Joining…</span>
-        </button>
-      </form>
-      <p class="newsletter-reassurance">No spam ever. Unsubscribe anytime with one click.</p>
-      <div class="newsletter-success" hidden role="status" aria-live="polite">
-        <div class="newsletter-success-icon" aria-hidden="true">☕</div>
-        <h3 class="newsletter-success-title">Welcome to The Kōhī Club</h3>
-        <p class="newsletter-success-body">Check your inbox for your welcome reward and member benefits.</p>
-        <p class="newsletter-success-email">A confirmation email has been sent to:<br><strong class="newsletter-success-address"></strong></p>
-        <p class="newsletter-success-note newsletter-success-note--confirm" hidden>Please confirm your email to activate your membership and receive your welcome reward.</p>
       </div>
     </div>
   </div>
@@ -902,17 +850,15 @@
         <a href="https://www.facebook.com/kohihouse" class="social-link" aria-label="Follow us on Facebook" target="_blank" rel="noopener noreferrer">
           <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
         </a>
-        <a href="https://wa.me/918805348821" class="social-link" aria-label="Chat with us on WhatsApp" target="_blank" rel="noopener noreferrer">
+        <a href="https://wa.me/918805348821?text=Hello%20K%C5%8Dh%C4%AB%20House!%20I%20have%20a%20question." class="social-link" aria-label="Chat with us on WhatsApp" target="_blank" rel="noopener noreferrer">
           <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         </a>
       </div>
     </div>
     <nav class="footer-links-mobile" aria-label="Footer navigation">
       <a href="#menu">Menu</a>
-      <a href="#events">Events</a>
       <a href="#reservation">Reserve</a>
       <a href="#journal">Journal</a>
-      <a href="#newsletter">Newsletter</a>
     </nav>
     <div class="footer-links" role="navigation" aria-label="Footer navigation">
       <a href="#story">Story</a>
@@ -923,11 +869,7 @@
       <span class="footer-links-sep" aria-hidden="true"></span>
       <a href="#atmosphere">Space</a>
       <span class="footer-links-sep" aria-hidden="true"></span>
-      <a href="#events">Events</a>
-      <span class="footer-links-sep" aria-hidden="true"></span>
       <a href="#journal">Journal</a>
-      <span class="footer-links-sep" aria-hidden="true"></span>
-      <a href="#newsletter">Newsletter</a>
     </div>
     <div class="footer-bottom">
       <p>© 2026 Kōhī House. All rights reserved.</p>
@@ -982,6 +924,7 @@
 <script src="assets/js/newsletter.js"></script>
 <script src="assets/js/reveal.js"></script>
 <script src="assets/js/scroll.js"></script>
+<script src="assets/js/whatsapp.js"></script>
 <script src="assets/js/reservation.js"></script>
 <script src="assets/js/interactions.js"></script>
 <script src="assets/js/ux.js"></script>

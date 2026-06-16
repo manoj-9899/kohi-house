@@ -23,23 +23,9 @@ function getThemeColors() {
 }
 
 function buildPopupHtml() {
-  const c = getThemeColors()
-  return `<div style="
-        font-family:'DM Sans',sans-serif;
-        background:${c.darkRoast};
-        color:${c.cream};
-        padding:0.75rem 1rem;
-        border-radius:4px;
-        font-size:0.82rem;
-        line-height:1.6;
-        border:1px solid ${c.cardBorder}
-      ">
-        <strong style="color:${c.caramel};display:block;margin-bottom:4px">
-          Kōhī House
-        </strong>
-        12, Third Cross Street<br>
-        Versova, Andheri West<br>
-        Mumbai – 400 061
+  return `<div class="map-popup-card">
+        <strong class="map-popup-title">Kōhī House</strong>
+        <p class="map-popup-address">12, Third Cross Street<br>Versova, Andheri West<br>Mumbai – 400 061</p>
       </div>`
 }
 
@@ -241,7 +227,10 @@ function initLeafletMap() {
   })
 
   const marker = L.marker(MAP_COORDS, { icon }).addTo(map)
-  marker.bindPopup(buildPopupHtml(), { className: 'kohi-popup' }).openPopup()
+  marker.bindPopup(buildPopupHtml(), { className: 'kohi-popup' })
+  if (!isMobile) {
+    marker.openPopup()
+  }
 
   function applyMapTheme(nextTheme) {
     tileLayer.setUrl(MAP_TILES[nextTheme] || MAP_TILES.dark)

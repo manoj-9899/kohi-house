@@ -1,0 +1,352 @@
+/* location.css — Contact / Location section: hierarchy, trust, and conversion UX */
+
+:root,
+[data-theme="dark"] {
+  --location-bg: #0E0906;
+  --location-surface: #18110C;
+  --location-text-primary: #F5EFE8;
+  --location-text-secondary: #D8C8B8;
+  --location-text-muted: #B29E8D;
+  --location-accent: #B77B3A;
+  --location-accent-dark: #8C5A2B;
+  --location-success: #5FBF75;
+  --location-popup-bg: #2B1E17;
+  --location-popup-border: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="light"] {
+  --location-bg: var(--bg-primary);
+  --location-surface: var(--surface);
+  --location-text-primary: var(--text-primary);
+  --location-text-secondary: var(--text-secondary);
+  --location-text-muted: var(--text-muted);
+  --location-accent: var(--accent);
+  --location-accent-dark: var(--accent-dark);
+  --location-success: #3D9A5C;
+  --location-popup-bg: var(--surface);
+  --location-popup-border: var(--border);
+}
+
+/* ─── Section shell ─────────────────────────────────── */
+#location {
+  background: var(--location-bg);
+}
+
+#location .location-grid {
+  grid-template-columns: 1.12fr 0.88fr;
+  align-items: start;
+}
+
+#location .location-detail-text strong {
+  color: rgba(245, 239, 232, 0.72);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  font-size: 0.68rem;
+  margin-bottom: 0.65rem;
+}
+
+[data-theme="light"] #location .location-detail-text strong {
+  color: var(--text-muted);
+}
+
+#location .location-detail-text span,
+#location .location-copy-address {
+  color: var(--location-text-primary);
+}
+
+#location .location-copy-address:hover {
+  color: var(--location-accent);
+}
+
+#location .location-icon {
+  color: var(--location-accent);
+  border-color: rgba(183, 123, 58, 0.28);
+}
+
+#location .location-detail {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+  margin-bottom: 0;
+  padding-bottom: 2.5rem;
+  padding-top: 0.15rem;
+}
+
+#location .location-detail:last-child {
+  padding-bottom: 0;
+}
+
+[data-theme="light"] #location .location-detail {
+  border-bottom-color: var(--border);
+}
+
+/* ─── Open status — editorial line ────────────────── */
+#location .live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 2.75rem;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--location-text-secondary);
+  line-height: 1.5;
+}
+
+#location .live-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--location-success);
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+#location .live-badge.is-closed {
+  color: var(--location-text-muted);
+  background: none;
+  border: none;
+}
+
+#location .live-badge.is-closed .live-dot {
+  background: var(--location-text-muted);
+  animation: none;
+  opacity: 0.65;
+}
+
+/* ─── Hours table ───────────────────────────────────── */
+#location .hours-table {
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+}
+
+#location .hours-row {
+  display: grid;
+  grid-template-columns: minmax(6.5rem, 1fr) auto;
+  gap: 2rem;
+  align-items: baseline;
+  padding: 0.35rem 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+#location .hours-dots {
+  display: none;
+}
+
+#location .hours-day {
+  color: var(--location-text-secondary);
+  min-width: 0;
+}
+
+#location .hours-time {
+  color: var(--location-text-primary);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+#location .hours-row.today .hours-day,
+#location .hours-row.today .hours-time {
+  color: var(--location-accent);
+  font-weight: 500;
+}
+
+/* ─── WhatsApp — editorial link ─────────────────────── */
+.location-whatsapp-link {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 0.15rem;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  text-decoration: none;
+  transition: color 0.25s var(--silk);
+}
+
+.location-whatsapp-link:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.location-whatsapp-label {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--location-text-primary);
+  transition: color 0.25s var(--silk);
+}
+
+.location-whatsapp-hint {
+  font-size: 0.84rem;
+  color: var(--location-text-secondary);
+  line-height: 1.5;
+  transition: color 0.25s var(--silk);
+}
+
+.location-whatsapp-link:hover .location-whatsapp-label {
+  color: var(--location-accent);
+}
+
+.location-whatsapp-link:hover .location-whatsapp-hint {
+  color: var(--location-text-primary);
+}
+
+/* ─── Map: supporting role ──────────────────────────── */
+#location .location-map-wrap {
+  opacity: 0.92;
+  transition: opacity 0.4s var(--silk);
+}
+
+#location .map-frame {
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.4s var(--silk);
+}
+
+#location .map-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 9, 6, 0.38);
+  pointer-events: none;
+  z-index: 2;
+  transition: background 0.4s ease;
+}
+
+#location .map-frame:hover::after {
+  background: rgba(14, 9, 6, 0.24);
+}
+
+#location .map-frame:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28);
+}
+
+[data-theme="light"] #location .map-frame::after {
+  background: rgba(246, 241, 234, 0.45);
+}
+
+[data-theme="light"] #location .map-frame:hover::after {
+  background: rgba(246, 241, 234, 0.28);
+}
+
+#location .leaflet-container {
+  filter: saturate(0.72) contrast(0.9) brightness(0.86);
+  transition: filter 0.45s ease;
+}
+
+#location .map-frame:hover .leaflet-container {
+  filter: saturate(0.82) contrast(0.94) brightness(0.92);
+}
+
+/* ─── Map popup card ────────────────────────────────── */
+.kohi-popup .leaflet-popup-content-wrapper {
+  background: var(--location-popup-bg) !important;
+  border: 1px solid var(--location-popup-border) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35) !important;
+  border-radius: 4px !important;
+  padding: 0 !important;
+  color: var(--location-text-primary);
+}
+
+[data-theme="light"] .kohi-popup .leaflet-popup-content-wrapper {
+  box-shadow: 0 12px 32px rgba(43, 30, 23, 0.12) !important;
+}
+
+.map-popup-card {
+  padding: 0.9rem 1.1rem;
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+.map-popup-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--location-text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.map-popup-address {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--location-text-secondary);
+}
+
+[data-theme="dark"] .map-popup-address {
+  color: rgba(245, 239, 232, 0.85);
+}
+
+.kohi-popup .leaflet-popup-close-button {
+  color: var(--location-text-muted) !important;
+  top: 0.35rem !important;
+  right: 0.35rem !important;
+}
+
+.kohi-popup .leaflet-popup-close-button:hover {
+  color: var(--location-accent) !important;
+}
+
+/* ─── CTA hierarchy ─────────────────────────────────── */
+#location .location-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+#location .location-action-btn {
+  flex: 1;
+  justify-content: center;
+  min-height: 48px;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  transition:
+    transform 0.3s var(--snap),
+    box-shadow 0.3s var(--silk),
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+#location .location-action-btn--primary {
+  background: var(--location-accent);
+  color: #FFFFFF;
+  border: none;
+  box-shadow: 0 8px 24px rgba(183, 123, 58, 0.25);
+}
+
+#location .location-action-btn--primary:hover {
+  background: var(--location-accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(140, 90, 43, 0.32);
+}
+
+#location .location-action-btn--secondary {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--location-text-primary);
+}
+
+#location .location-action-btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.28);
+  transform: translateY(-2px);
+}
+
+[data-theme="light"] #location .location-action-btn--secondary {
+  border-color: rgba(43, 30, 23, 0.18);
+  color: var(--location-text-primary);
+}
+
+[data-theme="light"] #location .location-action-btn--secondary:hover {
+  background: rgba(43, 30, 23, 0.04);
+  border-color: var(--location-accent);
+}

@@ -118,9 +118,9 @@
   /* Reservation */
   #reservation{padding:4rem 0}
   .reservation-inner{padding:0 1.25rem}
-  .wizard-viewport{min-height:calc(100dvh - 240px)}
-  .wizard-step.is-active{min-height:calc(100dvh - 300px);display:flex;flex-direction:column}
-  .wizard-step.is-active .wizard-nav{margin-top:auto}
+  /* Reservation — avoid full-viewport step height (causes scroll jump to footer) */
+  .wizard-viewport{min-height:320px}
+  .wizard-step.is-active{min-height:0;display:block}
 
   /* Footer */
   footer{padding:0 1.5rem 2rem}
